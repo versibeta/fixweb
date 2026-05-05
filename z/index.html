@@ -6,57 +6,94 @@
 
 <title>FixWeb.ID</title>
 
+<meta name="description" content="Halaman website sederhana untuk membantu usaha tampil lebih rapi dan mudah dihubungi lewat WhatsApp.">
+
+<meta property="og:title" content="FixWeb.ID — Website Sederhana untuk Promosi Usaha Anda">
+<meta property="og:description" content="Halaman website sederhana untuk membantu usaha tampil lebih rapi, mudah dibagikan, dan langsung terhubung ke WhatsApp pelanggan.">
+<meta property="og:image" content="https://versibeta.github.io/fixweb/og-image-t.png">
+
 <style>
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   text-align: center;
+
+  background-color: #020617;
+  background-image:
+    radial-gradient(circle at 30% 20%, rgba(59,130,246,0.18), transparent 60%),
+    radial-gradient(circle at 70% 80%, rgba(34,197,94,0.10), transparent 60%),
+    linear-gradient(180deg, #0f172a 0%, #020617 100%);
+  background-size: 120% 120%;
+  animation: bgMove 12s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+  0% { background-position: 30% 20%, 70% 80%, center; }
+  100% { background-position: 40% 30%, 60% 70%, center; }
 }
 
 .container {
-  max-width: 500px;
-  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease forwards;
 }
 
-img {
-  width: 100px;
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.logo {
+  width: 90px;
   margin-bottom: 20px;
+  filter: drop-shadow(0 0 12px rgba(59,130,246,0.5));
 }
 
 h1 {
   margin: 0;
   font-size: 28px;
+  font-weight: 600;
 }
 
 p {
+  max-width: 320px;
   color: #cbd5f5;
-  margin-top: 10px;
+  margin-top: 12px;
+  line-height: 1.5;
 }
 
 .btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 22px;
+  margin-top: 24px;
+  padding: 14px 24px;
   background: #22c55e;
   color: white;
   text-decoration: none;
-  border-radius: 10px;
-  font-weight: bold;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(34,197,94,0.5);
 }
 </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
 
-  <img src="https://versibeta.github.io/fixweb/fw-transparan.png" alt="FixWeb.ID">
+  <img src="logo.png" class="logo" alt="FixWeb.ID">
 
   <h1>FixWeb.ID</h1>
 
@@ -65,8 +102,8 @@ p {
     dan mudah dihubungi lewat WhatsApp.
   </p>
 
-  <a class="btn" href="https://wa.me/6285882827510">
-    💬 Konsultasi via WhatsApp
+  <a href="https://wa.me/6285882827510" class="btn">
+    Konsultasi via WhatsApp
   </a>
 
 </div>
