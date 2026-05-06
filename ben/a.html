@@ -245,7 +245,51 @@ body.dark .nav.scrolled {
   gap: 10px;
 }
 
-      
+     /* garis kecil di kanan */
+#menuTrigger {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  width: 6px;
+  height: 60px;
+  background: #2563EB;
+  border-radius: 4px 0 0 4px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* side nav */
+#sideNav {
+  position: fixed;
+  top: 0;
+  right: -220px;
+  width: 220px;
+  height: 100vh;
+  background: #0F172A;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 20px;
+  gap: 20px;
+  transition: 0.3s ease;
+  z-index: 999;
+}
+
+/* saat aktif */
+#sideNav.active {
+  right: 0;
+}
+
+/* link */
+#sideNav a {
+  color: #E2E8F0;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* hover */
+#sideNav a:hover {
+  color: #2563EB;
+} 
   </style>
 </head>
 
@@ -283,6 +327,21 @@ body.dark .nav.scrolled {
     <a href="https://wa.me/628XXXXXXXXXX" class="cta">Diskusikan via WhatsApp</a>
   </div>
 
+<section id="brand">
+  <h2>Brand Image Design</h2>
+
+  <div class="card">
+    <strong>Visual Identity</strong>
+    <ul>
+      <li>Warna Brand</li>
+      <li>Logo & Icon</li>
+      <li>Typography</li>
+      <li>Style UI</li>
+    </ul>
+  </div>
+</section>
+
+  
   <div class="reveal">
     <h2>Masalah</h2>
     <ul>
@@ -321,6 +380,18 @@ body.dark .nav.scrolled {
 
 </div>
 
+
+<!-- trigger garis -->
+<div id="menuTrigger"></div>
+
+<!-- side nav -->
+<div id="sideNav">
+  <a href="#brand">Brand</a>
+  <a href="#penawaran">Penawaran</a>
+  <a href="#kontak">WhatsApp</a>
+</div>
+
+  
 <script>
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -357,6 +428,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 </script>
+<script>
+const trigger = document.getElementById("menuTrigger");
+const sideNav = document.getElementById("sideNav");
 
+trigger.addEventListener("click", () => {
+  sideNav.classList.toggle("active");
+});
+</script>
 </body>
 </html>
