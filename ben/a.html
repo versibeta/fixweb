@@ -201,6 +201,28 @@ body.dark .nav.scrolled {
   background: rgba(15, 23, 42, 0.9);
 }
 
+
+    .logo {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Fix miring */
+.logo .fix {
+  font-style: italic;
+}
+
+/* Web biru */
+.logo .web {
+  color: #3B82F6; /* biru clean */
+}
+
+/* .ID tetap normal */
+.logo .dot {
+  opacity: 0.7;
+  margin-left: 2px;
+}
     
   </style>
 </head>
@@ -210,7 +232,11 @@ body.dark .nav.scrolled {
 <!-- NAV -->
 <nav class="nav">
   <div class="nav-inner">
-    <div class="logo">FixWeb.ID</div>
+
+<div class="logo">
+  <span class="fix">Fix</span><span class="web">Web</span><span class="dot">.ID</span>
+</div>    
+  
     <div class="nav-right">
       <button id="themeToggle" class="toggle-btn">🌙</button>
       <a href="#penawaran" class="nav-link">Penawaran</a>
