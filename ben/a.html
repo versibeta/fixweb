@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,13 +8,6 @@
   <title>Proposal Website - FixWeb.ID</title>
   <meta name="description" content="Website profesional untuk bisnis Anda. Cepat, simpel, dan siap digunakan.">
 
-  <!-- Open Graph -->
-  <meta property="og:title" content="Proposal Website - FixWeb.ID">
-  <meta property="og:description" content="Website profesional, cepat & siap online.">
-  <meta property="og:image" content=" ">
-  <meta property="og:url" content="https://fixweb.id">
-  <meta property="og:type" content="website">
-
   <style>
     * {
       margin: 0;
@@ -22,16 +16,25 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
-    body {
-      background: radial-gradient(circle at top, #1a1a1a, #0d0d0d);
-      color: #eaeaea;
-      line-height: 1.7;
+    html, body {
       overflow-x: hidden;
+      overflow-y: auto;
+      line-height: 1.7;
     }
 
-    /* NAVBAR */
+    /* DEFAULT LIGHT */
+    body {
+      background: #ffffff;
+      color: #0f172a;
+    }
 
-    
+    /* DARK MODE */
+    body.dark {
+      background: radial-gradient(circle at top, #0F172A, #020617);
+      color: #E2E8F0;
+    }
+
+    /* NAV */
     .nav {
       position: fixed;
       top: 0;
@@ -40,15 +43,11 @@
       backdrop-filter: blur(14px);
       background: rgba(10,10,10,0.4);
       border-bottom: 1px solid rgba(255,255,255,0.05);
-      /* transition: all 0.3s ease; */
-
       transition: transform 0.3s ease;
-      
     }
 
     .nav.scrolled {
       background: rgba(10,10,10,0.85);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav-inner {
@@ -62,20 +61,18 @@
 
     .logo {
       font-weight: 600;
-      letter-spacing: 0.5px;
     }
 
     .nav-right {
       display: flex;
-      gap: 20px;
       align-items: center;
+      gap: 15px;
     }
 
     .nav-link {
       color: #aaa;
       text-decoration: none;
       font-size: 0.9rem;
-      transition: 0.2s;
     }
 
     .nav-link:hover {
@@ -90,6 +87,20 @@
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 600;
+    }
+
+    /* TOGGLE */
+    .toggle-btn {
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 6px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    body.dark .toggle-btn {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
     }
 
     /* CONTENT */
@@ -107,18 +118,16 @@
     h2 {
       font-size: 1.7rem;
       margin-top: 100px;
-      margin-bottom: 10px;
     }
 
     p {
-      color: #aaa;
+      color: #888;
       margin-bottom: 20px;
     }
 
     ul {
-      margin-top: 15px;
       padding-left: 20px;
-      color: #aaa;
+      color: #888;
     }
 
     li {
@@ -131,12 +140,6 @@
       padding: 22px;
       border-radius: 12px;
       margin-top: 20px;
-      transition: all 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(255,255,255,0.12);
     }
 
     .cta {
@@ -148,32 +151,25 @@
       border-radius: 10px;
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s ease;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(37,211,102,0.3);
     }
 
     .price {
       font-size: 1.5rem;
       margin-top: 10px;
-      color: #fff;
     }
 
     footer {
       margin-top: 120px;
       font-size: 0.85rem;
-      color: #666;
       text-align: center;
+      color: #666;
     }
 
     /* ANIMATION */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: all 0.8s ease;
+      transition: all 0.6s ease;
     }
 
     .reveal.active {
@@ -181,67 +177,9 @@
       transform: translateY(0);
     }
 
-    .hero {
-      animation: fadeIn 1s ease forwards;
-    }
-
-/* DEFAULT = LIGHT */
-body {
-  background: #ffffff;
-  color: #0f172a;
-}
-
-/* DARK MODE */
-body.dark {
-  background: radial-gradient(circle at top, #0F172A, #020617);
-  color: #E2E8F0;
-}
-
-/* NAV kanan */
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav-right {
-  display: flex;
-  align-items: center;
-}
-
-/* tombol toggle */
-.toggle-btn {
-  background: transparent;
-  border: 1px solid rgba(0,0,0,0.1);
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-/* dark version tombol */
-body.dark .toggle-btn {
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-}
-
-
-
-
-    
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
   </style>
 </head>
+
 <body>
 
 <!-- NAV -->
@@ -249,70 +187,51 @@ body.dark .toggle-btn {
   <div class="nav-inner">
     <div class="logo">FixWeb.ID</div>
     <div class="nav-right">
-<button id="themeToggle" class="toggle-btn">🌙</button>
+      <button id="themeToggle" class="toggle-btn">🌙</button>
       <a href="#penawaran" class="nav-link">Penawaran</a>
       <a href="#kontak" class="cta-nav">WhatsApp</a>
     </div>
-  </div
+  </div>
 </nav>
 
-  
 <div class="container">
 
-  <!-- HERO -->
   <div class="hero">
     <h1>Website Profesional untuk Bisnis Anda</h1>
     <p>Cepat, simpel, dan langsung siap digunakan untuk meningkatkan kepercayaan pelanggan.</p>
     <a href="https://wa.me/628XXXXXXXXXX" class="cta">Diskusikan via WhatsApp</a>
   </div>
 
-  <!-- MASALAH -->
   <div class="reveal">
-    <h2>Masalah yang Sering Terjadi</h2>
+    <h2>Masalah</h2>
     <ul>
-      <li>Tidak memiliki website</li>
-      <li>Tampilan bisnis kurang profesional</li>
-      <li>Pelanggan ragu untuk percaya</li>
+      <li>Tidak punya website</li>
+      <li>Kurang profesional</li>
+      <li>Pelanggan ragu</li>
     </ul>
   </div>
 
-  <!-- SOLUSI -->
   <div class="reveal">
-    <h2>Solusi dari FixWeb.ID</h2>
-    <p>Kami membantu bisnis Anda tampil lebih profesional melalui website yang cepat dan siap digunakan.</p>
+    <h2>Solusi</h2>
     <div class="card">
-      ✔ Desain clean & modern<br>
-      ✔ Loading cepat<br>
+      ✔ Desain modern<br>
+      ✔ Cepat<br>
       ✔ Mobile friendly<br>
-      ✔ Siap online<br>
-      ✔ Integrasi WhatsApp
+      ✔ Siap online
     </div>
   </div>
 
-  <!-- HASIL -->
-  <div class="reveal">
-    <h2>Hasil yang Didapat</h2>
-    <ul>
-      <li>Bisnis terlihat lebih kredibel</li>
-      <li>Lebih dipercaya pelanggan</li>
-      <li>Lebih mudah closing</li>
-    </ul>
-  </div>
-
-  <!-- PENAWARAN -->
   <div class="reveal">
     <h2 id="penawaran">Penawaran</h2>
     <div class="card">
       Landing Page Profesional
-      <div class="price">Mulai dari Rp XXX</div>
+      <div class="price">Mulai Rp XXX</div>
     </div>
   </div>
 
-  <!-- CTA -->
   <div class="reveal">
-    <h2 id="kontak">Siap Memulai?</h2>
-    <p>Diskusikan kebutuhan website Anda sekarang.</p>
-    <a href="https://wa.me/628XXXXXXXXXX" class="cta">Chat Sekarang</a>
+    <h2 id="kontak">Mulai Sekarang</h2>
+    <a href="https://wa.me/628XXXXXXXXXX" class="cta">Chat WhatsApp</a>
   </div>
 
   <footer>
@@ -322,63 +241,49 @@ body.dark .toggle-btn {
 </div>
 
 <script>
-  // Navbar scroll effect
-  const nav = document.querySelector('.nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-      nav.classList.add('scrolled');
+document.addEventListener("DOMContentLoaded", () => {
+
+  const nav = document.querySelector(".nav");
+  let lastScroll = 0;
+
+  window.addEventListener("scroll", () => {
+    const current = window.scrollY;
+
+    // background effect
+    if (current > 20) nav.classList.add("scrolled");
+    else nav.classList.remove("scrolled");
+
+    // hide/show nav
+    if (current > lastScroll && current > 80) {
+      nav.style.transform = "translateY(-100%)";
     } else {
-      nav.classList.remove('scrolled');
+      nav.style.transform = "translateY(0)";
     }
+
+    lastScroll = current;
   });
 
-  // Scroll reveal
+  // reveal
   const reveals = document.querySelectorAll(".reveal");
-  function revealOnScroll() {
-    const windowHeight = window.innerHeight;
+  window.addEventListener("scroll", () => {
+    const wh = window.innerHeight;
     reveals.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 80) {
+      if (el.getBoundingClientRect().top < wh - 80) {
         el.classList.add("active");
       }
     });
-  }
-  window.addEventListener("scroll", revealOnScroll);
-</script>
+  });
 
-<script>
-const toggle = document.getElementById("themeToggle");
+  // toggle dark
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    toggle.textContent =
+      document.body.classList.contains("dark") ? "☀️" : "🌙";
+  });
 
-// default = LIGHT (tidak ada class dark)
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  // ganti icon
-  if (document.body.classList.contains("dark")) {
-    toggle.textContent = "☀️";
-  } else {
-    toggle.textContent = "🌙";
-  }
 });
 </script>
 
-<script>
-let lastScroll = 0;
-const nav = document.querySelector(".nav");
-
-window.addEventListener("scroll", () => {
-  let currentScroll = window.scrollY;
-
-  if (currentScroll > lastScroll && currentScroll > 80) {
-    nav.style.transform = "translateY(-100%)";
-  } else {
-    nav.style.transform = "translateY(0)";
-  }
-
-  lastScroll = currentScroll;
-});
-</script>
-
-  
 </body>
 </html>
