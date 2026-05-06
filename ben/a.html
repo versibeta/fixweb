@@ -30,6 +30,8 @@
     }
 
     /* NAVBAR */
+
+    
     .nav {
       position: fixed;
       top: 0;
@@ -38,7 +40,10 @@
       backdrop-filter: blur(14px);
       background: rgba(10,10,10,0.4);
       border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: all 0.3s ease;
+      /* transition: all 0.3s ease; */
+
+      transition: transform 0.3s ease;
+      
     }
 
     .nav.scrolled {
@@ -357,6 +362,22 @@ toggle.addEventListener("click", () => {
 });
 </script>
 
+<script>
+let lastScroll = 0;
+const nav = document.querySelector(".nav");
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 80) {
+    nav.style.transform = "translateY(-100%)";
+  } else {
+    nav.style.transform = "translateY(0)";
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
 
   
 </body>
