@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 120">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+    .logo { font-family: 'Montserrat', sans-serif; }
+  </style>
+
+  <text x="10" y="75" class="logo" font-size="56" letter-spacing="-0.3">
+    <tspan font-style="italic" font-weight="600" fill="#0F172A">Fix</tspan>
+    <tspan dx="-3" font-weight="700" fill="#2563EB">Web</tspan>
+    <tspan dx="-1.5" font-size="38" font-weight="500" fill="#0F172A">.ID</tspan>
+  </text>
+</svg>
