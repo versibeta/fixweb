@@ -237,25 +237,40 @@ body.dark .nav.scrolled {
   opacity: 0.7;
   margin-left: 2px;
 }
-    
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+      
   </style>
 </head>
 
 <body>
 
 <!-- NAV -->
+
+
+
+  
 <nav class="nav">
   <div class="nav-inner">
 
-<div class="logo">
-  <span class="fix">Fix</span><span class="web">Web</span><span class="dot">.ID</span>
-</div>    
-  
-    <div class="nav-right">
-      <button id="themeToggle" class="toggle-btn">🌙</button>
-      <a href="#penawaran" class="nav-link">Penawaran</a>
-      <a href="#kontak" class="cta-nav">WhatsApp</a>
+  <div class="nav-left">
+    <button id="themeToggle" class="toggle-btn">🌙</button>
+    <div class="logo">
+      <span class="fix">Fix</span><span class="web">Web</span><span class="dot">.ID</span>
     </div>
+  </div>
+
+  <div class="nav-right">
+    <a href="#penawaran" class="nav-link">Penawaran</a>
+    <a href="#kontak" class="cta-nav">WhatsApp</a>
+  </div>
+
+    
   </div>
 </nav>
 
