@@ -35,20 +35,27 @@
     }
 
     /* NAV */
-    .nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 999;
-      backdrop-filter: blur(14px);
-      background: rgba(10,10,10,0.4);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.3s ease;
-    }
 
-    .nav.scrolled {
-      background: rgba(10,10,10,0.85);
-    }
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.6);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.nav.scrolled {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(16px);
+}
+
+
+    
+    
 
     .nav-inner {
       max-width: 820px;
@@ -244,23 +251,13 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   const nav = document.querySelector(".nav");
-  let lastScroll = 0;
 
   window.addEventListener("scroll", () => {
     const current = window.scrollY;
 
-    // background effect
+    // efek background saat scroll
     if (current > 20) nav.classList.add("scrolled");
     else nav.classList.remove("scrolled");
-
-    // hide/show nav
-    if (current > lastScroll && current > 80) {
-      nav.style.transform = "translateY(-100%)";
-    } else {
-      nav.style.transform = "translateY(0)";
-    }
-
-    lastScroll = current;
   });
 
   // reveal
@@ -276,11 +273,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // toggle dark
   const toggle = document.getElementById("themeToggle");
-  toggle.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-    toggle.textContent =
-      document.body.classList.contains("dark") ? "☀️" : "🌙";
-  });
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggle.textContent =
+        document.body.classList.contains("dark") ? "☀️" : "🌙";
+    });
+  }
 
 });
 </script>
