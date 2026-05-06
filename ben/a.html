@@ -245,17 +245,20 @@ body.dark .nav.scrolled {
   gap: 10px;
 }
 
-     /* garis kecil di kanan */
+/* garis kecil di kanan */
 #menuTrigger {
-  position: fixed;
-  right: 0;
-  top: 50%;
-  width: 6px;
-  height: 60px;
+  width: 4px;
+  height: 20px;
   background: #2563EB;
-  border-radius: 4px 0 0 4px;
+  border-radius: 2px;
   cursor: pointer;
-  z-index: 1000;
+  margin-left: 12px;
+  transition: 0.2s;
+}
+
+#menuTrigger:hover {
+  height: 26px;
+  opacity: 0.8;
 }
 
 /* side nav */
@@ -301,22 +304,28 @@ body.dark .nav.scrolled {
 
   
 <nav class="nav">
-  <div class="nav-inner">
+<div class="nav-inner">
 
+  <!-- KIRI -->
   <div class="nav-left">
     <button id="themeToggle" class="toggle-btn">🌙</button>
     <div class="logo">
-      <span class="fix">Fix</span><span class="web">Web</span><span class="dot">.ID</span>
+      <span class="fix">Fix</span><span class="web">Web</span>.ID
     </div>
   </div>
 
+  <!-- KANAN -->
   <div class="nav-right">
     <a href="#penawaran" class="nav-link">Penawaran</a>
-    <a href="#kontak" class="cta-nav">WhatsApp</a>
+
+    <!-- WA tetap -->
+    <a href="#kontak" class="cta-nav">WA</a>
+
+    <!-- GARIS MENU -->
+    <div id="menuTrigger"></div>
   </div>
 
-    
-  </div>
+</div>
 </nav>
 
 <div class="container">
