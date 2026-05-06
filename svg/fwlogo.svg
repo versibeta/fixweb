@@ -1,0 +1,18 @@
+<svg width="460" height="120" viewBox="0 0 460 120" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Fix (italic feel) -->
+  <path d="M20 80 L20 30 L60 30 L60 38 L30 38 L30 52 L55 52 L55 60 L30 60 L30 80 Z" fill="#0F172A"/>
+  <path d="M65 80 L85 30 L95 30 L75 80 Z" fill="#0F172A"/>
+  <path d="M100 30 L110 30 L125 55 L110 80 L100 80 L115 55 Z" fill="#0F172A"/>
+
+  <!-- Web (lebih tebal & rapat) -->
+  <path d="M130 80 L145 30 L155 30 L165 65 L175 30 L185 30 L170 80 L160 80 L150 50 L140 80 Z" fill="#3B82F6"/>
+  <path d="M190 80 L190 30 L220 30 L220 38 L200 38 L200 52 L215 52 L215 60 L200 60 L200 72 L220 72 L220 80 Z" fill="#3B82F6"/>
+  <path d="M230 30 L245 55 L230 80 L240 80 L255 55 L240 30 Z" fill="#3B82F6"/>
+
+  <!-- .ID -->
+  <circle cx="270" cy="75" r="3" fill="#0F172A"/>
+  <path d="M280 80 L280 50 L288 50 L288 80 Z" fill="#0F172A"/>
+  <path d="M295 50 L310 50 Q320 50 320 65 Q320 80 310 80 L295 80 Z M303 58 L303 72 L310 72 Q312 72 312 65 Q312 58 310 58 Z" fill="#0F172A"/>
+
+</svg>
