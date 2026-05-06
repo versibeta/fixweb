@@ -248,20 +248,37 @@ body.dark .nav.scrolled {
 /* garis kecil di kanan */
 
 #menuTrigger {
-  width: 2px;
-  height: 18px;
-  background: linear-gradient(
-    to bottom,
-    rgba(37, 99, 235, 0.2),
-    rgba(37, 99, 235, 1),
-    rgba(37, 99, 235, 0.2)
-  );
-  border-radius: 2px;
+  width: 26px;
+  height: 16px;
+  position: relative;
   cursor: pointer;
-  margin-left: 14px;
-  transition: all 0.25s ease;
 }
 
+/* garis atas */
+#menuTrigger::before,
+#menuTrigger::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  background: #0F172A;
+  right: 0;
+  border-radius: 2px;
+  transition: 0.25s;
+}
+
+/* line 1 */
+#menuTrigger::before {
+  width: 100%;
+  top: 0;
+}
+
+/* line 2 (lebih pendek) */
+#menuTrigger::after {
+  width: 60%;
+  bottom: 0;
+}
+
+  
 #menuTrigger:hover {
   height: 24px;
   background: #2563EB;
