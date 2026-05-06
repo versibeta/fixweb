@@ -1,0 +1,368 @@
+Oke, ini saya rapikan full versi clean + konsisten + fix bug
+👉 sudah saya bereskan:
+❌ double menuTrigger (ini bikin glitch)
+❌ CSS bentrok (sideNav warna tumpuk)
+❌ JS dobel (event kepanggil 2x)
+❌ warna light/dark nggak konsisten
+✅ nav premium clean
+✅ side nav rapi (mirip fixweb.io feel)
+✅ kontras aman (nggak kusam lagi)
+✅ COPY — LANGSUNG REPLACE (FINAL CLEAN)
+HTML
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Proposal Website - FixWeb.ID</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+body{
+  background:#ffffff;
+  color:#0F172A;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* DARK MODE */
+body.dark{
+  background:radial-gradient(circle at top,#0F172A,#020617);
+  color:#E2E8F0;
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:999;
+  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,0.6);
+  border-bottom:1px solid rgba(0,0,0,0.05);
+  transition:0.3s;
+}
+
+.nav.scrolled{
+  background:rgba(255,255,255,0.9);
+}
+
+/* DARK NAV */
+body.dark .nav{
+  background:rgba(15,23,42,0.85);
+  border-bottom:1px solid rgba(255,255,255,0.06);
+}
+
+.nav-inner{
+  max-width:820px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+/* LEFT */
+.nav-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* LOGO */
+.logo{
+  font-size:1.2rem;
+}
+
+.logo .fix{
+  font-style:italic;
+}
+
+.logo .web{
+  color:#3B82F6;
+}
+
+/* RIGHT */
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.nav-link{
+  color:#64748B;
+  text-decoration:none;
+}
+
+body.dark .nav-link{
+  color:#CBD5F5;
+}
+
+/* TOGGLE */
+.toggle-btn{
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(0,0,0,0.1);
+  background:transparent;
+  cursor:pointer;
+}
+
+body.dark .toggle-btn{
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;
+}
+
+/* MENU ICON */
+#menuTrigger{
+  width:26px;
+  height:16px;
+  position:relative;
+  cursor:pointer;
+}
+
+#menuTrigger::before,
+#menuTrigger::after{
+  content:"";
+  position:absolute;
+  height:2px;
+  right:0;
+  border-radius:2px;
+  transition:0.25s;
+}
+
+#menuTrigger::before{
+  width:100%;
+  top:0;
+  background:#0F172A;
+}
+
+#menuTrigger::after{
+  width:60%;
+  bottom:0;
+  background:#0F172A;
+}
+
+body.dark #menuTrigger::before,
+body.dark #menuTrigger::after{
+  background:#E2E8F0;
+}
+
+/* CONTAINER */
+.container{
+  max-width:820px;
+  margin:auto;
+  padding:120px 20px 60px;
+}
+
+/* TEXT */
+h1{
+  font-size:2.6rem;
+  margin-bottom:15px;
+}
+
+h2{
+  font-size:1.7rem;
+  margin-top:100px;
+}
+
+p{
+  color:#64748B;
+}
+
+body.dark p{
+  color:#94A3B8;
+}
+
+/* CARD */
+.card{
+  background:rgba(0,0,0,0.02);
+  border:1px solid rgba(0,0,0,0.05);
+  padding:20px;
+  border-radius:12px;
+  margin-top:20px;
+}
+
+body.dark .card{
+  background:rgba(255,255,255,0.03);
+  border:1px solid rgba(255,255,255,0.05);
+}
+
+/* CTA */
+.cta{
+  display:inline-block;
+  margin-top:30px;
+  background:#25D366;
+  color:#000;
+  padding:14px 28px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* SIDE NAV */
+#sideNav{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:100%;
+  height:100vh;
+  background:#ffffff;
+  padding:30px 25px;
+  transition:0.4s;
+  z-index:999;
+}
+
+#sideNav.active{
+  right:0;
+}
+
+body.dark #sideNav{
+  background:#0F172A;
+}
+
+/* HEADER */
+.side-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+#closeNav{
+  font-size:24px;
+  cursor:pointer;
+}
+
+/* MENU */
+.side-menu{
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+}
+
+.side-menu a{
+  text-decoration:none;
+  font-size:1.2rem;
+  font-weight:600;
+  color:#0F172A;
+}
+
+body.dark .side-menu a{
+  color:#E2E8F0;
+}
+
+.side-menu a:hover{
+  color:#2563EB;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="nav-inner">
+
+  <div class="nav-left">
+    <button id="themeToggle" class="toggle-btn">🌙</button>
+    <div class="logo">
+      <span class="fix">Fix</span><span class="web">Web</span>.ID
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <a href="#penawaran" class="nav-link">Penawaran</a>
+    <div id="menuTrigger"></div>
+  </div>
+
+</div>
+</nav>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <h1>Website Profesional untuk Bisnis Anda</h1>
+  <p>Cepat, simpel, dan siap digunakan untuk meningkatkan kepercayaan pelanggan.</p>
+  <a href="#" class="cta">Diskusikan via WhatsApp</a>
+
+  <section id="brand">
+    <h2>Brand Image Design</h2>
+    <div class="card">
+      <strong>Visual Identity</strong>
+      <ul>
+        <li>Warna Brand</li>
+        <li>Logo & Icon</li>
+        <li>Typography</li>
+        <li>Style UI</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="penawaran">
+    <h2>Penawaran</h2>
+    <div class="card">
+      Landing Page Profesional
+      <div>Mulai Rp XXX</div>
+    </div>
+  </section>
+
+</div>
+
+<!-- SIDE NAV -->
+<div id="sideNav">
+  <div class="side-header">
+    <div class="logo">
+      <span class="fix">Fix</span><span class="web">Web</span>.ID
+    </div>
+    <div id="closeNav">✕</div>
+  </div>
+
+  <div class="side-menu">
+    <a href="#brand">1. Brand Image</a>
+    <a href="#penawaran">2. Penawaran</a>
+    <a href="#kontak">3. Kontak</a>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded",()=>{
+
+const nav=document.querySelector(".nav");
+const trigger=document.getElementById("menuTrigger");
+const sideNav=document.getElementById("sideNav");
+const closeNav=document.getElementById("closeNav");
+const toggle=document.getElementById("themeToggle");
+
+/* NAV SCROLL */
+window.addEventListener("scroll",()=>{
+  if(window.scrollY>20) nav.classList.add("scrolled");
+  else nav.classList.remove("scrolled");
+});
+
+/* MENU */
+trigger.onclick=()=>sideNav.classList.add("active");
+closeNav.onclick=()=>sideNav.classList.remove("active");
+
+/* DARK MODE */
+toggle.onclick=()=>{
+  document.body.classList.toggle("dark");
+  toggle.textContent=
+    document.body.classList.contains("dark")?"☀️":"🌙";
+};
+
+});
+</script>
+
+</body>
+</html>
