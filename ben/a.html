@@ -32,12 +32,25 @@
 
 
     
-    /* DARK MODE */
-    body.dark {
-      background: radial-gradient(circle at top, #0F172A, #020617);
-      color: #E2E8F0;
-    }
 
+
+
+/* DARK MODE SIDE NAV */
+body.dark #sideNav {
+  background: #0F172A;
+  color: #E2E8F0;
+}
+
+body.dark #sideNav a {
+  color: #E2E8F0;
+}
+
+body.dark #sideNav a:hover {
+  color: #3B82F6;
+}
+
+
+    
     /* NAV */
 
 
@@ -313,6 +326,18 @@ body.dark .nav.scrolled {
   right: 0;
 }
 
+/* SIDE NAV - LIGHT */
+#sideNav {
+  color: #0F172A;
+}
+
+#sideNav a {
+  color: #0F172A;
+}
+
+#sideNav a:hover {
+  color: #2563EB;
+}    
 
 
 /* link */
@@ -361,6 +386,25 @@ body.dark .nav.scrolled {
 body.dark .side-menu a {
   color: #E2E8F0;
 }   
+
+/* DEFAULT (light) */
+#menuTrigger::before,
+#menuTrigger::after {
+  background: #0F172A;
+}
+
+
+/* DARK MODE */
+body.dark #menuTrigger::before,
+body.dark #menuTrigger::after {
+  background: #E2E8F0;
+}
+
+body.dark #menuTrigger::before,
+body.dark #menuTrigger::after {
+  background: #E2E8F0 !important;
+}
+    
   </style>
 </head>
 
