@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Audit Website — hendrianto.com</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f5f4f0;
+    color: #1a1a18;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 860px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.08);
+  }
+
+  /* Header */
+  .header {
+    background: #1a1a18;
+    color: #fff;
+    padding: 40px 48px 36px;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .header-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 8px;
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+  }
+  .header-sub {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 6px;
+  }
+  .header-right {
+    text-align: right;
+  }
+  .header-date {
+    font-size: 13px;
+    color: #aaa;
+  }
+  .score-badge {
+    display: inline-block;
+    margin-top: 10px;
+    background: #E24B4A;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 6px;
+  }
+
+  /* Score cards */
+  .scores {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    border-bottom: 1px solid #eee;
+  }
+  .score-card {
+    padding: 20px 16px;
+    text-align: center;
+    border-right: 1px solid #eee;
+  }
+  .score-card:last-child { border-right: none; }
+  .score-label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .score-num {
+    font-size: 26px;
+    font-weight: 700;
+  }
+  .score-total { font-size: 12px; color: #bbb; }
+  .red { color: #E24B4A; }
+  .orange { color: #BA7517; }
+  .green { color: #3B6D11; }
+
+  /* Body */
+  .body { padding: 40px 48px; }
+
+  /* Section */
+  .section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-status {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 4px;
+  }
+  .status-kritis { background: #FCEBEB; color: #A32D2D; }
+  .status-perlu { background: #FAEEDA; color: #633806; }
+  .status-baik { background: #EAF3DE; color: #27500A; }
+
+  /* Finding cards */
+  .findings { display: flex; flex-direction: column; gap: 10px; }
+  .finding {
+    border: 1px solid #eee;
+    border-left: 4px solid #eee;
+    border-radius: 0 8px 8px 0;
+    padding: 14px 16px;
+    background: #fafaf9;
+  }
+  .finding.high { border-left-color: #E24B4A; }
+  .finding.medium { border-left-color: #BA7517; }
+  .finding.ok { border-left-color: #3B6D11; background: #f7fbf2; }
+  .finding-title {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .finding-desc {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .finding-tag {
+    font-size: 11px;
+    font-weight: 600;
+    display: inline-block;
+  }
+  .tag-high { color: #A32D2D; }
+  .tag-medium { color: #854F0B; }
+  .tag-ok { color: #3B6D11; }
+
+  code {
+    font-size: 12px;
+    background: #f0efe8;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+  }
+
+  /* Priority table */
+  .priority-box {
+    background: #f5f4f0;
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 36px;
+  }
+  .priority-title {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .priority-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 10px;
+  }
+  .priority-item:last-child { margin-bottom: 0; }
+  .priority-badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+  .badge-segera { background: #E24B4A; color: #fff; }
+  .badge-bulan { background: #BA7517; color: #fff; }
+  .priority-text { font-size: 13px; color: #333; }
+
+  /* Footer */
+  .footer {
+    border-top: 1px solid #eee;
+    padding: 20px 48px;
+    font-size: 12px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; }
+    .page {
+      margin: 0;
+      border-radius: 0;
+      box-shadow: none;
+      max-width: 100%;
+    }
+    .no-print { display: none; }
+  }
+
+  /* Print button */
+  .print-btn {
+    display: block;
+    text-align: center;
+    margin: 20px auto 40px;
+    max-width: 860px;
+  }
+  .print-btn button {
+    background: #1a1a18;
+    color: #fff;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .print-btn button:hover { background: #333; }
+</style>
+</head>
+<body>
+
+<div class="print-btn no-print">
+  <button onclick="window.print()">🖨 Print / Simpan sebagai PDF</button>
+</div>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <p class="header-label">Laporan Audit Website</p>
+        <p class="header-title">hendrianto.com</p>
+        <p class="header-sub">Portofolio Arsitek &nbsp;·&nbsp; WordPress + WooCommerce</p>
+      </div>
+      <div class="header-right">
+        <p class="header-date">Tanggal audit</p>
+        <p class="header-date" style="color:#fff; font-weight:600; margin-top:4px;">8 Mei 2026</p>
+        <div class="score-badge">Skor Keseluruhan: 47 / 100</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCORE CARDS -->
+  <div class="scores">
+    <div class="score-card">
+      <p class="score-label">SEO</p>
+      <p class="score-num red">38</p>
+      <p class="score-total">/ 100</p>
+    </div>
+    <div class="score-card">
+      <p class="score-label">Performa</p>
+      <p class="score-num orange">52</p>
+      <p class="score-total">/ 100</p>
+    </div>
+    <div class="score-card">
+      <p class="score-label">Mobile</p>
+      <p class="score-num orange">55</p>
+      <p class="score-total">/ 100</p>
+    </div>
+    <div class="score-card">
+      <p class="score-label">Keamanan</p>
+      <p class="score-num orange">60</p>
+      <p class="score-total">/ 100</p>
+    </div>
+    <div class="score-card">
+      <p class="score-label">Konten</p>
+      <p class="score-num orange">45</p>
+      <p class="score-total">/ 100</p>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SEO -->
+    <div class="section">
+      <p class="section-title">
+        1. SEO
+        <span class="section-status status-kritis">Kritis</span>
+      </p>
+      <div class="findings">
+        <div class="finding high">
+          <p class="finding-title">Meta title &amp; description tidak dioptimasi</p>
+          <p class="finding-desc">Halaman utama menggunakan judul default WordPress tanpa keyword target. Meta description kosong di sebagian besar halaman.</p>
+          <span class="finding-tag tag-high">⚠ Dampak tinggi · Perbaiki segera</span>
+        </div>
+        <div class="finding high">
+          <p class="finding-title">Tidak ada sitemap XML &amp; robots.txt</p>
+          <p class="finding-desc">Search engine kesulitan mengindeks halaman portofolio dan proyek. Potensi kehilangan traffic organik signifikan.</p>
+          <span class="finding-tag tag-high">⚠ Dampak tinggi · Perbaiki segera</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Konten teks sangat minim</p>
+          <p class="finding-desc">Halaman portofolio hanya berisi gambar tanpa teks deskriptif. Google tidak bisa membaca gambar — kata kunci tidak terindeks.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Alt text gambar kosong</p>
+          <p class="finding-desc">Seluruh gambar portofolio tidak memiliki alt text. Ini merugikan SEO gambar dan aksesibilitas pengguna.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERFORMA -->
+    <div class="section">
+      <p class="section-title">
+        2. Performa &amp; Kecepatan
+        <span class="section-status status-perlu">Perlu Perhatian</span>
+      </p>
+      <div class="findings">
+        <div class="finding high">
+          <p class="finding-title">Gambar tidak dikompresi (ukuran besar)</p>
+          <p class="finding-desc">File gambar portofolio berukuran 2–5 MB per gambar. Estimasi load time halaman: 8–12 detik. Standar yang baik adalah di bawah 3 detik.</p>
+          <span class="finding-tag tag-high">⚠ Dampak tinggi · Perbaiki segera</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Tidak ada caching browser</p>
+          <p class="finding-desc">Setiap kunjungan mengunduh ulang semua aset. Plugin caching seperti WP Rocket atau LiteSpeed Cache dapat memangkas waktu muat hingga 60%.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+        <div class="finding ok">
+          <p class="finding-title">HTTPS sudah aktif ✓</p>
+          <p class="finding-desc">SSL certificate terpasang dan valid. Koneksi aman untuk pengunjung.</p>
+          <span class="finding-tag tag-ok">✓ Sudah baik</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE -->
+    <div class="section">
+      <p class="section-title">
+        3. Mobile-Friendly
+        <span class="section-status status-perlu">Perlu Perhatian</span>
+      </p>
+      <div class="findings">
+        <div class="finding medium">
+          <p class="finding-title">Teks terlalu kecil di layar mobile</p>
+          <p class="finding-desc">Font size di bawah 12px pada beberapa bagian. Google menandai ini sebagai masalah mobile usability.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Galeri portofolio sulit dinavigasi di HP</p>
+          <p class="finding-desc">Tombol dan elemen klik terlalu berdekatan. Pengguna mobile sering salah tap. Ukuran tap target minimal yang disarankan adalah 44×44px.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- KONTEN -->
+    <div class="section">
+      <p class="section-title">
+        4. Konten &amp; Konversi
+        <span class="section-status status-perlu">Perlu Perhatian</span>
+      </p>
+      <div class="findings">
+        <div class="finding high">
+          <p class="finding-title">Tidak ada CTA (Call to Action) yang jelas</p>
+          <p class="finding-desc">Pengunjung tidak diarahkan untuk menghubungi atau memesan jasa. Tidak ada tombol "Hubungi Saya" atau "Konsultasi Gratis" yang menonjol.</p>
+          <span class="finding-tag tag-high">⚠ Dampak tinggi · Perbaiki segera</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Shortcode WooCommerce tampil mentah</p>
+          <p class="finding-desc">Halaman "My Account" menampilkan <code>[woocommerce_my_account]</code> sebagai teks biasa — tanda plugin tidak terkonfigurasi dengan benar.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Bug teknis</span>
+        </div>
+        <div class="finding medium">
+          <p class="finding-title">Tidak ada testimonial atau social proof</p>
+          <p class="finding-desc">Profil menampilkan pengalaman kerja, tetapi tidak ada ulasan klien, logo klien, atau proyek unggulan yang membangun kepercayaan.</p>
+          <span class="finding-tag tag-medium">● Dampak sedang · Direkomendasikan</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRIORITAS -->
+    <div class="priority-box">
+      <p class="priority-title">Rekomendasi Prioritas</p>
+      <div class="priority-item">
+        <span class="priority-badge badge-segera">Segera</span>
+        <p class="priority-text">Pasang plugin SEO (Yoast / RankMath), isi meta title &amp; description di semua halaman, buat sitemap XML</p>
+      </div>
+      <div class="priority-item">
+        <span class="priority-badge badge-segera">Segera</span>
+        <p class="priority-text">Kompres semua gambar portofolio (target &lt; 200 KB/gambar) menggunakan ShortPixel atau TinyPNG</p>
+      </div>
+      <div class="priority-item">
+        <span class="priority-badge badge-segera">Segera</span>
+        <p class="priority-text">Tambahkan tombol CTA "Hubungi Saya" / "Konsultasi Proyek" di homepage dan halaman portofolio</p>
+      </div>
+      <div class="priority-item">
+        <span class="priority-badge badge-bulan">Bulan ini</span>
+        <p class="priority-text">Perbaiki konfigurasi WooCommerce atau hapus jika tidak digunakan; aktifkan plugin caching</p>
+      </div>
+      <div class="priority-item">
+        <span class="priority-badge badge-bulan">Bulan ini</span>
+        <p class="priority-text">Tambahkan deskripsi teks di setiap proyek portofolio (min. 100 kata) dan alt text pada semua gambar</p>
+      </div>
+    </div>
+
+  </div><!-- /body -->
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Audit ini didasarkan pada analisis konten publik dan metadata website. Untuk audit teknis mendalam, diperlukan akses Google Search Console, PageSpeed Insights, dan Screaming Frog.</p>
+    <p style="white-space:nowrap;">hendrianto.com &nbsp;·&nbsp; 2026</p>
+  </div>
+
+</div><!-- /page -->
+
+</body>
+</html>
