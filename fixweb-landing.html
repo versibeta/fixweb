@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>fixweb.id — Website Specialist untuk Bisnis Indonesia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1D9E75;
+      --green-light: #E1F5EE;
+      --green-dark: #0F6E56;
+      --coral: #D85A30;
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b6b6b;
+      --bg: #ffffff;
+      --bg-secondary: #f7f7f5;
+      --border: rgba(0,0,0,0.1);
+      --border-md: rgba(0,0,0,0.15);
+      --radius-md: 8px;
+      --radius-lg: 12px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: var(--text-primary);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .logo { font-size: 18px; font-weight: 600; color: var(--text-primary); text-decoration: none; }
+    .logo span { color: var(--green); }
+    .nav-cta {
+      font-size: 13px;
+      color: var(--green);
+      font-weight: 500;
+      text-decoration: none;
+      border: 0.5px solid var(--green);
+      padding: 7px 16px;
+      border-radius: var(--radius-md);
+      transition: background 0.15s;
+    }
+    .nav-cta:hover { background: var(--green-light); }
+
+    /* HERO */
+    .hero {
+      padding: 4rem 2rem 3rem;
+      border-bottom: 0.5px solid var(--border);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: var(--radius-md);
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      max-width: 540px;
+    }
+    .hero h1 span { color: var(--green); }
+    .hero p {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 480px;
+      margin-bottom: 32px;
+    }
+    .cta-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      padding: 13px 24px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-primary:hover { background: var(--green-dark); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-primary);
+      border: 0.5px solid var(--border-md);
+      padding: 13px 24px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: var(--bg-secondary); }
+    .trust-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 16px;
+    }
+    .trust-note i { color: var(--green); }
+
+    /* SECTIONS */
+    .section {
+      padding: 3rem 2rem;
+      border-bottom: 0.5px solid var(--border);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .section p.sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 28px;
+      max-width: 500px;
+    }
+
+    /* PROBLEMS */
+    .problems {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .problem-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+    }
+    .problem-card .icon {
+      font-size: 22px;
+      color: var(--coral);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .problem-card strong {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .problem-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+
+    /* SERVICES */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+    .service-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+    }
+    .service-card.featured { border: 2px solid var(--green); }
+    .popular-badge {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .service-card .num {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+    }
+    .service-card h3 { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 6px; }
+    .service-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+    .service-card .price { font-size: 13px; font-weight: 500; color: var(--green); }
+
+    /* STEPS */
+    .steps { display: flex; flex-direction: column; }
+    .step {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 18px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: 13px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .step h4 { font-size: 14px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; }
+    .step p { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+    /* CTA SECTION */
+    .cta-section {
+      padding: 4rem 2rem;
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .cta-section h2 { font-size: 26px; font-weight: 600; margin-bottom: 10px; }
+    .cta-section p { font-size: 15px; color: var(--text-secondary); margin-bottom: 28px; }
+    .wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .wa-btn:hover { background: #1ebe5d; }
+    .footer-note { font-size: 12px; color: var(--text-secondary); margin-top: 14px; }
+
+    /* FOOTER */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 26px; }
+      .nav { padding: 1rem; }
+      .hero, .section, .cta-section { padding-left: 1.25rem; padding-right: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="logo">fix<span>web</span>.id</a>
+    <a href="#audit" class="nav-cta">Konsultasi gratis</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">
+      <i class="ti ti-map-pin"></i> Melayani seluruh Indonesia
+    </div>
+    <h1>Website kamu <span>lambat, sepi, atau tidak muncul</span> di Google?</h1>
+    <p>fixweb.id hadir untuk memperbaiki, mengoptimalkan, dan merawat website bisnis kamu — supaya bekerja lebih keras menghasilkan pelanggan.</p>
+    <div class="cta-row">
+      <a href="#audit" class="btn-primary">
+        <i class="ti ti-search"></i> Audit website gratis
+      </a>
+      <a href="#layanan" class="btn-secondary">Lihat layanan ↓</a>
+    </div>
+    <div class="trust-note">
+      <i class="ti ti-check"></i> Gratis, tanpa komitmen. Hanya butuh URL website kamu.
+    </div>
+  </section>
+
+  <!-- MASALAH -->
+  <section class="section">
+    <p class="section-label">Masalah yang kami solve</p>
+    <h2>Kenapa website kamu tidak menghasilkan?</h2>
+    <p class="sub">Banyak bisnis punya website tapi tidak tahu kenapa tidak ada yang menghubungi dari sana.</p>
+    <div class="problems">
+      <div class="problem-card">
+        <i class="ti ti-clock icon"></i>
+        <strong>Loading lambat</strong>
+        <p>Pengunjung kabur sebelum halaman terbuka. Google juga menurunkan ranking-mu.</p>
+      </div>
+      <div class="problem-card">
+        <i class="ti ti-device-mobile-off icon"></i>
+        <strong>Tidak mobile-friendly</strong>
+        <p>Lebih dari 70% pengguna Indonesia browsing lewat HP. Website-mu kelihatan berantakan.</p>
+      </div>
+      <div class="problem-card">
+        <i class="ti ti-eye-off icon"></i>
+        <strong>Tidak muncul di Google</strong>
+        <p>Calon pelanggan mencari produkmu tapi menemukan kompetitor, bukan kamu.</p>
+      </div>
+      <div class="problem-card">
+        <i class="ti ti-bug icon"></i>
+        <strong>Error & tidak terawat</strong>
+        <p>Plugin expired, konten outdated, form tidak berfungsi. Kesan pertama jadi buruk.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LAYANAN -->
+  <section class="section" id="layanan">
+    <p class="section-label">Layanan kami</p>
+    <h2>Apa yang bisa kami bantu</h2>
+    <p class="sub">Pilih sesuai kebutuhan — atau mulai dari audit gratis dan kami rekomendasikan yang terbaik.</p>
+    <div class="services">
+      <div class="service-card">
+        <div class="num">01</div>
+        <h3>Website Audit</h3>
+        <p>Laporan lengkap: kecepatan, SEO teknis, mobile, keamanan, dan rekomendasi perbaikan.</p>
+        <div class="price">Mulai Rp 500.000</div>
+      </div>
+      <div class="service-card featured">
+        <div class="popular-badge">Paling populer</div>
+        <div class="num">02</div>
+        <h3>Website Maintenance</h3>
+        <p>Update rutin, backup, keamanan, dan perbaikan bug setiap bulan. Tenang, beres.</p>
+        <div class="price">Mulai Rp 750.000/bulan</div>
+      </div>
+      <div class="service-card">
+        <div class="num">03</div>
+        <h3>Speed & SEO Fix</h3>
+        <p>Optimasi kecepatan loading dan teknis SEO supaya ranking Google naik dan pengunjung betah.</p>
+        <div class="price">Mulai Rp 1.500.000</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARA KERJA -->
+  <section class="section">
+    <p class="section-label">Cara kerja</p>
+    <h2>Mulai dalam 3 langkah</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <h4>Kirim URL website kamu</h4>
+          <p>Hubungi kami via WhatsApp atau isi form. Gratis, tanpa perlu meeting dulu.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <h4>Terima laporan audit dalam 24 jam</h4>
+          <p>Kami analisis website-mu dan kirimkan temuan + rekomendasi yang jelas dan actionable.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <h4>Kami kerjakan, kamu fokus bisnis</h4>
+          <p>Setuju dengan solusi yang direkomendasikan? Kami langsung eksekusi. Transparan dan tepat waktu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="audit">
+    <h2>Siap benerin website kamu?</h2>
+    <p>Mulai dari audit gratis — tidak ada kewajiban apapun.</p>
+    <!-- Ganti nomor WhatsApp di bawah dengan nomor kamu -->
+    <a href="https://wa.me/6281234567890?text=Halo%20fixweb.id%2C%20saya%20mau%20audit%20website%20gratis" class="wa-btn" target="_blank">
+      <i class="ti ti-brand-whatsapp"></i> Chat via WhatsApp
+    </a>
+    <div class="footer-note">Biasanya kami balas dalam 1 jam di jam kerja.</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 fixweb.id — Website specialist untuk bisnis Indonesia</p>
+  </footer>
+
+</body>
+</html>
