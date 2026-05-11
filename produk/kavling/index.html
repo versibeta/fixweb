@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FixWeb.ID - Proposal Marketplace Kavling Indonesia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins',sans-serif;
+      background:#050505;
+      color:#fff;
+      line-height:1.7;
+    }
+
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    header{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      background:linear-gradient(135deg,#050505,#101010);
+      border-bottom:1px solid rgba(255,184,0,0.2);
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .badge{
+      display:inline-block;
+      background:#ffb800;
+      color:#000;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:20px;
+    }
+
+    h1{
+      font-size:64px;
+      line-height:1.1;
+      margin-bottom:24px;
+      font-weight:800;
+    }
+
+    h1 span,
+    h2 span{
+      color:#ffb800;
+    }
+
+    .hero p{
+      color:#cfcfcf;
+      margin-bottom:32px;
+      font-size:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:16px 28px;
+      background:#ffb800;
+      color:#000;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:700;
+      margin-right:14px;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+    }
+
+    .btn-outline{
+      background:transparent;
+      border:1px solid #ffb800;
+      color:#ffb800;
+    }
+
+    .mockup{
+      background:#111;
+      border:1px solid rgba(255,184,0,0.25);
+      border-radius:28px;
+      padding:30px;
+      box-shadow:0 0 40px rgba(255,184,0,0.08);
+    }
+
+    .mockup-card{
+      background:#161616;
+      border-radius:18px;
+      padding:24px;
+      margin-bottom:20px;
+      border:1px solid rgba(255,255,255,0.06);
+    }
+
+    section{
+      padding:100px 0;
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+
+    h2{
+      font-size:42px;
+      margin-bottom:20px;
+      text-align:center;
+      font-weight:800;
+    }
+
+    .section-desc{
+      text-align:center;
+      max-width:850px;
+      margin:0 auto 60px;
+      color:#c8c8c8;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .card{
+      background:#0f0f0f;
+      border-radius:24px;
+      padding:32px;
+      border:1px solid rgba(255,184,0,0.15);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:#ffb800;
+    }
+
+    .card h3{
+      margin-bottom:16px;
+      color:#ffb800;
+      font-size:24px;
+    }
+
+    .card p,
+    .card li{
+      color:#d5d5d5;
+      font-size:15px;
+    }
+
+    ul{
+      padding-left:18px;
+    }
+
+    .timeline{
+      position:relative;
+      margin-top:60px;
+    }
+
+    .timeline::before{
+      content:'';
+      position:absolute;
+      left:50%;
+      top:0;
+      width:2px;
+      height:100%;
+      background:#ffb800;
+      transform:translateX(-50%);
+    }
+
+    .timeline-item{
+      width:50%;
+      padding:20px 40px;
+      position:relative;
+    }
+
+    .timeline-item:nth-child(odd){
+      left:0;
+      text-align:right;
+    }
+
+    .timeline-item:nth-child(even){
+      left:50%;
+    }
+
+    .timeline-box{
+      background:#111;
+      border-radius:20px;
+      padding:24px;
+      border:1px solid rgba(255,184,0,0.18);
+    }
+
+    .timeline-box h4{
+      color:#ffb800;
+      margin-bottom:10px;
+      font-size:22px;
+    }
+
+    .highlight{
+      background:linear-gradient(135deg,#ffb800,#ffcf4d);
+      color:#000;
+      border-radius:30px;
+      padding:60px;
+      text-align:center;
+    }
+
+    .highlight h2{
+      color:#000;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      margin-top:40px;
+    }
+
+    .stat{
+      background:#0f0f0f;
+      border-radius:20px;
+      padding:30px;
+      text-align:center;
+      border:1px solid rgba(255,184,0,0.15);
+    }
+
+    .stat h3{
+      font-size:36px;
+      color:#ffb800;
+      margin-bottom:10px;
+    }
+
+    footer{
+      padding:80px 0;
+      text-align:center;
+      background:#030303;
+    }
+
+    footer h2{
+      margin-bottom:20px;
+    }
+
+    footer p{
+      color:#c9c9c9;
+      max-width:700px;
+      margin:0 auto 30px;
+    }
+
+    @media(max-width:980px){
+      .hero,
+      .grid-3,
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      h2{
+        font-size:34px;
+      }
+
+      .timeline::before{
+        left:10px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(even),
+      .timeline-item:nth-child(odd){
+        width:100%;
+        left:0;
+        text-align:left;
+        padding-left:40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container hero">
+    <div>
+      <div class="badge">FIXWEB.ID • INVESTOR BUSINESS PROPOSAL</div>
+      <h1>Marketplace & <span>Digital Marketing Kavling Indonesia</span></h1>
+      <p>
+        FixWeb.ID adalah platform marketplace khusus tanah kavling yang menghubungkan penjual, developer, investor, dan pembeli dalam satu ekosistem digital modern berbasis website aplikasi.
+      </p>
+      <a href="#vision" class="btn">Lihat Proposal</a>
+      <a href="#business" class="btn btn-outline">Proses Bisnis</a>
+    </div>
+
+    <div class="mockup">
+      <div class="mockup-card">
+        <h3 style="color:#ffb800;margin-bottom:10px;">Platform Fokus Kavling</h3>
+        <p style="color:#d7d7d7;">
+          Bukan marketplace properti umum. Fokus pada jual beli tanah kavling, investasi tanah, dan pemasaran digital properti berbasis lokasi.
+        </p>
+      </div>
+
+      <div class="mockup-card">
+        <h3 style="color:#ffb800;margin-bottom:10px;">Model Bisnis Hybrid</h3>
+        <p style="color:#d7d7d7;">
+          Marketplace + Listing Premium + Jasa Digital Marketing + Lead Generation + AI Property System.
+        </p>
+      </div>
+
+      <div class="mockup-card">
+        <h3 style="color:#ffb800;margin-bottom:10px;">Target Nasional</h3>
+        <p style="color:#d7d7d7;">
+          Menjadi platform referensi utama jual beli kavling modern di Indonesia dengan pendekatan teknologi, branding, dan trust.
+        </p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="vision">
+  <div class="container">
+    <h2>Visi <span>FixWeb.ID</span></h2>
+    <p class="section-desc">
+      Membangun ekosistem digital modern untuk pasar tanah kavling Indonesia yang selama ini masih tersebar, tidak terstruktur, dan minim teknologi.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Masalah Pasar</h3>
+        <ul>
+          <li>Penjual masih mengandalkan Facebook & WhatsApp.</li>
+          <li>Informasi kavling tidak profesional.</li>
+          <li>Minim branding dan legalitas visual.</li>
+          <li>Sulit ditemukan di Google.</li>
+          <li>Pembeli sulit membandingkan kavling.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Solusi</h3>
+        <ul>
+          <li>Marketplace khusus kavling.</li>
+          <li>Listing modern dan premium.</li>
+          <li>SEO dan digital marketing.</li>
+          <li>Landing page otomatis.</li>
+          <li>Integrasi WhatsApp dan maps.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Tujuan Besar</h3>
+        <ul>
+          <li>Menjadi pusat listing kavling nasional.</li>
+          <li>Membangun trust pasar properti digital.</li>
+          <li>Membantu seller mendapatkan leads.</li>
+          <li>Menghubungkan investor dan market.</li>
+          <li>Menciptakan sistem properti modern berbasis AI.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="business">
+  <div class="container">
+    <h2>Proses <span>Bisnis</span></h2>
+    <p class="section-desc">
+      FixWeb.ID berperan sebagai platform dan perantara digital yang mempertemukan pemilik kavling dengan calon pembeli secara lebih profesional, modern, dan terpercaya.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>1. Seller Sign Up</h4>
+          <p>
+            Penjual atau developer membuat akun dan mengunggah data kavling seperti lokasi, foto, harga, legalitas, luas tanah, dan nomor WhatsApp.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>2. Verifikasi & Moderasi</h4>
+          <p>
+            Sistem dan admin memverifikasi listing agar kualitas informasi lebih terpercaya dan profesional.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>3. Listing Dipublikasikan</h4>
+          <p>
+            Kavling tampil di marketplace lengkap dengan galeri, maps, simulasi cicilan, akses jalan, dan landing page modern.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>4. Digital Marketing</h4>
+          <p>
+            Platform membantu distribusi traffic melalui SEO, media sosial, iklan digital, konten video, dan optimasi pencarian.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>5. Lead Generation</h4>
+          <p>
+            Calon pembeli menghubungi seller melalui WhatsApp, form inquiry, atau sistem chat internal.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-box">
+          <h4>6. Monetisasi Platform</h4>
+          <p>
+            Pendapatan berasal dari listing premium, fitur promosi, digital marketing, banner ads, dan layanan website properti.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Infrastruktur <span>Platform</span></h2>
+    <p class="section-desc">
+      Karena platform akan menangani ribuan listing, akun pengguna, upload gambar, dan traffic digital marketing, FixWeb.ID dirancang sebagai web aplikasi modern berbasis cloud infrastructure.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Frontend Web App</h3>
+        <p>
+          Website marketplace responsif dengan sistem pencarian lokasi, halaman detail kavling, dashboard seller, dan pengalaman mobile-first.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Backend System</h3>
+        <p>
+          Sistem login, manajemen listing, upload media, verifikasi akun, lead management, dan integrasi WhatsApp.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Cloud Infrastructure</h3>
+        <p>
+          Penyimpanan cloud, database scalable, keamanan akun, CDN gambar, serta sistem monitoring traffic dan performa aplikasi.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="highlight">
+      <h2>Potensi Pasar Sangat Besar</h2>
+      <p style="max-width:800px;margin:20px auto 0;">
+        Indonesia memiliki pertumbuhan kebutuhan hunian, investasi tanah, dan pengembangan kawasan baru yang terus meningkat. Namun pasar kavling digital modern masih sangat sedikit dan belum memiliki pemain dominan yang fokus secara khusus.
+      </p>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <h3>1000+</h3>
+        <p>Target Listing Awal</p>
+      </div>
+
+      <div class="stat">
+        <h3>100+</h3>
+        <p>Developer & Seller</p>
+      </div>
+
+      <div class="stat">
+        <h3>Nasional</h3>
+        <p>Skala Market Indonesia</p>
+      </div>
+
+      <div class="stat">
+        <h3>24/7</h3>
+        <p>Lead Generation Digital</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Tahapan <span>Pengembangan</span></h2>
+    <p class="section-desc">
+      Pengembangan dilakukan bertahap agar platform dapat tumbuh realistis, stabil, dan terukur.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Phase 1</h3>
+        <ul>
+          <li>Branding platform.</li>
+          <li>Marketplace MVP.</li>
+          <li>Manual listing management.</li>
+          <li>Landing page & SEO.</li>
+          <li>Traffic awal.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Phase 2</h3>
+        <ul>
+          <li>Seller dashboard.</li>
+          <li>Automasi listing.</li>
+          <li>User authentication.</li>
+          <li>Cloud image storage.</li>
+          <li>Lead management.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>Phase 3</h3>
+        <ul>
+          <li>AI property system.</li>
+          <li>AI copywriting.</li>
+          <li>AI poster generator.</li>
+          <li>Advanced analytics.</li>
+          <li>Scale nasional.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2>Model <span>Pendapatan</span></h2>
+    <p class="section-desc">
+      Platform dirancang memiliki beberapa sumber monetisasi agar sustainable dalam jangka panjang.
+    </p>
+
+    <div class="grid-3">
+      <div class="card">
+        <h3>Listing Premium</h3>
+        <p>
+          Seller membayar agar listing tampil lebih menonjol di homepage dan pencarian.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Digital Marketing</h3>
+        <p>
+          Jasa iklan properti, SEO, konten media sosial, dan landing page premium.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Subscription</h3>
+        <p>
+          Paket bulanan untuk developer, agen, atau investor yang ingin menggunakan fitur lanjutan.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h2>FixWeb.ID</h2>
+    <p>
+      Marketplace & Digital Marketing Kavling Indonesia.
+      Membangun ekosistem properti digital modern yang menghubungkan seller, investor, dan pembeli dalam satu platform terpercaya.
+    </p>
+
+    <a href="#" class="btn">Investor Partnership</a>
+  </div>
+</footer>
+
+</body>
+</html>
