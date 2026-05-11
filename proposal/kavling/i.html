@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proposal Investor | FixWeb.ID</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b1020;
+      color: #ffffff;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 16, 32, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #4f8cff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background:
+        radial-gradient(circle at top left, rgba(79,140,255,0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0,255,170,0.15), transparent 35%),
+        #0b1020;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px;
+      align-items: center;
+      padding-top: 80px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(79,140,255,0.12);
+      border: 1px solid rgba(79,140,255,0.25);
+      color: #8db6ff;
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 62px;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      font-weight: 800;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.75);
+      font-size: 18px;
+      margin-bottom: 32px;
+      max-width: 650px;
+    }
+
+    .cta-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #4f8cff, #2e68ff);
+      color: white;
+      box-shadow: 0 10px 30px rgba(79,140,255,0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.12);
+      color: white;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .visual-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 32px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .visual-placeholder {
+      height: 460px;
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(79,140,255,0.18), rgba(255,255,255,0.03)),
+        url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1200&auto=format&fit=crop') center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floating-box {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      background: rgba(11,16,32,0.82);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 20px;
+      backdrop-filter: blur(14px);
+    }
+
+    .floating-box h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .floating-box p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+    }
+
+    section {
+      padding: 120px 0;
+    }
+
+    .section-title {
+      font-size: 42px;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .section-subtitle {
+      color: rgba(255,255,255,0.7);
+      max-width: 700px;
+      margin-bottom: 60px;
+      font-size: 17px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 32px;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(79,140,255,0.35);
+    }
+
+    .card h3 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: rgba(255,255,255,0.72);
+      font-size: 15px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .timeline-item {
+      padding: 28px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .timeline-item span {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #8db6ff;
+      font-weight: 700;
+    }
+
+    .founder {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .founder-image {
+      height: 360px;
+      border-radius: 28px;
+      background:
+        linear-gradient(135deg, rgba(79,140,255,0.25), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.04);
+      border-radius: 22px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat h2 {
+      font-size: 42px;
+      margin-bottom: 8px;
+      color: #4f8cff;
+    }
+
+    .cta-final {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(79,140,255,0.15), rgba(255,255,255,0.03));
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .cta-final h2 {
+      font-size: 54px;
+      margin-bottom: 20px;
+    }
+
+    .cta-final p {
+      color: rgba(255,255,255,0.75);
+      max-width: 760px;
+      margin: auto;
+      margin-bottom: 36px;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+    }
+
+    @media(max-width: 980px) {
+      .hero-content,
+      .founder,
+      .grid-3,
+      .timeline,
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 42px;
+      }
+
+      .section-title {
+        font-size: 34px;
+      }
+
+      .cta-final h2 {
+        font-size: 38px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <div class="logo">FixWeb<span>.ID</span></div>
+
+      <div class="nav-links">
+        <a href="#peluang">Peluang</a>
+        <a href="#konsep">Konsep</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#founder">Founder</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+
+    <div>
+      <div class="badge">Proposal Investor • Pengembangan Kavling Modern</div>
+
+      <h1>
+        Membangun Konsep Kavling Modern dengan Branding & Sistem Digital
+      </h1>
+
+      <p>
+        Sebuah inisiatif pengembangan properti yang menggabungkan branding, pemasaran digital, dan visi pengembangan kawasan jangka panjang untuk menciptakan nilai aset yang lebih modern dan scalable.
+      </p>
+
+      <div class="cta-group">
+        <a href="#konsep" class="btn btn-primary">Lihat Konsep</a>
+        <a href="https://wa.me/" class="btn btn-secondary">Diskusi Kolaborasi</a>
+      </div>
+    </div>
+
+    <div class="visual-card">
+      <div class="visual-placeholder">
+        <div class="floating-box">
+          <h3>Kawasan Modern & Terintegrasi</h3>
+          <p>
+            Fokus pada branding kawasan, pengembangan bertahap, dan sistem pemasaran digital untuk meningkatkan positioning proyek.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="peluang">
+  <div class="container">
+
+    <h2 class="section-title">Peluang Pasar Properti Modern</h2>
+
+    <p class="section-subtitle">
+      Permintaan terhadap lahan dan aset properti terus berkembang, namun sebagian besar pemasaran kavling masih menggunakan pendekatan tradisional tanpa branding dan sistem digital yang kuat.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>Branding Masih Lemah</h3>
+        <p>
+          Banyak proyek kavling dipasarkan tanpa identitas kawasan yang kuat sehingga sulit membangun nilai jangka panjang.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Digitalisasi Minim</h3>
+        <p>
+          Sebagian besar pemasaran properti lokal belum terintegrasi dengan sistem digital modern dan branding profesional.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Potensi Pertumbuhan</h3>
+        <p>
+          Kawasan berkembang memiliki peluang besar untuk ditingkatkan nilainya melalui strategi branding dan pengembangan bertahap.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="konsep">
+  <div class="container">
+
+    <h2 class="section-title">Konsep Pengembangan</h2>
+
+    <p class="section-subtitle">
+      Kami tidak hanya menjual tanah, tetapi membangun konsep kawasan dengan pendekatan branding, visual modern, dan pemasaran digital yang scalable.
+    </p>
+
+    <div class="grid-3">
+
+      <div class="card">
+        <h3>Branding Kawasan</h3>
+        <p>
+          Membangun identitas visual dan positioning proyek agar lebih dipercaya dan memiliki daya tarik pasar.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Sistem Digital</h3>
+        <p>
+          Menggunakan website, landing page, dan media digital untuk memperluas jangkauan pemasaran secara profesional.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Pengembangan Bertahap</h3>
+        <p>
+          Fokus pada pengembangan progresif untuk membangun nilai aset dan pertumbuhan jangka panjang.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="container">
+
+    <h2 class="section-title">Roadmap Pengembangan</h2>
+
+    <p class="section-subtitle">
+      Tahapan pengembangan disusun untuk membangun fondasi proyek secara realistis dan berkelanjutan.
+    </p>
+
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <span>TAHAP 1</span>
+        <h3>Branding</h3>
+        <p>Membangun identitas proyek, website, dan visual branding awal.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span>TAHAP 2</span>
+        <h3>Networking</h3>
+        <p>Membuka koneksi dengan partner, investor, dan validasi pasar.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span>TAHAP 3</span>
+        <h3>Development</h3>
+        <p>Pengembangan kawasan awal dan sistemisasi pemasaran digital.</p>
+      </div>
+
+      <div class="timeline-item">
+        <span>TAHAP 4</span>
+        <h3>Expansion</h3>
+        <p>Ekspansi konsep dan pengembangan aset jangka panjang.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <h2 class="section-title">Potensi Pengembangan</h2>
+
+    <p class="section-subtitle">
+      Fokus utama proyek adalah membangun nilai kawasan melalui positioning, branding, dan pengembangan bertahap.
+    </p>
+
+    <div class="stats">
+
+      <div class="stat">
+        <h2>Modern</h2>
+        <p>Pendekatan branding dan pemasaran digital yang lebih profesional.</p>
+      </div>
+
+      <div class="stat">
+        <h2>Scalable</h2>
+        <p>Konsep dirancang agar dapat berkembang secara bertahap dan terukur.</p>
+      </div>
+
+      <div class="stat">
+        <h2>Long Term</h2>
+        <p>Berorientasi pada pengembangan aset dan nilai kawasan jangka panjang.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section id="founder">
+  <div class="container founder">
+
+    <div class="founder-image"></div>
+
+    <div>
+      <h2 class="section-title">Tentang Founder</h2>
+
+      <p class="section-subtitle">
+        Proyek ini dikembangkan melalui pendekatan digital branding dan pengembangan konsep modern berbasis platform FixWeb.ID.
+      </p>
+
+      <p style="color: rgba(255,255,255,0.75); margin-bottom: 20px;">
+        Fokus utama saat ini adalah membangun fondasi branding, sistem digital, proposal investor, dan jaringan kolaborasi untuk pengembangan proyek jangka panjang.
+      </p>
+
+      <p style="color: rgba(255,255,255,0.75);">
+        Dengan kombinasi strategi digital dan pengembangan properti modern, proyek ini diarahkan untuk membangun positioning yang lebih kuat dibanding pemasaran kavling konvensional.
+      </p>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+
+    <h2>Mari Bangun Kolaborasi Jangka Panjang</h2>
+
+    <p>
+      Kami membuka peluang komunikasi dan kolaborasi dengan investor atau partner yang memiliki visi terhadap pengembangan properti modern berbasis branding dan sistem digital.
+    </p>
+
+    <div class="cta-group" style="justify-content:center;">
+      <a href="https://fixweb.id/proposal/kavling" class="btn btn-primary">
+        Buka Proposal
+      </a>
+
+      <a href="https://wa.me/" class="btn btn-secondary">
+        Hubungi via WhatsApp
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © 2026 FixWeb.ID • Proposal Investor Kavling Modern
+  </div>
+</footer>
+
+</body>
+</html>
