@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Barber Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #06070a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(12px);
+      background: rgba(0,0,0,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: #00d9ff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: #00d9ff;
+      filter: blur(180px);
+      opacity: 0.12;
+      border-radius: 50%;
+      top: -100px;
+      right: -120px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: #00d9ff;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.1rem;
+      max-width: 550px;
+      margin-bottom: 36px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 28px;
+      border-radius: 14px;
+      font-weight: 600;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: #00d9ff;
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(0,217,255,0.35);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .hero-card {
+      background: linear-gradient(145deg,#10131a,#0b0d11);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+
+    .screen {
+      background: #050608;
+      border-radius: 22px;
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .screen-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.9rem;
+    }
+
+    .face-preview {
+      height: 360px;
+      border-radius: 22px;
+      background: linear-gradient(180deg,#0f1724,#07090d);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .face-outline {
+      width: 180px;
+      height: 240px;
+      border: 2px solid #00d9ff;
+      border-radius: 90px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(0,217,255,0.3);
+    }
+
+    .scan-line {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: #00d9ff;
+      top: 20%;
+      box-shadow: 0 0 25px #00d9ff;
+      animation: scan 3s infinite linear;
+    }
+
+    @keyframes scan {
+      0% { top: 15%; }
+      50% { top: 85%; }
+      100% { top: 15%; }
+    }
+
+    .styles {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .style-item {
+      padding: 10px;
+      text-align: center;
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.75);
+    }
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      margin-bottom: 16px;
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: auto;
+      color: rgba(255,255,255,0.68);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: linear-gradient(145deg,#0e1015,#090b0f);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 30px;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,217,255,0.3);
+    }
+
+    .card-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: rgba(0,217,255,0.12);
+      color: #00d9ff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 22px;
+    }
+
+    .timeline-item {
+      background: linear-gradient(145deg,#0e1015,#090b0f);
+      padding: 28px;
+      border-radius: 22px;
+      border-left: 4px solid #00d9ff;
+    }
+
+    .timeline-item span {
+      color: #00d9ff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    .timeline-item h3 {
+      margin: 12px 0;
+      font-size: 1.3rem;
+    }
+
+    .timeline-item p {
+      color: rgba(255,255,255,0.72);
+    }
+
+    .prototype {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+    }
+
+    .ui-box {
+      background: linear-gradient(145deg,#0f1117,#08090d);
+      border-radius: 24px;
+      padding: 24px;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .ui-screen {
+      background: #050608;
+      height: 240px;
+      border-radius: 18px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.95rem;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(145deg,#0b1016,#06070a);
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .cta h2 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      max-width: 760px;
+      margin: auto;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 34px;
+    }
+
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+
+    @media(max-width:768px){
+      .hero {
+        padding: 80px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .section-title h2,
+      .cta h2 {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container nav-wrap">
+      <div class="logo">AI<span>Barber</span></div>
+
+      <div class="nav-links">
+        <a href="#concept">Concept</a>
+        <a href="#system">System</a>
+        <a href="#prototype">Prototype</a>
+        <a href="#franchise">Franchise</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="glow"></div>
+
+    <div class="container hero-grid">
+      <div>
+        <h1>
+          Barbershop <span>Experience</span><br>
+          Powered by AI
+        </h1>
+
+        <p>
+          Sistem modern untuk barbershop premium. Pelanggan dapat preview gaya rambut sebelum dicukur menggunakan AI hairstyle simulation dan visual consultation.
+        </p>
+
+        <div class="btn-group">
+          <a href="#prototype" class="btn btn-primary">View Prototype</a>
+          <a href="#franchise" class="btn btn-secondary">Become Partner</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="screen">
+          <div class="screen-top">
+            <span>AI Face Scan</span>
+            <span>LIVE</span>
+          </div>
+
+          <div class="face-preview">
+            <div class="face-outline">
+              <div class="scan-line"></div>
+            </div>
+          </div>
+
+          <div class="styles">
+            <div class="style-item">Low Fade</div>
+            <div class="style-item">French Crop</div>
+            <div class="style-item">Comma Hair</div>
+            <div class="style-item">Mullet</div>
+            <div class="style-item">Slick Back</div>
+            <div class="style-item">Textured</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="concept">
+    <div class="container">
+      <div class="section-title">
+        <h2>Business Concept</h2>
+        <p>
+          Bukan sekadar aplikasi haircut, tetapi sistem experience premium yang dipasang langsung di barbershop dan franchise.
+        </p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>Face Scan</h3>
+          <p>
+            Sistem mengenali bentuk wajah pelanggan untuk membantu rekomendasi gaya rambut yang lebih cocok.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>Hairstyle Preview</h3>
+          <p>
+            Pelanggan dapat melihat simulasi model rambut sebelum barber mulai mencukur.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Smart Consultation</h3>
+          <p>
+            Barber mendapatkan panduan visual sehingga hasil lebih presisi dan konsisten.
+          </p>
+        </div>
+
+        <div class="card">
+          <div class="card-number">04</div>
+          <h3>Customer History</h3>
+          <p>
+            Sistem menyimpan style favorit pelanggan agar kunjungan berikutnya lebih cepat dan personal.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="system">
+    <div class="container">
+      <div class="section-title">
+        <h2>Roadmap Development</h2>
+        <p>
+          Tahapan pengembangan dari konsep visual hingga implementasi prototype dan franchise system.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <span>PHASE 01</span>
+          <h3>Branding & Landing Page</h3>
+          <p>
+            Membuat identitas visual premium, landing page startup modern, dan positioning sebagai AI powered barbershop.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span>PHASE 02</span>
+          <h3>UI/UX Mockup Prototype</h3>
+          <p>
+            Mendesain interface smart mirror, face scan system, hairstyle preview, dan dashboard barber.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span>PHASE 03</span>
+          <h3>Pre-Implementation</h3>
+          <p>
+            Uji coba sistem di satu barbershop partner untuk validasi pengalaman pelanggan dan workflow barber.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <span>PHASE 04</span>
+          <h3>Franchise Expansion</h3>
+          <p>
+            Mengembangkan sistem menjadi paket franchise lengkap dengan branding, SOP, software, dan support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="prototype">
+    <div class="container">
+      <div class="section-title">
+        <h2>Prototype UI System</h2>
+        <p>
+          Gambaran awal interface modern untuk pengalaman pelanggan dan barber.
+        </p>
+      </div>
+
+      <div class="prototype">
+        <div class="ui-box">
+          <div class="ui-screen">
+            Welcome Screen
+          </div>
+
+          <h3>Welcome Interface</h3>
+          <p>
+            Tampilan awal dengan pilihan scan wajah dan eksplorasi hairstyle modern.
+          </p>
+        </div>
+
+        <div class="ui-box">
+          <div class="ui-screen">
+            Face Detection UI
+          </div>
+
+          <h3>AI Face Scan</h3>
+          <p>
+            Kamera dan outline futuristik untuk mendeteksi struktur wajah pelanggan.
+          </p>
+        </div>
+
+        <div class="ui-box">
+          <div class="ui-screen">
+            Hairstyle Preview
+          </div>
+
+          <h3>Hair Simulation</h3>
+          <p>
+            Preview before-after menggunakan simulasi visual model rambut.
+          </p>
+        </div>
+
+        <div class="ui-box">
+          <div class="ui-screen">
+            Barber Dashboard
+          </div>
+
+          <h3>Barber Instruction</h3>
+          <p>
+            Catatan detail haircut untuk membantu barber bekerja lebih presisi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="franchise" class="cta">
+    <div class="container">
+      <h2>Future Franchise System</h2>
+
+      <p>
+        AI Barber Experience dirancang bukan hanya sebagai layanan cukur rambut, tetapi sebagai sistem bisnis modern berbasis teknologi yang dapat direplikasi menjadi franchise premium.
+      </p>
+
+      <div class="btn-group" style="justify-content:center;">
+        <a href="#" class="btn btn-primary">Start Prototype</a>
+        <a href="#" class="btn btn-secondary">Pitch This Idea</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      AI Barber Experience — Concept & Prototype by FixWeb.ID
+    </div>
+  </footer>
+
+</body>
+</html>
