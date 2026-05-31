@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Tabungan Kurban Bersama 1448 H | KTKS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0f5132;
+            --primary-light: #157347;
+            --primary-bg: #f4f9f6;
+            --accent: #d39e00;
+            --accent-light: #fff3cd;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(15, 81, 50, 0.08);
+            --border-radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #fafdfb;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar Style */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            font-size: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(15, 81, 50, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 90px 0;
+            background: linear-gradient(135deg, #f4f9f6 0%, #e8f3ed 100%);
+            position: relative;
+            text-align: center;
+        }
+
+        .badge-hero {
+            background-color: var(--accent-light);
+            color: #856404;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 24px;
+            border: 1px solid rgba(211, 158, 0, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0 auto 36px auto;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(15, 81, 50, 0.25);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(15, 81, 50, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Section Global */
+        section {
+            padding: 90px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Problem & Solution Layout */
+        .problem-solution-wrapper {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .column-half {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            margin-right: 3%;
+        }
+        .column-half:last-child {
+            margin-right: 0;
+        }
+
+        .card-panel {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            height: 100%;
+            border-top: 5px solid var(--accent);
+        }
+
+        .card-panel.solution {
+            border-top-color: var(--primary);
+            background-color: var(--primary-bg);
+        }
+
+        .card-panel h3 {
+            font-size: 22px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .panel-list {
+            list-style: none;
+        }
+
+        .panel-list li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+
+        .panel-list li::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 16px;
+        }
+
+        .problem .panel-list li::before {
+            content: "\f057";
+            color: #dc3545;
+        }
+
+        .solution .panel-list li::before {
+            content: "\f058";
+            color: var(--primary);
+        }
+
+        /* Keunggulan Section */
+        .bg-light {
+            background-color: var(--primary-bg);
+        }
+
+        .features-grid {
+            text-align: center;
+        }
+        
+        .column-fourth {
+            width: 23%;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            margin-right: 2.6%;
+            text-align: left;
+        }
+        .column-fourth:last-child {
+            margin-right: 0;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 30px 24px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+            height: 280px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-bg);
+            color: var(--primary);
+            border-radius: 12px;
+            display: block;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* How it Works / Alur */
+        .steps-wrapper {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .step-item {
+            width: 22%;
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px auto;
+            text-align: center;
+            line-height: 44px;
+            font-weight: 700;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(15, 81, 50, 0.3);
+            z-index: 2;
+            position: relative;
+        }
+
+        .step-item h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .step-item p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Paket Simpanan */
+        .pricing-wrapper {
+            text-align: center;
+        }
+        
+        .column-third {
+            width: 31%;
+            display: inline-block;
+            vertical-align: top;
+            box-sizing: border-box;
+            margin-right: 3.5%;
+            text-align: left;
+        }
+        .column-third:last-child {
+            margin-right: 0;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.03);
+        }
+
+        .ribbon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .pricing-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .pricing-meta {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .price-box {
+            margin-bottom: 24px;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 24px;
+        }
+
+        .price-box .total {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .price-box .installment {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            font-size: 14px;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features li i {
+            color: var(--primary);
+            font-size: 16px;
+        }
+
+        .btn-pricing {
+            display: block;
+            text-align: center;
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pricing-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-pricing-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-pricing-solid {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-pricing-solid:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 4px 12px rgba(15, 81, 50, 0.2);
+        }
+
+        /* Legality */
+        .legality-box {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            border-left: 6px solid var(--primary);
+        }
+        
+        .legality-text {
+            width: 65%;
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            padding-right: 30px;
+        }
+        
+        .legality-badges {
+            width: 34%;
+            display: inline-block;
+            vertical-align: middle;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .legality-box h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .legality-box p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .legal-badge-item {
+            background-color: var(--primary-bg);
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--primary);
+            border: 1px dashed var(--primary);
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .legal-badge-item i {
+            margin-right: 8px;
+        }
+
+        /* FAQ */
+        .faq-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+
+        .faq-item h3 {
+            font-size: 16px;
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .faq-item h3 i {
+            margin-top: 3px;
+            color: var(--accent);
+        }
+
+        .faq-item p {
+            font-size: 14px;
+            color: var(--text-muted);
+            padding-left: 28px;
+        }
+
+        /* Closing CTA */
+        .closing {
+            background: linear-gradient(rgba(15, 81, 50, 0.92), rgba(15, 81, 50, 0.92)), url('https://images.unsplash.com/photo-1596205432420-efd6b9bc88a5?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .closing h2 {
+            color: var(--white);
+            font-size: 36px;
+            margin-bottom: 16px;
+        }
+
+        .closing p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            opacity: 0.9;
+        }
+
+        .closing .btn-primary {
+            background-color: var(--accent);
+            color: var(--text-dark);
+        }
+
+        .closing .btn-primary:hover {
+            background-color: #ecb71a;
+            box-shadow: 0 6px 20px rgba(211, 158, 0, 0.4);
+        }
+
+        .closing .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .closing .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0b3a24;
+            color: rgba(255,255,255,0.7);
+            padding: 40px 0;
+            font-size: 14px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .column-half, .column-fourth, .column-third, .step-item, .legality-text, .legality-badges {
+                width: 100% !important;
+                display: block !important;
+                margin-right: 0 !important;
+                margin-bottom: 24px;
+            }
+            .step-item {
+                margin-bottom: 40px;
+            }
+            .pricing-card.featured {
+                transform: none;
+            }
+            .hero h1 {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fa-solid fa-mosque"></i> KTKS<span>.Syariah</span>
+            </div>
+            <a href="#paket" class="nav-btn">Pilih Paket</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge-hero"><i class="fa-solid fa-star-and-crescent"></i> Resmi Dibuka: Pendaftaran SKB 1448 H</span>
+            <h1>Program Tabungan Kurban Bersama 1448 H</h1>
+            <p>Mewujudkan ibadah kurban melalui sistem tabungan yang mudah, aman, transparan, dan terencana bersama Koperasi Tabungan Kurban Syariah (KTKS).</p>
+            <div class="cta-group">
+                <a href="https://wa.me/628123456789?text=Saya%20ingin%20mendaftar%20Program%20Simpanan%20Kurban%20Bersama" target="_blank" class="btn btn-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Daftar Sekarang
+                </a>
+                <a href="#alur" class="btn btn-secondary">Pelajari Sistem</a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Rencanakan Qurban, Hindari Beban</h2>
+                <p>Mengapa Program Simpanan Kurban Bersama (SKB) adalah pilihan terbaik untuk ibadah Anda?</p>
+            </div>
+            
+            <div class="problem-solution-wrapper">
+                <div class="column-half">
+                    <div class="card-panel problem">
+                        <h3><i class="fa-solid fa-circle-exclamation" style="color:#dc3545;"></i> Kendala Klasik Tahunan</h3>
+                        <ul class="panel-list">
+                            <li><strong>Beban Finansial Mendadak:</strong> Harga hewan kurban yang melonjak tinggi secara drastis saat mendekati Hari Raya Iduladha.</li>
+                            <li><strong>Ketiadaan Perencanaan:</strong> Tidak adanya alokasi dana khusus yang secara disiplin disisihkan setiap bulannya.</li>
+                            <li><strong>Kekhawatiran Syariat:</strong> Keraguan dari calon mudhohi terhadap kualitas, bobot real, kesehatan, dan keabsahan proses penyembelihan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="column-half">
+                    <div class="card-panel solution">
+                        <h3><i class="fa-solid fa-circle-check" style="color:var(--primary);"></i> Solusi Terintegrasi KTKS</h3>
+                        <ul class="panel-list">
+                            <li><strong>Simpanan Ringan Bulanan:</strong> Membagi alokasi dana menjadi setoran bulanan tetap yang terjadwal dan tidak memberatkan.</li>
+                            <li><strong>Harga Mengikat (Fix Rate):</strong> Kepastian mendapatkan harga hewan kurban lebih awal, bebas dari fluktuasi pasar musiman.</li>
+                            <li><strong>Pengelolaan Amanah:</strong> Hewan kurban diseleksi ketat oleh tim ahli, dirawat dengan baik, dan dipotong 100% sesuai rukun syariat.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keunggulan Menabung di KTKS</h2>
+                <p>Prinsip profesionalitas dan pengelolaan syariah yang menjamin kenyamanan Anda.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="column-fourth">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                        <h3>100% Syariah</h3>
+                        <p>Dikelola murni berdasarkan akad-akad syariah (Wadi'ah/Mudharabah) yang aman, bersih, terbebas dari unsur riba, gharar, dan maysir.</p>
+                    </div>
+                </div>
+                <div class="column-fourth">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Aman & Resmi</h3>
+                        <p>Koperasi berbadan hukum resmi, diawasi oleh Dewan Pengawas Syariah (DPS) serta terdaftar di Kementerian Koperasi.</p>
+                    </div>
+                </div>
+                <div class="column-fourth">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-tags"></i></div>
+                        <h3>Harga Mengikat</h3>
+                        <p>Sekali akad disepakati di awal, Anda berhak mendapatkan proteksi harga flat. Tidak ada biaya tambahan akibat kenaikan harga pasar.</p>
+                    </div>
+                </div>
+                <div class="column-fourth">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-eye"></i></div>
+                        <h3>Transparansi Penuh</h3>
+                        <p>Pantau perkembangan jumlah saldo simpanan secara realtime via sistem online. Anda juga mendapatkan laporan dokumentasi penyembelihan lengkap.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="alur">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sistem Kerja & Alur Simpanan</h2>
+                <p>Sistematis, terarah, dan memudahkan langkah ibadah Anda dari awal hingga hari pelaksanaan.</p>
+            </div>
+
+            <div class="steps-wrapper">
+                <div class="step-item">
+                    <span class="step-number">1</span>
+                    <h3>Pilih Paket</h3>
+                    <p>Tentukan jenis hewan kurban dan sesuaikan nominal setoran bulanan yang cocok dengan budget Anda.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">2</span>
+                    <h3>Setoran Rutin</h3>
+                    <p>Lakukan penyetoran simpanan rutin via transfer bank yang otomatis tercatat dalam sistem mutasi anggota.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">3</span>
+                    <h3>Pengadaan Hewan</h3>
+                    <p>Menjelang Iduladha, KTKS menyalurkan dana langsung ke peternak binaan untuk mengamankan stok terbaik.</p>
+                </div>
+                <div class="step-item">
+                    <span class="step-number">4</span>
+                    <h3>Pelaksanaan & Laporan</h3>
+                    <p>Hewan disembelih sesuai syariat. Laporan berupa foto, video, dan sertifikat kurban dikirim langsung ke Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light" id="paket">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pilihan Paket Simpanan Kurban</h2>
+                <p>Simulasi program cicilan berbasis waktu 10 bulan fleksibel untuk kebutuhan perencanaan Anda.</p>
+            </div>
+
+            <div class="pricing-wrapper">
+                <div class="column-third">
+                    <div class="pricing-card">
+                        <h3>Kambing Standar</h3>
+                        <div class="pricing-meta">Bobot target: 20-25 kg</div>
+                        <div class="price-box">
+                            <div class="total">Rp 2.800.000</div>
+                            <div class="installment">Rp 280.000 / bln</div>
+                            <div style="font-size:12px; color:var(--text-muted); margin-top:5px;">(Simpanan Selama 10 Bulan)</div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Free biaya perawatan & pengantaran</li>
+                            <li><i class="fa-solid fa-check"></i> Sertifikat kepesertaan SKB</li>
+                            <li><i class="fa-solid fa-check"></i> Dokumentasi eksklusif personal</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Saya%20berminat%20Paket%20Kambing%20Standar" target="_blank" class="btn-pricing btn-pricing-outline">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="column-third">
+                    <div class="pricing-card featured">
+                        <span class="ribbon">Paling Banyak Dipilih</span>
+                        <h3>Sapi Kolektif</h3>
+                        <div class="pricing-meta">Patungan Berjamaah (1/7 Sapi)</div>
+                        <div class="price-box">
+                            <div class="total">Rp 3.000.000</div>
+                            <div class="installment">Rp 300.000 / bln</div>
+                            <div style="font-size:12px; color:var(--text-muted); margin-top:5px;">(Simpanan Selama 10 Bulan)</div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Bobot Sapi Total 250-300 kg</li>
+                            <li><i class="fa-solid fa-check"></i> Penggabungan kelompok dibantu KTKS</li>
+                            <li><i class="fa-solid fa-check"></i> Sertifikat & Laporan lengkap kolektif</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Saya%20berminat%20Paket%20Sapi%20Kolektif" target="_blank" class="btn-pricing btn-pricing-solid">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="column-third">
+                    <div class="pricing-card">
+                        <h3>Kambing Premium</h3>
+                        <div class="pricing-meta">Bobot target: 26-30 kg</div>
+                        <div class="price-box">
+                            <div class="total">Rp 3.500.000</div>
+                            <div class="installment">Rp 350.000 / bln</div>
+                            <div style="font-size:12px; color:var(--text-muted); margin-top:5px;">(Simpanan Selama 10 Bulan)</div>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class="fa-solid fa-check"></i> Kualitas hewan super pilihan</li>
+                            <li><i class="fa-solid fa-check"></i> Free biaya perawatan & pengantaran</li>
+                            <li><i class="fa-solid fa-check"></i> Dokumentasi eksklusif personal</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Saya%20berminat%20Paket%20Kambing%20Premium" target="_blank" class="btn-pricing btn-pricing-outline">Pilih Paket ini</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="legality-box">
+                <div class="legality-grid">
+                    <div class="legality-text">
+                        <h3>Menjamin Keamanan & Legalitas Dana Anda</h3>
+                        <p>Koperasi Tabungan Kurban Syariah (KTKS) beroperasi penuh di bawah payung hukum negara Republik Indonesia serta patuh terhadap kaidah dewan tata laksana syariah formal nasional.</p>
+                        <p>Seluruh perputaran modal hanya disalurkan ke sektor riil peternakan rakyat produktif tanpa menyentuh instrumen spekulatif non-syariah.</p>
+                    </div>
+                    <div class="legality-badges">
+                        <div class="badge-list">
+                            <div class="legal-badge-item"><i class="fa-solid fa-gavel"></i> Badan Hukum Koperasi Resmi</div>
+                            <div class="legal-badge-item"><i class="fa-solid fa-user-shield"></i> Diawasi Dewan Pengawas Syariah</div>
+                            <div class="legal-badge-item"><i class="fa-solid fa-handshake-angle"></i> Mitra Peternak Lokal Amanah</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pertanyaan yang Sering Diajukan</h2>
+                <p>Temukan jawaban cepat seputar tata cara teknis tabungan kurban bersama kami.</p>
+            </div>
+
+            <div class="faq-wrapper">
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-circle-question"></i> Bagaimana jika di tengah jalan saya tidak bisa melanjutkan simpanan?</h3>
+                    <p>Dana simpanan yang terkumpul tetap menjadi hak sepenuhnya milik Anda. Anda diperbolehkan mengajukan klaim perubahan paket (reschedule) ke nilai yang lebih rendah atau menarik tabungan kembali sesuai ketentuan anggaran AD/ART koperasi yang berlaku.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-circle-question"></i> Apakah harga hewan kurban bisa naik secara sepihak di akhir periode?</h3>
+                    <p>Tidak. Bagi setiap anggota yang mengambil program SKB, harga terikat flat mengacu pada kesepakatan akad di awal pendaftaran. Anda terbebas penuh dari risiko lonjakan harga pasar dadakan saat menjelang Iduladha.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fa-solid fa-circle-question"></i> Bagaimana jika kuota pencarian kelompok Sapi Kolektif tidak terpenuhi?</h3>
+                    <p>KTKS bertanggung jawab penuh untuk melakukan konsolidasi penggabungan anggota lain agar kelompok kurban sapi terisi lengkap (7 orang). Jika di akhir periode pendaftaran tidak genap, opsi konversi ke paket kambing setara akan ditawarkan dengan persetujuan Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="closing">
+        <div class="container">
+            <h2>Sempurnakan Keislaman Anda, Rencanakan Kurban Sekarang.</h2>
+            <p>Jangan biarkan momentum ibadah terbaik terlewat karena tidak terencana. Mulai langkah pertama Anda hari ini dan rasakan ringannya berkurban secara gotong-royong.</p>
+            <div class="cta-group">
+                <a href="https://wa.me/628123456789?text=Saya%20ingin%20konsultasi%20mengenai%20tabungan%20kurban" target="_blank" class="btn btn-primary">
+                    <i class="fa-brands fa-whatsapp"></i> Hubungi Konsultan Syariah
+                </a>
+                <a href="#paket" class="btn btn-secondary">Lihat Brosur Paket</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Koperasi Tabungan Kurban Syariah (KTKS). Hak Cipta Dilindungi Undang-Undang.</p>
+            <p style="font-size: 12px; opacity: 0.6;">Sistem Informasi & Program Simpanan Kurban Bersama (SKB) 1448 H.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
