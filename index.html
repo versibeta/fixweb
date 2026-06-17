@@ -1,176 +1,248 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FIXWEB.ID - Premium Domain For Sale</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        body {
-            font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0f172a; /* Slate 900 */
-            color: #f8fafc;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 600px;
-            text-align: center;
-            background-color: #1e293b; /* Slate 800 */
-            border: 1px solid #334155;
-            border-radius: 16px;
-            padding: 40px 30px;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
-        }
-        .badge {
-            display: inline-block;
-            background-color: #0f172a;
-            color: #38bdf8;
-            font-size: 0.85rem;
-            font-weight: bold;
-            padding: 6px 16px;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            border: 1px solid #334155;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 8px;
-            letter-spacing: -1px;
-        }
-        h1 span {
-            color: #38bdf8; /* Accent Color */
-        }
-        .subtitle {
-            font-size: 1.25rem;
-            color: #94a3b8;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #475569, transparent);
-            margin: 25px 0;
-        }
-        .info-box {
-            text-align: left;
-            margin-bottom: 35px;
-        }
-        .info-box h2 {
-            font-size: 1.1rem;
-            color: #f1f5f9;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-        .info-box p {
-            font-size: 0.95rem;
-            color: #94a3b8;
-            line-height: 1.5;
-            margin-bottom: 15px;
-        }
-        .tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 15px;
-        }
-        .tag {
-            background-color: #0f172a;
-            color: #e2e8f0;
-            font-size: 0.85rem;
-            padding: 6px 12px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-        }
-        .cta-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #0369a1 100%);
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 20px;
-        }
-        .cta-section h3 {
-            font-size: 1.25rem;
-            color: #ffffff;
-            margin-bottom: 8px;
-        }
-        .cta-section p {
-            font-size: 0.9rem;
-            color: #e0f2fe;
-            margin-bottom: 20px;
-        }
-        .btn-whatsapp {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #22c55e;
-            color: #ffffff;
-            font-size: 1.1rem;
-            font-weight: bold;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 8px;
-            width: 100%;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease;
-            border-bottom: 4px solid #16a34a;
-        }
-        .btn-whatsapp:hover {
-            background-color: #16a34a;
-            transform: translateY(-2px);
-        }
-        .footer {
-            font-size: 0.8rem;
-            color: #64748b;
-            margin-top: 30px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FixWeb.id - Premium Domain For Acquisition</title>
+<meta name="description" content="FixWeb.id adalah domain brandable premium untuk digital agency, hosting, SEO, web development, SaaS, dan startup teknologi Indonesia.">
+<meta name="keywords" content="domain dijual, fixweb.id, premium domain, domain indonesia">
+<meta property="og:title" content="FixWeb.id - Premium Domain For Acquisition">
+<meta property="og:description" content="Domain profesional, singkat, dan mudah diingat.">
+<meta property="og:type" content="website">
+<style>
+:root{
+--bg:#08111f;
+--card:#111827;
+--card2:#0f172a;
+--primary:#38bdf8;
+--text:#e5e7eb;
+--muted:#94a3b8;
+--success:#22c55e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Inter,Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
+line-height:1.7;
+}
+.container{width:min(1180px,92%);margin:auto}
+nav{
+position:fixed;top:0;width:100%;
+backdrop-filter:blur(10px);
+background:rgba(8,17,31,.75);
+border-bottom:1px solid rgba(255,255,255,.08);
+z-index:999;
+}
+.nav-wrap{
+display:flex;justify-content:space-between;align-items:center;
+padding:18px 0;
+}
+.logo{font-size:28px;font-weight:800}
+.logo span{color:var(--primary)}
+.btn{
+display:inline-block;
+padding:14px 26px;
+background:var(--primary);
+color:#000;
+font-weight:700;
+text-decoration:none;
+border-radius:12px;
+}
+.btn-outline{
+background:transparent;
+border:2px solid var(--primary);
+color:var(--primary);
+}
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+text-align:center;
+background:
+radial-gradient(circle at top,#16304f,transparent 50%),
+linear-gradient(135deg,#08111f,#0f172a);
+}
+.hero h1{font-size:90px;font-weight:900}
+.hero h1 span{color:var(--primary)}
+.hero p{max-width:850px;margin:25px auto;color:var(--muted)}
+.badge{
+display:inline-block;
+background:rgba(34,197,94,.15);
+color:#7fffb0;
+padding:10px 18px;
+border-radius:999px;
+margin-bottom:25px;
+}
+section{padding:100px 0}
+.title{text-align:center;font-size:44px;margin-bottom:20px}
+.subtitle{text-align:center;color:var(--muted);max-width:760px;margin:0 auto 50px}
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:24px;
+}
+.card{
+background:var(--card);
+padding:30px;
+border-radius:22px;
+border:1px solid rgba(255,255,255,.06);
+}
+.card h3{color:var(--primary);margin-bottom:12px}
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:20px;
+}
+.stat{
+background:var(--card);
+padding:30px;
+text-align:center;
+border-radius:20px;
+}
+.stat strong{
+display:block;
+font-size:42px;
+color:var(--primary);
+}
+.price-box{
+max-width:760px;
+margin:auto;
+text-align:center;
+background:var(--card);
+padding:50px;
+border-radius:30px;
+}
+.price{
+font-size:72px;
+font-weight:900;
+color:var(--primary);
+}
+.faq details{
+background:var(--card);
+margin-bottom:14px;
+padding:20px;
+border-radius:14px;
+}
+footer{
+padding:40px;
+text-align:center;
+color:var(--muted);
+background:#050b14;
+}
+.float{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+color:#fff;
+padding:15px 20px;
+border-radius:999px;
+text-decoration:none;
+font-weight:bold;
+}
+@media(max-width:768px){
+.hero h1{font-size:52px}
+.title{font-size:34px}
+.price{font-size:46px}
+}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="badge">✨ Kesempatan Emas / Premium Domain</div>
-        <h1>FIX<span>WEB</span>.ID</h1>
-        <p class="subtitle">Domain Ini Resmi Dijual / For Sale</p>
-        
-        <div class="divider"></div>
-        
-        <div class="info-box">
-            <h2>Mengapa Domain Ini Sangat Berharga?</h2>
-            <p><strong>FIXWEB.ID</strong> adalah nama domain premium yang singkat, bermakna solutif, kuat, dan sangat mudah diingat. Ekstensi resmi <strong>.ID</strong> memberikan kredibilitas dan rasa aman tertinggi bagi konsumen Indonesia.</p>
-            <p>Sangat ideal untuk branding bisnis atau agensi di bidang:</p>
-            <div class="tags">
-                <span class="tag">💻 Jasa Pembuatan Website</span>
-                <span class="tag">🔧 Web Maintenance & Perbaikan</span>
-                <span class="tag">🚀 Agensi Digital & SEO</span>
-                <span class="tag">🛠️ IT Support & Troubleshooting</span>
-            </div>
-        </div>
-        
-        <div class="cta-section">
-            <h3>Tertarik Memiliki Domain Ini?</h3>
-            <p>Dapatkan penawaran harga terbaik untuk investasi aset digital Anda. Proses transfer cepat dan aman via Escrow/Pihak Ketiga.</p>
-            <a href="https://wa.me/6285882827510?text=Halo%20Admin,%20saya%20tertarik%20nego%20domain%20fixweb.id" target="_blank" class="btn-whatsapp">
-                💬 Hubungi Pemilik via WhatsApp
-            </a>
-        </div>
-        
-        <div class="footer">
-            <p>Aset Digital Langka. Siapa Cepat, Dia Dapat.</p>
-            <p style="margin-top: 5px;">&copy; 2026 fixweb.id. All rights reserved.</p>
-        </div>
-    </div>
+<nav>
+<div class="container nav-wrap">
+<div class="logo">FIX<span>WEB</span>.ID</div>
+<a href="#offer" class="btn">Beli Domain</a>
+</div>
+</nav>
+
+<section class="hero">
+<div class="container">
+<div class="badge">PREMIUM DOMAIN AVAILABLE FOR ACQUISITION</div>
+<h1>FIX<span>WEB</span>.ID</h1>
+<p style="font-size:28px">Brand Digital yang Kuat untuk Agency, Startup dan Bisnis Teknologi Indonesia</p>
+<p>
+Nama domain yang singkat, profesional, mudah diingat, dan langsung menjelaskan industri yang Anda geluti.
+FixWeb.id cocok untuk digital agency, web development, SEO, hosting, SaaS, IT consultant, dan berbagai bisnis digital modern.
+</p>
+<div style="margin-top:30px">
+<a href="#offer" class="btn">Ajukan Penawaran</a>
+<a href="#benefit" class="btn btn-outline">Pelajari Nilainya</a>
+</div>
+</div>
+</section>
+
+<section id="benefit">
+<div class="container">
+<h2 class="title">Mengapa FixWeb.id Bernilai?</h2>
+<p class="subtitle">Nama yang tepat dapat menghemat biaya branding dan meningkatkan kepercayaan pelanggan sejak kontak pertama.</p>
+<div class="grid">
+<div class="card"><h3>Singkat & Mudah Diingat</h3><p>Brand yang mudah diucapkan, diketik, dan diingat pelanggan.</p></div>
+<div class="card"><h3>Profesional</h3><p>Menciptakan kesan terpercaya untuk perusahaan digital dan teknologi.</p></div>
+<div class="card"><h3>Relevan</h3><p>Kata “Fix” dan “Web” langsung menggambarkan solusi digital.</p></div>
+<div class="card"><h3>Pasar Indonesia</h3><p>Ekstensi .ID memperkuat identitas lokal.</p></div>
+<div class="card"><h3>Siap Branding</h3><p>Dapat langsung digunakan sebagai identitas perusahaan.</p></div>
+<div class="card"><h3>Potensi Jangka Panjang</h3><p>Aset digital yang dapat terus digunakan dan dikembangkan.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="title">Potensi Penggunaan</h2>
+<div class="grid">
+<div class="card"><h3>Digital Agency</h3><p>Jasa website dan pemasaran digital.</p></div>
+<div class="card"><h3>Web Development</h3><p>Freelancer atau software house profesional.</p></div>
+<div class="card"><h3>SEO Agency</h3><p>Layanan optimasi mesin pencari.</p></div>
+<div class="card"><h3>Hosting Provider</h3><p>Hosting, cloud, VPS dan managed service.</p></div>
+<div class="card"><h3>SaaS Startup</h3><p>Aplikasi berbasis web dengan identitas kuat.</p></div>
+<div class="card"><h3>IT Consultant</h3><p>Konsultan teknologi dan transformasi digital.</p></div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2 class="title">Statistik Branding</h2>
+<div class="stats">
+<div class="stat"><strong>7</strong>Karakter Utama</div>
+<div class="stat"><strong>.ID</strong>Target Indonesia</div>
+<div class="stat"><strong>100%</strong>Brandable</div>
+<div class="stat"><strong>∞</strong>Potensi Pengembangan</div>
+</div>
+</div>
+</section>
+
+<section id="offer">
+<div class="container">
+<div class="price-box">
+<h2>Domain Siap Diakuisisi</h2>
+<p>Investasi pada nama yang tepat sering kali lebih murah dibanding biaya membangun brand dari nol.</p>
+<div class="price">Rp 4.900.000</div>
+<p>Harga dapat dinegosiasikan untuk pembeli serius.</p>
+<br>
+<a class="btn" href="https://wa.me/6281234567890">Hubungi Pemilik Domain</a>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container faq">
+<h2 class="title">Pertanyaan Umum</h2>
+<details><summary>Apakah domain masih tersedia?</summary><p>Ya, selama halaman ini aktif domain masih tersedia.</p></details>
+<details><summary>Bagaimana proses transfer?</summary><p>Transfer dilakukan melalui registrar domain resmi.</p></details>
+<details><summary>Apakah harga bisa nego?</summary><p>Ya, untuk pembeli yang serius.</p></details>
+<details><summary>Apakah domain bisa langsung digunakan?</summary><p>Ya, setelah transfer selesai.</p></details>
+</div>
+</section>
+
+<footer>
+© 2026 FIXWEB.ID — Premium Domain For Sale
+</footer>
+
+<a class="float" href="https://wa.me/6281234567890">WhatsApp</a>
 
 </body>
 </html>
