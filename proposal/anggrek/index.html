@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Anggrek Nusantara - 50 Produk Spesies & Hibrida Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            850: '#053e2b',
+                            950: '#022117',
+                        },
+                        amber: {
+                            450: '#f59e0b',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .glass-header {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .dark .glass-header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #10b981;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-emerald-800 dark:bg-emerald-950 text-emerald-100 text-xs py-2 px-4 text-center font-medium tracking-wide border-b border-emerald-700/50">
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-seedling text-amber-400"></i> Katalog Resmi 50 Spesies & Hibrida Anggrek Unggulan - Pengiriman Seluruh Indonesia</span>
+    </div>
+
+    <!-- MAIN HEADER -->
+    <header class="sticky top-0 z-40 glass-header border-b border-slate-200 dark:border-slate-800 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-600/30">
+                    <i class="fa-solid fa-spa text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-emerald-900 dark:text-emerald-400 tracking-tight leading-none">OrchidFlora</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Katalog Anggrek Premium</p>
+                </div>
+            </div>
+
+            <!-- Global Action Controls -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <button id="themeToggleBtn" onclick="toggleTheme()" class="p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all" title="Ubah Mode Gelap/Terang">
+                    <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                    <i class="fa-solid fa-sun text-lg hidden dark:block text-amber-400"></i>
+                </button>
+                <button onclick="openAddModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2.5 rounded-xl shadow-md shadow-emerald-600/20 hover:shadow-lg transition-all flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-plus"></i>
+                    <span class="hidden sm:inline">Tambah Anggrek</span>
+                </button>
+                <button onclick="confirmResetData()" class="border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 font-medium px-3 py-2.5 rounded-xl transition-all text-xs sm:text-sm flex items-center gap-1.5" title="Reset Data ke Default (50 Produk)">
+                    <i class="fa-solid fa-rotate-right"></i>
+                    <span class="hidden md:inline">Reset Data</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO & SEARCH SECTION -->
+    <section class="relative bg-gradient-to-b from-emerald-900/10 via-slate-50 to-slate-50 dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 pt-8 pb-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
+                Koleksi Anggrek Terlengkap & Terpopuler
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
+                Jelajahi 50 varietas anggrek pilihan dari spesies langka hingga hibrida tercantik. Lengkap dengan spesifikasi, harga, stok terkini, dan pemesanan WhatsApp langsung.
+            </p>
+
+            <!-- Search Bar & Filters -->
+            <div class="bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-200/80 dark:border-slate-700/80 max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-3">
+                <!-- Search Input -->
+                <div class="md:col-span-5 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="renderCatalog()" placeholder="Cari nama atau kode produk..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 dark:text-slate-100 placeholder-slate-400">
+                </div>
+
+                <!-- Category Filter -->
+                <div class="md:col-span-4 relative">
+                    <select id="categoryFilter" onchange="renderCatalog()" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 dark:text-slate-100 appearance-none cursor-pointer">
+                        <option value="ALL">Semua Genus / Jenis</option>
+                        <option value="Phalaenopsis">Phalaenopsis (Anggrek Bulan)</option>
+                        <option value="Dendrobium">Dendrobium</option>
+                        <option value="Cattleya">Cattleya</option>
+                        <option value="Vanda">Vanda</option>
+                        <option value="Oncidium">Oncidium</option>
+                        <option value="Grammatophyllum">Grammatophyllum (Anggrek Tebu)</option>
+                        <option value="Cymbidium">Cymbidium</option>
+                        <option value="Paphiopedilum">Paphiopedilum (Anggrek Kasut)</option>
+                        <option value="Bulbophyllum">Bulbophyllum</option>
+                        <option value="Spesies Langka">Spesies Langka Lainnya</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                </div>
+
+                <!-- Sort Order -->
+                <div class="md:col-span-3 relative">
+                    <select id="sortFilter" onchange="renderCatalog()" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 dark:text-slate-100 appearance-none cursor-pointer">
+                        <option value="default">Urutkan: Kode (Terbaru)</option>
+                        <option value="price-asc">Harga: Terendah</option>
+                        <option value="price-desc">Harga: Tertinggi</option>
+                        <option value="stock-desc">Stok: Terbanyak</option>
+                        <option value="name-asc">Nama: A - Z</option>
+                    </select>
+                    <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOG GRID STATS & DISPLAY -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Results Counter -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-200 dark:border-slate-800 gap-2">
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+                Menampilkan <span id="productCount" class="font-bold text-slate-800 dark:text-slate-200">0</span> varietas anggrek
+            </p>
+            <div id="activeFiltersBadge" class="flex flex-wrap gap-2 text-xs"></div>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Cards will be dynamically injected here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden text-center py-16 bg-white dark:bg-slate-800/50 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 my-8">
+            <div class="w-16 h-16 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mx-auto text-slate-400 text-2xl mb-4">
+                <i class="fa-solid fa-leaf"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">Anggrek Tidak Ditemukan</h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto mb-4">Coba ubah kata kunci pencarian atau ganti kategori filter yang Anda pilih.</p>
+            <button onclick="resetFilters()" class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold hover:underline">
+                Reset Filter Pencarian
+            </button>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 text-sm py-10 border-t border-slate-800 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <span class="font-serif font-bold text-white text-lg">OrchidFlora Indonesia</span>
+            </div>
+            <p class="text-xs text-center md:text-right text-slate-500">
+                &copy; 2026 OrchidFlora Catalog System. Seluruh foto dan data produk terdaftar secara resmi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div id="detailModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full overflow-hidden shadow-2xl transform transition-all my-8 border border-slate-100 dark:border-slate-700 relative">
+            <button onclick="closeDetailModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-slate-900/50 hover:bg-slate-900 text-white flex items-center justify-center transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900">
+                    <img id="detailImage" src="" alt="" class="w-full h-full object-cover">
+                    <span id="detailBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow"></span>
+                </div>
+                <div class="p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <span id="detailCode" class="text-xs font-mono font-bold bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-300 px-2.5 py-1 rounded-md"></span>
+                            <span id="detailCategory" class="text-xs text-slate-500 dark:text-slate-400 font-medium"></span>
+                        </div>
+                        <h3 id="detailName" class="font-serif text-2xl font-bold text-slate-900 dark:text-white mb-2 leading-tight"></h3>
+                        <p id="detailPrice" class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4"></p>
+                        
+                        <div class="border-t border-b border-slate-100 dark:border-slate-700/60 py-3 my-3 space-y-2 text-xs">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500 dark:text-slate-400">Ketersediaan Stok:</span>
+                                <span id="detailStock" class="font-bold text-slate-800 dark:text-slate-200"></span>
+                            </div>
+                        </div>
+
+                        <p id="detailDesc" class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6"></p>
+                    </div>
+
+                    <div class="flex gap-2">
+                        <a id="detailWaBtn" href="#" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md text-center text-sm flex items-center justify-center gap-2 transition-all">
+                            <i class="fa-brands fa-whatsapp text-lg"></i>
+                            Pesan via WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADD / EDIT PRODUCT MODAL -->
+    <div id="formModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl my-8 border border-slate-100 dark:border-slate-700">
+            <div class="px-6 py-4 border-b border-slate-200 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800/80">
+                <h3 id="formModalTitle" class="font-serif font-bold text-lg text-slate-900 dark:text-white">Tambah Anggrek Baru</h3>
+                <button onclick="closeFormModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-lg">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            
+            <form id="productForm" onsubmit="handleFormSubmit(event)" class="p-6 space-y-4">
+                <input type="hidden" id="editProductId">
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Kode Produk</label>
+                    <input type="text" id="formCode" required placeholder="ORCH-051" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Nama Anggrek</label>
+                    <input type="text" id="formName" required placeholder="Phalaenopsis Bellina" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Genus / Kategori</label>
+                        <select id="formCategory" required class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                            <option value="Phalaenopsis">Phalaenopsis</option>
+                            <option value="Dendrobium">Dendrobium</option>
+                            <option value="Cattleya">Cattleya</option>
+                            <option value="Vanda">Vanda</option>
+                            <option value="Oncidium">Oncidium</option>
+                            <option value="Grammatophyllum">Grammatophyllum</option>
+                            <option value="Cymbidium">Cymbidium</option>
+                            <option value="Paphiopedilum">Paphiopedilum</option>
+                            <option value="Bulbophyllum">Bulbophyllum</option>
+                            <option value="Spesies Langka">Spesies Langka</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Harga (Rp)</label>
+                        <input type="number" id="formPrice" required min="0" placeholder="150000" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Jumlah Stok</label>
+                        <input type="number" id="formStock" required min="0" placeholder="10" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">URL Foto Produk</label>
+                        <input type="url" id="formImage" required placeholder="https://..." class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Deskripsi Singkat</label>
+                    <textarea id="formDesc" rows="3" required placeholder="Penjelasan mengenai warna bunga, keharuman, dan perawatan..." class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100"></textarea>
+                </div>
+
+                <div class="pt-3 flex gap-3">
+                    <button type="button" onclick="closeFormModal()" class="flex-1 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 py-2.5 rounded-xl text-sm font-semibold hover:bg-slate-100 dark:hover:bg-slate-700">Batal</button>
+                    <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2.5 rounded-xl text-sm font-semibold shadow-md">Simpan Produk</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // DATA SET: 50 PRODUK ANGGREK POPULER
+        const INITIAL_ORCHIDS = [
+            { id: 1, code: "ORCH-001", name: "Phalaenopsis amabilis (Anggrek Bulan)", category: "Phalaenopsis", price: 125000, stock: 15, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Puspa Pesona Indonesia dengan kelopak putih bersih dan lidah kuning elegan. Bunga mekar bertahan hingga 2 bulan." },
+            { id: 2, code: "ORCH-002", name: "Dendrobium Nobile Pink", category: "Dendrobium", price: 85000, stock: 24, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Spesies populer berbatang kokoh dengan bunga lebat berwarna gradasi ungu muda ke merah muda." },
+            { id: 3, code: "ORCH-003", name: "Vanda coerulea (Anggrek Biru)", category: "Vanda", price: 275000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Varietas anggrek biru alami langka asal Himalaya. Memiliki corak jala biru keunguan yang memukau." },
+            { id: 4, code: "ORCH-004", name: "Cattleya Trianae Hybrid", category: "Cattleya", price: 210000, stock: 8, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Ratu Para Anggrek dengan mahkota bunga besar beraroma wangi manis menyegarkan." },
+            { id: 5, code: "ORCH-005", name: "Grammatophyllum scriptum (Anggrek Macan)", category: "Grammatophyllum", price: 185000, stock: 10, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Anggrek eksotis dengan motif tutul cokelat kehijauan menyerupai kulit macan tutul." },
+            { id: 6, code: "ORCH-006", name: "Oncidium Golden Shower", category: "Oncidium", price: 95000, stock: 18, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Dikenal sebagai Anggrek Penari (Dancing Lady) karena susunan bunga kuning cerah berayun indah." },
+            { id: 7, code: "ORCH-007", name: "Phalaenopsis bellina", category: "Phalaenopsis", price: 165000, stock: 4, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies asli Kalimantan beraroma harum sitrus yang kuat, bercorak hijau muda dan magenta." },
+            { id: 8, code: "ORCH-008", name: "Paphiopedilum glaucophyllum (Anggrek Kasut)", category: "Paphiopedilum", price: 320000, stock: 3, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kantung Semar endemik Jawa Timur. Bentuk kantung unik dan berstatus perlindungan eksklusif." },
+            { id: 9, code: "ORCH-009", name: "Grammatophyllum speciosum (Anggrek Tebu)", category: "Grammatophyllum", price: 650000, stock: 2, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Spesies anggrek terbesar di dunia dengan rumpun tinggi menjulang dan bunga tahan hingga 3 bulan." },
+            { id: 10, code: "ORCH-010", name: "Cymbidium Golden Boy", category: "Cymbidium", price: 190000, stock: 12, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Bunga tebal lilin berwarna kuning keemasan, sangat sesuai untuk dekorasi interior iklim dingin." },
+            { id: 11, code: "ORCH-011", name: "Bulbophyllum phalaenopsis", category: "Bulbophyllum", price: 450000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Spesies unik kolektor dengan daun raksasa menjuntai dan struktur bunga berambut eksotis." },
+            { id: 12, code: "ORCH-012", name: "Dendrobium discolor (Anggrek Keriting)", category: "Dendrobium", price: 140000, stock: 20, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Memiliki kelopak terpilin spiral berwarna cokelat tembaga keemasan yang sangat anggun." },
+            { id: 13, code: "ORCH-013", name: "Vanda tricolor var. suavis", category: "Vanda", price: 230000, stock: 7, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Vanda asli Indonesia berbintik ungu merah beraroma wangi manis vanila." },
+            { id: 14, code: "ORCH-014", name: "Cattleya labiata Crimson", category: "Cattleya", price: 260000, stock: 5, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Bunga berwarna merah fuchsia pekat dengan bibir bertirus halus dan keharuman semerbak." },
+            { id: 15, code: "ORCH-015", name: "Phalaenopsis Schilleriana", category: "Phalaenopsis", price: 175000, stock: 9, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Bunga merah muda pucat halus dengan daun bercorakan silver marmer yang indah." },
+            { id: 16, code: "ORCH-016", name: "Coelogyne pandurata (Anggrek Hitam)", category: "Spesies Langka", price: 550000, stock: 3, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Maskot Kalimantan Timur dengan lidah berwarna hitam pekat misterius dan kelopak hijau neon." },
+            { id: 17, code: "ORCH-017", name: "Rhynchostylis gigantea Red", category: "Spesies Langka", price: 290000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Rangkaian bunga rapat merapat beraroma sangat harum saat pagi hingga siang hari." },
+            { id: 18, code: "ORCH-018", name: "Oncidium Sharry Baby 'Sweet Fragrance'", category: "Oncidium", price: 135000, stock: 14, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Terkenal karena aroma bunganya yang harum manis seperti cokelat dan vanila murni." },
+            { id: 19, code: "ORCH-019", name: "Dendrobium Anosmum (Anggrek Sanggul)", category: "Dendrobium", price: 110000, stock: 11, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga ungu menjuntai lebat dengan wangi khas raspberry saat mekar sempurna." },
+            { id: 20, code: "ORCH-020", name: "Cymbidium Enzan Shining", category: "Cymbidium", price: 205000, stock: 8, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Warna krem kemerahan elegan dengan daya tahan bunga mekar lebih dari 10 minggu." },
+            { id: 21, code: "ORCH-021", name: "Paphiopedilum rothschildianum", category: "Paphiopedilum", price: 1200000, stock: 1, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Raja Anggrek Gunung Kinabalu. Spesies paling bergengsi dan dicari kolektor tingkat dunia." },
+            { id: 22, code: "ORCH-022", name: "Phalaenopsis gigantea", category: "Phalaenopsis", price: 420000, stock: 3, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Phalaenopsis terbesar dengan daun mirip telinga gajah dan totol merah cokelat tebal." },
+            { id: 23, code: "ORCH-023", name: "Vanda Sanderiana (Waling-Waling)", category: "Vanda", price: 310000, stock: 5, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Ratu Bunga Filipina dengan kelopak lebar bermotif jaring cokelat merah muda fantastis." },
+            { id: 24, code: "ORCH-024", name: "Cattleya Bowringiana Magenta", category: "Cattleya", price: 195000, stock: 9, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Menghasilkan tandan berisi belasan bunga ungu tua bercahaya dalam sekali periode mekar." },
+            { id: 25, code: "ORCH-025", name: "Dendrobium Striaenopsis (Anggrek Larat)", category: "Dendrobium", price: 90000, stock: 30, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Flora Identitas Maluku berwarna ungu terang, sangat adaptif dan rajin berbunga di dataran rendah." },
+            { id: 26, code: "ORCH-026", name: "Bulbophyllum medusae", category: "Bulbophyllum", price: 210000, stock: 6, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Bunga unik menyerupai rambut Medusa putih krem yang terurai lembut menawan." },
+            { id: 27, code: "ORCH-027", name: "Dendrobium spectabile", category: "Dendrobium", price: 250000, stock: 4, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga eksotis Papua dengan kelopak kriwil terpilin abstrak menyerupai monster alien indah." },
+            { id: 28, code: "ORCH-028", name: "Phalaenopsis Violacea Sumatra", category: "Phalaenopsis", price: 180000, stock: 8, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies murni berpola fuchsia bercahaya kilap lilin beraroma wangi rempah manis." },
+            { id: 29, code: "ORCH-029", name: "Cattleya Walkeriana Alba", category: "Cattleya", price: 380000, stock: 3, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Varietas miniatur putih bersih yang sangat jarang ditemui dengan wangi intensif." },
+            { id: 30, code: "ORCH-030", name: "Oncidium Papilio (Psychopsis)", category: "Oncidium", price: 240000, stock: 7, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kupu-kupu dengan antena panjang dan kelopak jingga keemasan yang unik." },
+            { id: 31, code: "ORCH-031", name: "Renanthera coccinea (Anggrek Api)", category: "Spesies Langka", price: 160000, stock: 12, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Warna merah menyala seperti kobaran api, cocok tumbuh memanjat di area outdoor." },
+            { id: 32, code: "ORCH-032", name: "Cymbidium aloifolium", category: "Cymbidium", price: 105000, stock: 16, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tandan bunga menjuntai panjang berwarna kuning bergaris merah marun yang sangat tahan panas." },
+            { id: 33, code: "ORCH-033", name: "Paphiopedilum victoria-mariae", category: "Paphiopedilum", price: 490000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kasut endemik Sumatra Barat yang dilindungi dengan perpaduan warna hijau kemerahan." },
+            { id: 34, code: "ORCH-034", name: "Phalaenopsis equestris Pink", category: "Phalaenopsis", price: 115000, stock: 19, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Berbunga kecil mungil bercabang banyak, rajin menghasilkan anakan keiki." },
+            { id: 35, code: "ORCH-035", name: "Vanda Mimi Palmer", category: "Vanda", price: 220000, stock: 8, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Hibrida wangi beraroma minyak wangi mewah dengan corak totol cokelat keunguan." },
+            { id: 36, code: "ORCH-036", name: "Dendrobium Helix (Anggrek Keong)", category: "Dendrobium", price: 170000, stock: 13, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Kelopak melingkar kencang seperti tanduk domba atau cangkang keong berwarna cokelat emas." },
+            { id: 37, code: "ORCH-037", name: "Brassavola nodosa (Lady of the Night)", category: "Spesies Langka", price: 130000, stock: 15, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Memancarkan keharuman jeruk sitrus yang memikat secara khusus pada malam hari." },
+            { id: 38, code: "ORCH-038", name: "Grammatophyllum martae", category: "Grammatophyllum", price: 350000, stock: 3, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Spesies langka Filipina bermahkota cokelat pekat gelap berukuran jumbo." },
+            { id: 39, code: "ORCH-039", name: "Bulbophyllum echinolabium", category: "Bulbophyllum", price: 280000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Memiliki ukuran bunga terbesar dalam genus Bulbophyllum dengan bibir berduri unik." },
+            { id: 40, code: "ORCH-040", name: "Cattleya Mossiae Semi-Alba", category: "Cattleya", price: 295000, stock: 5, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Bunga nasional Venezuela bermahkota putih kontras dengan lidah ungu keemasan." },
+            { id: 41, code: "ORCH-041", name: "Phalaenopsis Cornu-Cervi", category: "Phalaenopsis", price: 120000, stock: 17, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Tangkai bunga pipih menyerupai tanduk rusa dengan bunga kuning totol merah." },
+            { id: 42, code: "ORCH-042", name: "Dendrobium Kingianum", category: "Dendrobium", price: 95000, stock: 22, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Anggrek batu mungil asal Australia yang menghasilkan rumpun bunga merah muda wangi." },
+            { id: 43, code: "ORCH-043", name: "Vanda Tessellata", category: "Vanda", price: 260000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Motif kelopak berkotak-kotak catur cokelat kehijauan dengan bibir violet cerah." },
+            { id: 44, code: "ORCH-044", name: "Arundina graminifolia (Anggrek Bambu)", category: "Spesies Langka", price: 75000, stock: 25, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tumbuh di tanah dengan daun mirip tanaman bambu dan bunga serial mirip Phalaenopsis." },
+            { id: 45, code: "ORCH-045", name: "Oncidium Twinkle 'Fragrant Fantasy'", category: "Oncidium", price: 110000, stock: 14, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Ratusan bunga mini putih krem mekar bersamaan memancarkan aroma kue manis." },
+            { id: 46, code: "ORCH-046", name: "Paphiopedilum niveum", category: "Paphiopedilum", price: 340000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kasut salju putih bersih bermotif berbintik halus ungu pucat." },
+            { id: 47, code: "ORCH-047", name: "Cymbidium devonianum", category: "Cymbidium", price: 230000, stock: 7, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tandan gantung lebat dengan kombinasi warna zaitun dan bibir ungu kehitaman." },
+            { id: 48, code: "ORCH-048", name: "Dendrobium Unicum", category: "Dendrobium", price: 155000, stock: 9, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga jingga cerah unik dengan lidah bergaris yang mekar saat pohon menggugurkan daun." },
+            { id: 49, code: "ORCH-049", name: "Phalaenopsis tetraspis 'C1'", category: "Phalaenopsis", price: 310000, stock: 5, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Variasi unik di mana kelopak bunga memiliki acakan warna merah dan putih bervariasi." },
+            { id: 50, code: "ORCH-050", name: "Ludisia discolor (Anggrek Permata)", category: "Spesies Langka", price: 85000, stock: 20, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Dikenal indah karena daun beludru hitam bergaris merah tembaga mengkilap." }
+        ];
+
+        // LOCAL STORAGE INITIALIZATION
+        let orchids = JSON.parse(localStorage.getItem('orchid_catalog_data')) || INITIAL_ORCHIDS;
+
+        // STATE MANAGEMENT
+        function saveToStorage() {
+            localStorage.setItem('orchid_catalog_data', JSON.stringify(orchids));
+        }
+
+        // FORMAT CURRENCY (IDR)
+        function formatRupiah(number) {
+            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        // DARK MODE TOGGLE
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // RENDER CATALOG GRID
+        function renderCatalog() {
+            const grid = document.getElementById('productGrid');
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            const categoryVal = document.getElementById('categoryFilter').value;
+            const sortVal = document.getElementById('sortFilter').value;
+            const emptyState = document.getElementById('emptyState');
+
+            // Filter Process
+            let filtered = orchids.filter(item => {
+                const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.code.toLowerCase().includes(searchVal);
+                const matchesCategory = categoryVal === 'ALL' || item.category === categoryVal;
+                return matchesSearch && matchesCategory;
+            });
+
+            // Sorting Process
+            if (sortVal === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            } else if (sortVal === 'stock-desc') {
+                filtered.sort((a, b) => b.stock - a.stock);
+            } else if (sortVal === 'name-asc') {
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+            } else {
+                filtered.sort((a, b) => b.id - a.id);
+            }
+
+            // Update Counters
+            document.getElementById('productCount').textContent = filtered.length;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+
+            // Render HTML Cards
+            grid.innerHTML = filtered.map(item => {
+                // Stock Badge Styling
+                let stockBadgeClass = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
+                let stockText = `Stok: ${item.stock}`;
+                if (item.stock === 0) {
+                    stockBadgeClass = "bg-red-100 text-red-800 dark:bg-red-950 dark:text-red-300";
+                    stockText = "Stok Habis";
+                } else if (item.stock <= 5) {
+                    stockBadgeClass = "bg-amber-100 text-amber-800 dark:bg-amber-950 dark:text-amber-300";
+                    stockText = `Sisa ${item.stock} unit`;
+                }
+
+                return `
+                <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <!-- Card Header Image -->
+                    <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-900">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy" 
+                             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80';"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-md text-white text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg">
+                            ${item.code}
+                        </span>
+                        <span class="absolute top-3 right-3 text-[11px] font-bold px-2.5 py-1 rounded-lg ${stockBadgeClass}">
+                            ${stockText}
+                        </span>
+                    </div>
+
+                    <!-- Card Content -->
+                    <div class="p-5 flex-grow flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">${item.category}</span>
+                            <h3 class="font-serif font-bold text-slate-900 dark:text-white text-base mt-1 line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" title="${item.name}">
+                                ${item.name}
+                            </h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 line-clamp-2 leading-relaxed">
+                                ${item.desc}
+                            </p>
+                        </div>
+
+                        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60">
+                            <div class="flex items-baseline justify-between mb-3">
+                                <span class="text-xs text-slate-400">Harga</span>
+                                <span class="text-lg font-bold text-slate-900 dark:text-white">${formatRupiah(item.price)}</span>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="grid grid-cols-4 gap-2">
+                                <button onclick="openDetailModal(${item.id})" class="col-span-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-800 dark:text-slate-100 font-semibold py-2 px-3 rounded-xl text-xs transition-colors flex items-center justify-center gap-1.5">
+                                    <i class="fa-solid fa-eye text-xs"></i> Detail
+                                </button>
+                                <button onclick="openEditModal(${item.id})" class="bg-amber-50 hover:bg-amber-100 dark:bg-amber-950/40 dark:hover:bg-amber-900/60 text-amber-700 dark:text-amber-300 p-2 rounded-xl text-xs transition-colors" title="Edit Produk">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                <button onclick="deleteProduct(${item.id})" class="bg-red-50 hover:bg-red-100 dark:bg-red-950/40 dark:hover:bg-red-900/60 text-red-600 dark:text-red-400 p-2 rounded-xl text-xs transition-colors" title="Hapus Produk">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        // RESET FILTERS
+        function resetFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('categoryFilter').value = 'ALL';
+            document.getElementById('sortFilter').value = 'default';
+            renderCatalog();
+        }
+
+        // DETAIL MODAL FUNCTIONS
+        function openDetailModal(id) {
+            const item = orchids.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById('detailImage').src = item.image;
+            document.getElementById('detailCode').textContent = item.code;
+            document.getElementById('detailCategory').textContent = item.category;
+            document.getElementById('detailName').textContent = item.name;
+            document.getElementById('detailPrice').textContent = formatRupiah(item.price);
+            document.getElementById('detailDesc').textContent = item.desc;
+            document.getElementById('detailStock').textContent = `${item.stock} Unit`;
+
+            // WhatsApp link auto generator
+            const waText = encodeURIComponent(`Halo Admin OrchidFlora, saya berminat memesan produk anggrek berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
+            document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${waText}`;
+
+            document.getElementById('detailModal').classList.remove('hidden');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.add('hidden');
+        }
+
+        // FORM MODAL (ADD / EDIT)
+        function openAddModal() {
+            document.getElementById('formModalTitle').textContent = "Tambah Anggrek Baru";
+            document.getElementById('editProductId').value = "";
+            document.getElementById('productForm').reset();
+            
+            // Generate auto code
+            const nextNum = orchids.length + 1;
+            document.getElementById('formCode').value = `ORCH-${String(nextNum).padStart(3, '0')}`;
+            
+            document.getElementById('formModal').classList.remove('hidden');
+        }
+
+        function openEditModal(id) {
+            const item = orchids.find(p => p.id === id);
+            if (!item) return;
+
+            document.getElementById('formModalTitle').textContent = "Edit Data Anggrek";
+            document.getElementById('editProductId').value = item.id;
+            document.getElementById('formCode').value = item.code;
+            document.getElementById('formName').value = item.name;
+            document.getElementById('formCategory').value = item.category;
+            document.getElementById('formPrice').value = item.price;
+            document.getElementById('formStock').value = item.stock;
+            document.getElementById('formImage').value = item.image;
+            document.getElementById('formDesc').value = item.desc;
+
+            document.getElementById('formModal').classList.remove('hidden');
+        }
+
+        function closeFormModal() {
+            document.getElementById('formModal').classList.add('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const editId = document.getElementById('editProductId').value;
+
+            const newItem = {
+                id: editId ? parseInt(editId) : Date.now(),
+                code: document.getElementById('formCode').value.trim(),
+                name: document.getElementById('formName').value.trim(),
+                category: document.getElementById('formCategory').value,
+                price: parseInt(document.getElementById('formPrice').value) || 0,
+                stock: parseInt(document.getElementById('formStock').value) || 0,
+                image: document.getElementById('formImage').value.trim(),
+                desc: document.getElementById('formDesc').value.trim()
+            };
+
+            if (editId) {
+                // Edit
+                const index = orchids.findIndex(p => p.id === parseInt(editId));
+                if (index !== -1) orchids[index] = newItem;
+            } else {
+                // Add New
+                orchids.unshift(newItem);
+            }
+
+            saveToStorage();
+            renderCatalog();
+            closeFormModal();
+        }
+
+        // DELETE PRODUCT
+        function deleteProduct(id) {
+            const item = orchids.find(p => p.id === id);
+            if (!item) return;
+
+            if (confirm(`Apakah Anda yakin ingin menghapus "${item.name}" dari katalog?`)) {
+                orchids = orchids.filter(p => p.id !== id);
+                saveToStorage();
+                renderCatalog();
+            }
+        }
+
+        // RESET ALL DATA TO DEFAULT
+        function confirmResetData() {
+            if (confirm("Reset akan mengembalikan katalog ke 50 data anggrek asli default. Perubahan Anda akan ditimpa. Lanjutkan?")) {
+                orchids = [...INITIAL_ORCHIDS];
+                saveToStorage();
+                renderCatalog();
+            }
+        }
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderCatalog();
+        });
+    </script>
+</body>
+</html>
