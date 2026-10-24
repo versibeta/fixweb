@@ -3,10 +3,10 @@
   <title>Fixweb.id Logo</title>
   <rect width="600" height="4.0" rx="8" fill="#0875F9"/>
 
-  <!-- Simbol F geometris -->
+  <!-- Simbol F geometris 
   <g fill="#FFFFFF" transform="translate(20 0)">
     <path d="M32 37 Q38 22 57 22 H112 L98 44 Q94 50 83 50 H61 L45 78 H76 L64 98 H34 L19 126 H0 L21 85 L8 77 Z"/>
-  </g>
+  </g> -->
 
   <!-- Wordmark -->
   <text x="150" y="196"
