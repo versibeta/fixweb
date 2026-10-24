@@ -64,9 +64,12 @@
 </head>
 <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans transition-colors duration-300 min-h-screen flex flex-col">
 
-    <!-- TOP ANNOUNCEMENT BAR -->
-    <div class="bg-emerald-800 dark:bg-emerald-950 text-emerald-100 text-xs py-2 px-4 text-center font-medium tracking-wide border-b border-emerald-700/50">
-        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-seedling text-amber-400"></i> Katalog Resmi 50 Spesies & Endemik Anggrek Asli Nusantara - Siap Kirim Seluruh Indonesia</span>
+    <!-- TOP ANNOUNCEMENT BAR DENGAN TOMBOL RESET DI SEBELAH KIRI -->
+    <div class="bg-emerald-800 dark:bg-emerald-950 text-emerald-100 text-xs py-2 px-4 flex flex-wrap justify-center items-center gap-3 border-b border-emerald-700/50">
+        <button onclick="confirmResetData()" class="bg-emerald-900 hover:bg-emerald-950 text-amber-300 hover:text-amber-200 border border-emerald-700/60 px-2.5 py-1 rounded-md text-[11px] font-semibold transition-all inline-flex items-center gap-1.5 shadow-sm" title="Reset Data ke Default (50 Produk)">
+            <i class="fa-solid fa-rotate-right"></i> Reset Data
+        </button>
+        <span class="font-medium tracking-wide text-center">Demo: Spesies & Endemik Anggrek Asli Indonesia @Katalog Dev</span>
     </div>
 
     <!-- MAIN HEADER -->
@@ -93,10 +96,6 @@
                     <i class="fa-solid fa-plus"></i>
                     <span class="hidden sm:inline">Tambah Anggrek</span>
                 </button>
-                <button onclick="confirmResetData()" class="border border-red-200 dark:border-red-900/50 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 font-medium px-3 py-2.5 rounded-xl transition-all text-xs sm:text-sm flex items-center gap-1.5" title="Reset Data ke Default (50 Produk)">
-                    <i class="fa-solid fa-rotate-right"></i>
-                    <span class="hidden md:inline">Reset Data</span>
-                </button>
             </div>
         </div>
     </header>
@@ -108,7 +107,7 @@
                 Keanekaragaman Anggrek Asli Indonesia
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem penyimpanan foto mandiri di folder lokal Anda.
+                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem pengelolaan folder lokal dan panduan label nama file.
             </p>
 
             <!-- Search Bar & Filters -->
@@ -146,6 +145,15 @@
             </div>
         </div>
     </section>
+
+    <!-- HIDDEN FILE INPUT UNTUK TRIGGER UPLOAD PREVIEW -->
+    <input type="file" id="hiddenUploadInput" accept="image/*" class="hidden" onchange="handleFileSelected(event)">
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-900 text-emerald-100 px-5 py-3 rounded-2xl shadow-2xl border border-emerald-700/50 flex items-center gap-3 text-sm font-medium">
+        <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+        <span id="toastMsg">Berhasil!</span>
+    </div>
 
     <!-- CATALOG GRID STATS & DISPLAY -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -197,9 +205,21 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
-                    <img id="detailImage" src="" alt="" class="w-full h-full object-cover" onerror="this.src='img/fixfoto.svg'">
-                    <span id="detailBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow"></span>
+                <div>
+                    <!-- Caption Label Nama File & Tombol Unggah di Modal Detail -->
+                    <div class="bg-emerald-900 text-emerald-100 text-xs px-3 py-2 font-mono border-b border-emerald-800 flex justify-between items-center">
+                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> <strong id="detailFilenameText" class="select-all cursor-text"></strong></span>
+                        <button onclick="triggerUploadFromModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded text-[11px] transition-colors flex items-center gap-1 shadow">
+                            <i class="fa-solid fa-upload"></i> Unggah
+                        </button>
+                    </div>
+                    <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                        <img id="detailImage" src="" alt="" class="w-full h-full object-cover cursor-pointer" 
+                             onclick="openZoom(this.src)"
+                             title="Klik untuk memperbesar foto"
+                             onerror="this.onerror=null; this.src='img/fixfoto.svg';">
+                        <span id="detailBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow pointer-events-none"></span>
+                    </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between">
                     <div>
@@ -228,6 +248,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- IMAGE ZOOM MODAL -->
+    <div id="zoomModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeZoom()">
+        <div class="relative max-w-4xl max-h-screen p-2">
+            <button class="absolute -top-10 right-0 text-white text-2xl hover:text-amber-400 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="zoomImg" src="" alt="Zoom Foto" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-slate-700">
         </div>
     </div>
 
@@ -353,6 +383,7 @@
 
         // LOCAL STORAGE INITIALIZATION
         let orchids = JSON.parse(localStorage.getItem('indonesia_anggrek_catalog')) || INITIAL_ORCHIDS;
+        let activeTargetFilename = '';
 
         // STATE MANAGEMENT
         function saveToStorage() {
@@ -362,6 +393,63 @@
         // FORMAT CURRENCY (IDR)
         function formatRupiah(number) {
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
+        }
+
+        // TOAST NOTIFICATION HELPER
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // ZOOM IMAGE MODAL FUNCTIONS
+        function openZoom(imgSrc) {
+            document.getElementById('zoomImg').src = imgSrc;
+            document.getElementById('zoomModal').classList.remove('hidden');
+        }
+
+        function closeZoom() {
+            document.getElementById('zoomModal').classList.add('hidden');
+        }
+
+        // TRIGGER UPLOAD PREVIEW
+        function startUploadFor(filename) {
+            activeTargetFilename = filename;
+            document.getElementById('hiddenUploadInput').click();
+        }
+
+        function triggerUploadFromModal() {
+            startUploadFor(activeTargetFilename);
+        }
+
+        function handleFileSelected(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const targetFilename = activeTargetFilename;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Data = e.target.result;
+                
+                const index = orchids.findIndex(p => p.image.includes(targetFilename) || p.originalFilename === targetFilename);
+                if (index !== -1) {
+                    orchids[index].image = base64Data;
+                    orchids[index].originalFilename = targetFilename;
+                    saveToStorage();
+                    renderCatalog();
+                    
+                    const detailImg = document.getElementById('detailImage');
+                    if(detailImg) detailImg.src = base64Data;
+                }
+                showToast(`Pratinjau tersimpan! Simpan file ke folder img/ dengan nama: "${targetFilename}"`);
+            };
+            reader.readAsDataURL(file);
+            
+            event.target.value = '';
         }
 
         // DARK MODE TOGGLE
@@ -391,7 +479,6 @@
             const sortVal = document.getElementById('sortFilter').value;
             const emptyState = document.getElementById('emptyState');
 
-            // Filter Process
             let filtered = orchids.filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.code.toLowerCase().includes(searchVal);
                 const matchesCategory = categoryVal === 'ALL' || item.category === categoryVal;
@@ -406,12 +493,11 @@
             } else if (sortVal === 'stock-desc') {
                 filtered.sort((a, b) => b.stock - a.stock);
             } else if (sortVal === 'name-asc') {
-                filtered.sort((a, b) => a.name.localeCompare(b.name));
+                filtered.sort((a, b) => b.name.localeCompare(b.name));
             } else {
                 filtered.sort((a, b) => b.id - a.id);
             }
 
-            // Update Counters
             document.getElementById('productCount').textContent = filtered.length;
 
             if (filtered.length === 0) {
@@ -422,8 +508,13 @@
 
             emptyState.classList.add('hidden');
 
-            // Render HTML Cards dengan Fallback otomatis ke 'img/fixfoto.svg'
+            // Render HTML Cards dengan Caption Nama File Asli
             grid.innerHTML = filtered.map(item => {
+                let filename = item.originalFilename || item.image.split('/').pop();
+                if (filename.startsWith('data:')) {
+                    filename = INITIAL_ORCHIDS.find(p => p.id === item.id)?.image.split('/').pop() || 'foto.jpg';
+                }
+
                 let stockBadgeClass = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
                 let stockText = `Stok: ${item.stock}`;
                 if (item.stock === 0) {
@@ -436,15 +527,25 @@
 
                 return `
                 <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-                    <!-- Card Header Image dengan onerror ke logo fixfoto.svg -->
-                    <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                    <!-- Caption Label Nama File Asli & Tombol Unggah Cepat -->
+                    <div class="bg-emerald-900 text-emerald-100 text-[11px] px-3 py-1.5 font-mono border-b border-emerald-800 flex items-center justify-between">
+                        <span class="truncate" title="Nama file di folder img/"><i class="fa-solid fa-file-image text-amber-400 mr-1"></i> <strong class="select-all cursor-text">${filename}</strong></span>
+                        <button onclick="startUploadFor('${filename}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] transition-colors flex items-center gap-1 shadow shrink-0" title="Simpan file ke folder img/ dengan nama ini">
+                            <i class="fa-solid fa-upload"></i> Unggah
+                        </button>
+                    </div>
+
+                    <!-- Card Header Image -->
+                    <div class="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                         <img src="${item.image}" alt="${item.name}" loading="lazy" 
-                             onerror="this.onerror=null;this.src='img/fixfoto.svg';"
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-md text-white text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg">
+                             onerror="this.onerror=null; this.src='img/fixfoto.svg';"
+                             onclick="openZoom(this.src)"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
+                             title="Klik untuk memperbesar foto">
+                        <span class="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-md text-white text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg pointer-events-none">
                             ${item.code}
                         </span>
-                        <span class="absolute top-3 right-3 text-[11px] font-bold px-2.5 py-1 rounded-lg ${stockBadgeClass}">
+                        <span class="absolute top-3 right-3 text-[11px] font-bold px-2.5 py-1 rounded-lg ${stockBadgeClass} pointer-events-none">
                             ${stockText}
                         </span>
                     </div>
@@ -499,7 +600,17 @@
             const item = orchids.find(p => p.id === id);
             if (!item) return;
 
-            document.getElementById('detailImage').src = item.image;
+            let filename = item.originalFilename || item.image.split('/').pop();
+            if (filename.startsWith('data:')) {
+                filename = INITIAL_ORCHIDS.find(p => p.id === item.id)?.image.split('/').pop() || 'foto.jpg';
+            }
+            activeTargetFilename = filename;
+            
+            document.getElementById('detailFilenameText').textContent = filename;
+
+            const detailImg = document.getElementById('detailImage');
+            detailImg.src = item.image;
+
             document.getElementById('detailCode').textContent = item.code;
             document.getElementById('detailCategory').textContent = `Wilayah Asal: ${item.category}`;
             document.getElementById('detailName').textContent = item.name;
@@ -507,7 +618,6 @@
             document.getElementById('detailDesc').textContent = item.desc;
             document.getElementById('detailStock').textContent = `${item.stock} Unit`;
 
-            // WhatsApp link auto generator
             const waText = encodeURIComponent(`Halo Admin NusantaraAnggrek, saya berminat memesan anggrek asli Indonesia berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Asal*: ${item.category}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
             document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${waText}`;
 
@@ -524,7 +634,6 @@
             document.getElementById('editProductId').value = "";
             document.getElementById('productForm').reset();
             
-            // Generate auto code
             const nextNum = orchids.length + 1;
             document.getElementById('formCode').value = `IDN-${String(nextNum).padStart(3, '0')}`;
             
@@ -595,8 +704,9 @@
         function confirmResetData() {
             if (confirm("Reset akan mengembalikan katalog ke 50 data asli anggrek Indonesia. Perubahan Anda akan ditimpa. Lanjutkan?")) {
                 orchids = [...INITIAL_ORCHIDS];
-                saveToStorage();
+                localStorage.removeItem('indonesia_anggrek_catalog');
                 renderCatalog();
+                showToast("Katalog berhasil direset ke data awal!");
             }
         }
 
