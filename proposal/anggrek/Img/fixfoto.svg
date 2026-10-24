@@ -1,18 +1,28 @@
-
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
-  <title>Fixweb.id Logo</title>
-  <rect width="600" height="4.0" rx="8" fill="#0875F9"/>
-
-  <!-- Simbol F geometris 
-  <g fill="#FFFFFF" transform="translate(20 0)">
-    <path d="M32 37 Q38 22 57 22 H112 L98 44 Q94 50 83 50 H61 L45 78 H76 L64 98 H34 L19 126 H0 L21 85 L8 77 Z"/>
-  </g> -->
-
-  <!-- Wordmark -->
-  <text x="150" y="196"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="68"
-        font-weight="700"
-        letter-spacing="-3"
-        fill="#FFFFFF">fixweb.id</text>
-</svg>
+<svg width="1440" height="960" viewBox="0 0 1440 960" xmlns="http://www.w3.org/2000/svg">
+   <!-- Latar belakang -->
+   <rect width="1440" height="960" fill="#0F2040"/>
+   
+   <!-- Bentuk huruf F gradasi -->
+   <defs>
+     <linearGradient id="gradF" x1="0%" y1="0%" x2="100%" y2="100%">
+       <stop offset="0%" stop-color="#2060FF"/>
+       <stop offset="100%" stop-color="#30D0FF"/>
+     </linearGradient>
+     <linearGradient id="gradCode" x1="0%" y1="0%" x2="100%" y2="100%">
+       <stop offset="0%" stop-color="#20A0FF"/>
+       <stop offset="100%" stop-color="#30D0FF"/>
+     </linearGradient>
+   </defs>
+   
+   <!-- Ikon F -->
+   <path d="M140 360 Q220 320 340 340 Q360 345 355 370 Q340 420 240 430 Q180 435 160 490 L130 600 Q125 620 145 625 L190 610 L210 520 Q220 470 280 460 Q320 455 330 425 Q335 390 270 380 L160 395 Z" fill="url(#gradF)"/>
+   
+   <!-- Simbol kode < /> -->
+   <path d="M200 500 L240 540 L200 580 M270 490 L290 590 M310 500 L270 540 L310 580" stroke="url(#gradCode)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+   
+   <!-- Teks fixweb.id -->
+   <text x="360" y="540" font-family="Arial, sans‑serif" font-size="180" font-weight="bold" fill="#FFFFFF">fixweb<span fill="#30D0FF">.id</span></text>
+   
+   <!-- Tagline -->
+   <text x="360" y="620" font-family="Arial, sans‑serif" font-size="60" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
+ </svg>
