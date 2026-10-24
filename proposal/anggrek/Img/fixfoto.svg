@@ -1,27 +1,17 @@
 <svg width="1440" height="960" viewBox="0 0 1440 960" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1440" height="960" fill="#0A1A38"/>
-  <defs>
-    <linearGradient id="gradF" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1548F5"/>
-      <stop offset="100%" stop-color="#29E2FF"/>
-    </linearGradient>
-    <linearGradient id="gradCode" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1FA0FF"/>
-      <stop offset="100%" stop-color="#29E2FF"/>
-    </linearGradient>
-    <linearGradient id="gradId" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1095FF"/>
-      <stop offset="100%" stop-color="#29E2FF"/>
-    </linearGradient>
-  </defs>
-  <!-- Bentuk huruf F -->
-  <path d="M142 614 L184 376 C202 344 234 336 274 336 L374 336 C392 336 390 362 378 386 C366 400 334 404 226 404 L218 456 C238 448 294 444 320 448 C332 454 330 486 306 502 L174 542 Z" fill="url(#gradF)"/>
-  <!-- Simbol kode < /> -->
-  <path d="M204 524 L246 564 L204 604 M272 514 L290 614 M326 524 L284 564 L326 604" stroke="url(#gradCode)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-  <!-- Teks fixweb -->
-  <text x="420" y="545" font-family="Arial, sans-serif" font-size="190" font-weight="bold" fill="#FFFFFF">fixweb</text>
-  <!-- Teks .id biru -->
-  <text x="795" y="545" font-family="Arial, sans-serif" font-size="190" font-weight="bold" fill="url(#gradId)">.id</text>
-  <!-- Tagline -->
-  <text x="420" y="625" font-family="Arial, sans-serif" font-size="62" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
+<rect width="1440" height="960" fill="#091C3B"/>
+<defs>
+<linearGradient id="gradBiru" x1="0%" y1="100%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#1346F2"/>
+<stop offset="100%" stop-color="#27E0FF"/>
+</linearGradient>
+</defs>
+<!-- Ikon F -->
+<path d="M145 612 L186 372 C204 340 238 334 278 334 L378 334 C396 334 392 360 380 384 C366 398 334 402 226 402 L218 454 C240 446 298 442 324 446 C334 452 332 484 306 500 L170 540 Z" fill="url(#gradBiru)"/>
+<!-- Simbol kode < /> -->
+<path d="M204 522 L244 562 L204 602 M270 512 L288 612 M324 522 L284 562 L324 602" stroke="url(#gradBiru)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+<!-- Teks -->
+<text x="410" y="540" font-family="Segoe UI, sans‑serif" font-size="192" font-weight="bold" fill="#FFFFFF">fixweb</text>
+<text x="792" y="540" font-family="Segoe UI, sans‑serif" font-size="192" font-weight="bold" fill="url(#gradBiru)">.id</text>
+<text x="410" y="624" font-family="Segoe UI, sans‑serif" font-size="60" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
 </svg>
