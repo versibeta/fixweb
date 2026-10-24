@@ -1,128 +1,187 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FixWeb.id - Jasa Pembuatan Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FixWeb.ID — Solusi Website Anda</title>
+<meta name="description" content="FixWeb.ID melayani pembuatan website, katalog online, perbaikan, dan pengembangan website.">
 
 <style>
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --panel: #111b2e;
+  --blue: #3b82f6;
+  --text: #e5edf8;
+  --muted: #94a3b8;
+}
+
+* { box-sizing: border-box; }
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
 }
 
 .container {
-    max-width: 480px;
-    margin: auto;
-    padding: 20px;
-    text-align: center;
+  width: min(900px, 90%);
+  margin: auto;
+}
+
+header {
+  padding: 22px 0;
+  border-bottom: 1px solid #26354d;
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 20px;
+  color: #60a5fa;
+  font-size: 23px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.badge {
-    display: inline-block;
-    background: #84cc16;
-    color: black;
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 14px;
+.hero {
+  text-align: center;
+  padding: 90px 0 75px;
 }
 
-h1 {
-    font-size: 36px;
-    margin: 10px 0;
+.hero h1 {
+  font-size: clamp(32px, 6vw, 48px);
+  line-height: 1.2;
+  margin: 0 0 20px;
 }
 
-.highlight {
-    color: #84cc16;
+.hero h1 span { color: #60a5fa; }
+
+.hero p {
+  color: var(--muted);
+  max-width: 570px;
+  margin: 0 auto 30px;
 }
 
-.subtext {
-    margin-top: 10px;
-    background: rgba(255,255,255,0.1);
-    padding: 10px;
-    border-radius: 10px;
-    font-size: 14px;
+.button {
+  display: inline-block;
+  padding: 12px 22px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.price {
-    color: #facc15;
-    font-weight: bold;
+.button:hover { background: #2563eb; }
+
+section { padding: 35px 0; }
+
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
 }
 
-.mockup {
-    margin: 20px 0;
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 16px;
 }
 
-.mockup img {
-    width: 100%;
-    border-radius: 10px;
+.card {
+  padding: 22px;
+  border: 1px solid #26354d;
+  border-radius: 12px;
+  background: var(--panel);
 }
 
-.features {
-    text-align: left;
-    margin-top: 20px;
+.card h3 { margin-top: 0; }
+
+.card p {
+  color: var(--muted);
+  font-size: 14px;
 }
 
-.features li {
-    margin: 10px 0;
+.demo {
+  text-align: center;
+  padding: 35px 20px;
+  border-radius: 12px;
+  background: var(--panel);
+  border: 1px solid #26354d;
 }
 
-.btn {
-    display: block;
-    margin-top: 25px;
-    background: #16a34a;
-    color: white;
-    text-decoration: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-weight: bold;
-}
-
-.btn:hover {
-    background: #15803d;
+footer {
+  margin-top: 45px;
+  padding: 24px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid #26354d;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
+<header>
+  <div class="container">
+    <a class="logo" href="/">FixWeb.ID</a>
+  </div>
+</header>
 
-    <div class="logo">&nbsp;<div>
+<main>
+  <section class="hero container">
+    <h1>Solusi Digital untuk<br><span>Website Anda</span></h1>
+    <p>
+      Jasa pembuatan, perbaikan, dan pengembangan website.
+      Dari halaman sederhana hingga katalog online untuk bisnis Anda.
+    </p>
+    <a class="button" href="#layanan">Lihat Layanan</a>
+  </section>
 
-    <div class="badge">Jasa Pembuatan</div>
+  <section class="container" id="layanan">
+    <h2>Layanan Kami</h2>
+    <div class="services">
+      <div class="card">
+        <h3>🌐 Website</h3>
+        <p>Pembuatan landing page dan website sederhana untuk usaha atau personal.</p>
+      </div>
 
-    <h1>Website <br>Siap Pakai dan <span class="highlight">Online!</span></h1>
+      <div class="card">
+        <h3>📦 Katalog Online</h3>
+        <p>Menampilkan produk, koleksi, atau spesies dalam katalog yang mudah diakses.</p>
+      </div>
 
-    <!--<div class="subtext">
-        Proses cepat, tanpa ribet dengan desain profesional.  
-        Harga mulai <span class="price">Rp800.000</span>
+      <div class="card">
+        <h3>🛠️ Perbaikan Website</h3>
+        <p>Bantuan perbaikan tampilan, halaman, dan fungsi website sesuai kebutuhan.</p>
+      </div>
     </div>
--->
-    <div class="mockup">
-        <img src="https://via.placeholder.com/400x250" alt="Preview Website">
-    </div>
-<!--
-    <ul class="features">
-        <li>✔ Desain profesional sesuai bisnis</li>
-        <li>✔ Website ringan & responsif</li>
-        <li>✔ Gratis hosting & domain</li>
-    </ul>
--->
-    <a href="https://wa.me/6285882827510" class="btn">
-        WhatsApp Sekarang
-    </a>
+  </section>
 
-</div>
+  <section class="container">
+    <div class="demo">
+      <h2>Contoh Katalog Online</h2>
+      <p>Lihat demo katalog spesies anggrek yang dibuat oleh FixWeb.ID.</p>
+      <a class="button" href="/proposal/anggrek/">Lihat Demo</a>
+    </div>
+  </section>
+
+  <section class="container" style="text-align:center">
+    <h2>Punya Proyek Website?</h2>
+    <p style="color:#94a3b8">
+      Hubungi FixWeb.ID untuk mendiskusikan kebutuhan Anda.
+    </p>
+    <a class="button" href="mailto:halo@fixweb.id">Hubungi Kami</a>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    © 2026 FixWeb.ID · Solusi Website Anda
+  </div>
+</footer>
 
 </body>
 </html>
-
