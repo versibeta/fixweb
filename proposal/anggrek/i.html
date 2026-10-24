@@ -108,7 +108,7 @@
                 Keanekaragaman Anggrek Asli Indonesia
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem folder lokal dan caption nama file siap salin.
+                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan tombol bantu unggah foto cepat.
             </p>
 
             <!-- Search Bar & Filters -->
@@ -146,6 +146,15 @@
             </div>
         </div>
     </section>
+
+    <!-- HIDDEN FILE INPUT UNTUK TRIGGER UPLOAD -->
+    <input type="file" id="hiddenUploadInput" accept="image/*" class="hidden" onchange="handleFileSelected(event)">
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-emerald-900 text-emerald-100 px-5 py-3 rounded-2xl shadow-2xl border border-emerald-700/50 flex items-center gap-3 text-sm font-medium">
+        <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
+        <span id="toastMsg">Berhasil!</span>
+    </div>
 
     <!-- CATALOG GRID STATS & DISPLAY -->
     <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -198,9 +207,12 @@
             </button>
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div>
-                    <!-- Caption Label Nama File di atas Modal Detail -->
-                    <div id="detailCaptionBox" class="hidden bg-emerald-950 text-emerald-300 text-xs px-3 py-1.5 font-mono border-b border-emerald-800/60 flex justify-between items-center">
-                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> <strong id="detailFilenameText" class="select-all cursor-pointer" title="Blok atau salin nama file ini"></strong></span>
+                    <!-- Caption Label Nama File & Tombol Upload di Modal Detail -->
+                    <div class="bg-emerald-900 text-emerald-100 text-xs px-3 py-2 font-mono border-b border-emerald-800 flex justify-between items-center">
+                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> <strong id="detailFilenameText" class="select-all cursor-text"></strong></span>
+                        <button onclick="triggerUploadFromModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded text-[11px] transition-colors flex items-center gap-1 shadow">
+                            <i class="fa-solid fa-upload"></i> Unggah
+                        </button>
                     </div>
                     <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                         <img id="detailImage" src="" alt="" class="w-full h-full object-cover cursor-pointer" 
@@ -240,7 +252,7 @@
         </div>
     </div>
 
-    <!-- IMAGE ZOOM MODAL (UNTUK MEMPERBESAR FOTO) -->
+    <!-- IMAGE ZOOM MODAL -->
     <div id="zoomModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeZoom()">
         <div class="relative max-w-4xl max-h-screen p-2">
             <button class="absolute -top-10 right-0 text-white text-2xl hover:text-amber-400 transition-colors">
@@ -372,6 +384,7 @@
 
         // LOCAL STORAGE INITIALIZATION
         let orchids = JSON.parse(localStorage.getItem('indonesia_anggrek_catalog')) || INITIAL_ORCHIDS;
+        let activeTargetFilename = ''; // Menyimpan nama file yang sedang di-upload
 
         // STATE MANAGEMENT
         function saveToStorage() {
@@ -383,6 +396,16 @@
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
         }
 
+        // TOAST NOTIFICATION HELPER
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
         // ZOOM IMAGE MODAL FUNCTIONS
         function openZoom(imgSrc) {
             document.getElementById('zoomImg').src = imgSrc;
@@ -391,6 +414,46 @@
 
         function closeZoom() {
             document.getElementById('zoomModal').classList.add('hidden');
+        }
+
+        // TRIGGER UPLOAD DARI KARTU ATAU MODAL
+        function startUploadFor(filename) {
+            activeTargetFilename = filename;
+            document.getElementById('hiddenUploadInput').click();
+        }
+
+        function triggerUploadFromModal() {
+            startUploadFor(activeTargetFilename);
+        }
+
+        // PROSES FILE YANG DIPILIH USER
+        function handleFileSelected(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Beri tahu user nama file yang harus disimpan ke folder
+            showToast(`Simpan file ini ke folder img/ dengan nama: "${activeTargetFilename}"`);
+            
+            // Preview lokal sementara di browser agar langsung terlihat
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const base64Data = e.target.result;
+                // Update state local storage agar gambar langsung tampil di web
+                const index = orchids.findIndex(p => p.image === `img/${activeTargetFilename}`);
+                if (index !== -1) {
+                    orchids[index].image = base64Data; // Preview sementara via base64
+                    saveToStorage();
+                    renderCatalog();
+                    
+                    // Jika modal detail sedang terbuka, update juga gambarnya
+                    const detailImg = document.getElementById('detailImage');
+                    if(detailImg) detailImg.src = base64Data;
+                }
+            };
+            reader.readAsDataURL(file);
+            
+            // Reset input file agar bisa pilih file lagi kedepannya
+            event.target.value = '';
         }
 
         // DARK MODE TOGGLE
@@ -451,9 +514,9 @@
 
             emptyState.classList.add('hidden');
 
-            // Render HTML Cards dengan Caption Nama File di atas Foto (Bisa di-highlight & copy manual)
+            // Render HTML Cards dengan Label & Tombol Upload Cepat di atas Foto
             grid.innerHTML = filtered.map(item => {
-                let filename = item.image.split('/').pop();
+                let filename = item.image.startsWith('data:') ? 'custom-photo.jpg' : item.image.split('/').pop();
                 let stockBadgeClass = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
                 let stockText = `Stok: ${item.stock}`;
                 if (item.stock === 0) {
@@ -466,13 +529,15 @@
 
                 return `
                 <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-                    <!-- Caption Label Nama File di atas Foto -->
-                    <div class="bg-emerald-900 text-emerald-100 text-[11px] px-3 py-1 font-mono border-b border-emerald-800 flex items-center justify-between">
-                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1"></i> <strong class="select-all cursor-text" title="Blok dan salin nama file ini">${filename}</strong></span>
-                        <span class="text-[9px] uppercase tracking-wider text-emerald-300 bg-emerald-950 px-1.5 py-0.5 rounded">img/</span>
+                    <!-- Caption Label Nama File & Tombol Unggah Cepat di atas Foto -->
+                    <div class="bg-emerald-900 text-emerald-100 text-[11px] px-3 py-1.5 font-mono border-b border-emerald-800 flex items-center justify-between">
+                        <span class="truncate" title="Nama file di folder img/"><i class="fa-solid fa-file-image text-amber-400 mr-1"></i> <strong class="select-all cursor-text">${filename}</strong></span>
+                        <button onclick="startUploadFor('${filename}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] transition-colors flex items-center gap-1 shadow shrink-0" title="Simpan file ke folder img/ dengan nama ini">
+                            <i class="fa-solid fa-upload"></i> Unggah
+                        </button>
                     </div>
 
-                    <!-- Card Header Image (Bisa diklik untuk zoom/memperbesar foto) -->
+                    <!-- Card Header Image (Bisa diklik untuk zoom foto) -->
                     <div class="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                         <img src="${item.image}" alt="${item.name}" loading="lazy" 
                              onerror="this.onerror=null; this.src='img/fixfoto.svg';"
@@ -537,10 +602,9 @@
             const item = orchids.find(p => p.id === id);
             if (!item) return;
 
-            let filename = item.image.split('/').pop();
+            let filename = item.image.startsWith('data:') ? 'custom-photo.jpg' : item.image.split('/').pop();
+            activeTargetFilename = filename;
             
-            // Set Caption Nama File di Modal Detail
-            document.getElementById('detailCaptionBox').classList.remove('hidden');
             document.getElementById('detailFilenameText').textContent = filename;
 
             const detailImg = document.getElementById('detailImage');
