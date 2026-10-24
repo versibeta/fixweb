@@ -108,7 +108,7 @@
                 Keanekaragaman Anggrek Asli Indonesia
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan tombol bantu unggah foto cepat.
+                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem pengelolaan folder lokal dan panduan label nama file.
             </p>
 
             <!-- Search Bar & Filters -->
@@ -147,7 +147,7 @@
         </div>
     </section>
 
-    <!-- HIDDEN FILE INPUT UNTUK TRIGGER UPLOAD -->
+    <!-- HIDDEN FILE INPUT UNTUK TRIGGER UPLOAD PREVIEW -->
     <input type="file" id="hiddenUploadInput" accept="image/*" class="hidden" onchange="handleFileSelected(event)">
 
     <!-- TOAST NOTIFICATION -->
@@ -207,7 +207,7 @@
             </button>
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div>
-                    <!-- Caption Label Nama File & Tombol Upload di Modal Detail -->
+                    <!-- Caption Label Nama File & Tombol Unggah di Modal Detail -->
                     <div class="bg-emerald-900 text-emerald-100 text-xs px-3 py-2 font-mono border-b border-emerald-800 flex justify-between items-center">
                         <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> <strong id="detailFilenameText" class="select-all cursor-text"></strong></span>
                         <button onclick="triggerUploadFromModal()" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2.5 py-1 rounded text-[11px] transition-colors flex items-center gap-1 shadow">
@@ -384,7 +384,7 @@
 
         // LOCAL STORAGE INITIALIZATION
         let orchids = JSON.parse(localStorage.getItem('indonesia_anggrek_catalog')) || INITIAL_ORCHIDS;
-        let activeTargetFilename = ''; // Menyimpan nama file yang sedang di-upload
+        let activeTargetFilename = '';
 
         // STATE MANAGEMENT
         function saveToStorage() {
@@ -416,7 +416,7 @@
             document.getElementById('zoomModal').classList.add('hidden');
         }
 
-        // TRIGGER UPLOAD DARI KARTU ATAU MODAL
+        // TRIGGER UPLOAD PREVIEW
         function startUploadFor(filename) {
             activeTargetFilename = filename;
             document.getElementById('hiddenUploadInput').click();
@@ -426,33 +426,30 @@
             startUploadFor(activeTargetFilename);
         }
 
-        // PROSES FILE YANG DIPILIH USER
         function handleFileSelected(event) {
             const file = event.target.files[0];
             if (!file) return;
 
-            // Beri tahu user nama file yang harus disimpan ke folder
-            showToast(`Simpan file ini ke folder img/ dengan nama: "${activeTargetFilename}"`);
+            const targetFilename = activeTargetFilename;
             
-            // Preview lokal sementara di browser agar langsung terlihat
             const reader = new FileReader();
             reader.onload = function(e) {
                 const base64Data = e.target.result;
-                // Update state local storage agar gambar langsung tampil di web
-                const index = orchids.findIndex(p => p.image === `img/${activeTargetFilename}`);
+                
+                const index = orchids.findIndex(p => p.image.includes(targetFilename) || p.originalFilename === targetFilename);
                 if (index !== -1) {
-                    orchids[index].image = base64Data; // Preview sementara via base64
+                    orchids[index].image = base64Data;
+                    orchids[index].originalFilename = targetFilename;
                     saveToStorage();
                     renderCatalog();
                     
-                    // Jika modal detail sedang terbuka, update juga gambarnya
                     const detailImg = document.getElementById('detailImage');
                     if(detailImg) detailImg.src = base64Data;
                 }
+                showToast(`Pratinjau tersimpan! Simpan file ke folder img/ dengan nama: "${targetFilename}"`);
             };
             reader.readAsDataURL(file);
             
-            // Reset input file agar bisa pilih file lagi kedepannya
             event.target.value = '';
         }
 
@@ -483,7 +480,6 @@
             const sortVal = document.getElementById('sortFilter').value;
             const emptyState = document.getElementById('emptyState');
 
-            // Filter Process
             let filtered = orchids.filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.code.toLowerCase().includes(searchVal);
                 const matchesCategory = categoryVal === 'ALL' || item.category === categoryVal;
@@ -503,7 +499,6 @@
                 filtered.sort((a, b) => b.id - a.id);
             }
 
-            // Update Counters
             document.getElementById('productCount').textContent = filtered.length;
 
             if (filtered.length === 0) {
@@ -514,9 +509,13 @@
 
             emptyState.classList.add('hidden');
 
-            // Render HTML Cards dengan Label & Tombol Upload Cepat di atas Foto
+            // Render HTML Cards dengan Caption Nama File Asli
             grid.innerHTML = filtered.map(item => {
-                let filename = item.image.startsWith('data:') ? 'custom-photo.jpg' : item.image.split('/').pop();
+                let filename = item.originalFilename || item.image.split('/').pop();
+                if (filename.startsWith('data:')) {
+                    filename = INITIAL_ORCHIDS.find(p => p.id === item.id)?.image.split('/').pop() || 'foto.jpg';
+                }
+
                 let stockBadgeClass = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
                 let stockText = `Stok: ${item.stock}`;
                 if (item.stock === 0) {
@@ -529,7 +528,7 @@
 
                 return `
                 <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-                    <!-- Caption Label Nama File & Tombol Unggah Cepat di atas Foto -->
+                    <!-- Caption Label Nama File Asli & Tombol Unggah Cepat -->
                     <div class="bg-emerald-900 text-emerald-100 text-[11px] px-3 py-1.5 font-mono border-b border-emerald-800 flex items-center justify-between">
                         <span class="truncate" title="Nama file di folder img/"><i class="fa-solid fa-file-image text-amber-400 mr-1"></i> <strong class="select-all cursor-text">${filename}</strong></span>
                         <button onclick="startUploadFor('${filename}')" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] transition-colors flex items-center gap-1 shadow shrink-0" title="Simpan file ke folder img/ dengan nama ini">
@@ -537,7 +536,7 @@
                         </button>
                     </div>
 
-                    <!-- Card Header Image (Bisa diklik untuk zoom foto) -->
+                    <!-- Card Header Image -->
                     <div class="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                         <img src="${item.image}" alt="${item.name}" loading="lazy" 
                              onerror="this.onerror=null; this.src='img/fixfoto.svg';"
@@ -602,7 +601,10 @@
             const item = orchids.find(p => p.id === id);
             if (!item) return;
 
-            let filename = item.image.startsWith('data:') ? 'custom-photo.jpg' : item.image.split('/').pop();
+            let filename = item.originalFilename || item.image.split('/').pop();
+            if (filename.startsWith('data:')) {
+                filename = INITIAL_ORCHIDS.find(p => p.id === item.id)?.image.split('/').pop() || 'foto.jpg';
+            }
             activeTargetFilename = filename;
             
             document.getElementById('detailFilenameText').textContent = filename;
@@ -617,7 +619,6 @@
             document.getElementById('detailDesc').textContent = item.desc;
             document.getElementById('detailStock').textContent = `${item.stock} Unit`;
 
-            // WhatsApp link auto generator
             const waText = encodeURIComponent(`Halo Admin NusantaraAnggrek, saya berminat memesan anggrek asli Indonesia berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Asal*: ${item.category}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
             document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${waText}`;
 
@@ -634,7 +635,6 @@
             document.getElementById('editProductId').value = "";
             document.getElementById('productForm').reset();
             
-            // Generate auto code
             const nextNum = orchids.length + 1;
             document.getElementById('formCode').value = `IDN-${String(nextNum).padStart(3, '0')}`;
             
