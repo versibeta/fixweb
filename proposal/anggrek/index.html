@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Anggrek Nusantara - 50 Produk Spesies & Hibrida Premium</title>
+    <title>Katalog Anggrek Nusantara - 50 Spesies & Hibrida Anggrek Asli Indonesia</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -66,7 +66,7 @@
 
     <!-- TOP ANNOUNCEMENT BAR -->
     <div class="bg-emerald-800 dark:bg-emerald-950 text-emerald-100 text-xs py-2 px-4 text-center font-medium tracking-wide border-b border-emerald-700/50">
-        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-seedling text-amber-400"></i> Katalog Resmi 50 Spesies & Hibrida Anggrek Unggulan - Pengiriman Seluruh Indonesia</span>
+        <span class="inline-flex items-center gap-1.5"><i class="fa-solid fa-seedling text-amber-400"></i> Katalog Resmi 50 Spesies & Endemik Anggrek Asli Nusantara - Siap Kirim Seluruh Indonesia</span>
     </div>
 
     <!-- MAIN HEADER -->
@@ -78,8 +78,8 @@
                     <i class="fa-solid fa-spa text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-emerald-900 dark:text-emerald-400 tracking-tight leading-none">PreviewFlora</h1>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Katalog Anggrek Premium</p>
+                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-emerald-900 dark:text-emerald-400 tracking-tight leading-none">NusantaraOrchid</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Katalog Spesies Endemik Indonesia</p>
                 </div>
             </div>
 
@@ -105,10 +105,10 @@
     <section class="relative bg-gradient-to-b from-emerald-900/10 via-slate-50 to-slate-50 dark:from-emerald-950/40 dark:via-slate-900 dark:to-slate-900 pt-8 pb-6 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-3">
-                Koleksi Anggrek Terlengkap & Terpopuler
+                Keanekaragaman Anggrek Asli Indonesia
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Jelajahi 50 varietas anggrek pilihan dari spesies langka hingga hibrida tercantik. Lengkap dengan spesifikasi, harga, stok terkini, dan pemesanan WhatsApp langsung.
+                Koleksi eksklusif 50 varietas anggrek endemik dari hutan hujan tropis Indonesia. Lengkap dengan kode, harga, stok, dan pemesanan WhatsApp langsung.
             </p>
 
             <!-- Search Bar & Filters -->
@@ -122,17 +122,12 @@
                 <!-- Category Filter -->
                 <div class="md:col-span-4 relative">
                     <select id="categoryFilter" onchange="renderCatalog()" class="w-full px-3.5 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 text-slate-800 dark:text-slate-100 appearance-none cursor-pointer">
-                        <option value="ALL">Semua Genus / Jenis</option>
-                        <option value="Phalaenopsis">Phalaenopsis (Anggrek Bulan)</option>
-                        <option value="Dendrobium">Dendrobium</option>
-                        <option value="Cattleya">Cattleya</option>
-                        <option value="Vanda">Vanda</option>
-                        <option value="Oncidium">Oncidium</option>
-                        <option value="Grammatophyllum">Grammatophyllum (Anggrek Tebu)</option>
-                        <option value="Cymbidium">Cymbidium</option>
-                        <option value="Paphiopedilum">Paphiopedilum (Anggrek Kasut)</option>
-                        <option value="Bulbophyllum">Bulbophyllum</option>
-                        <option value="Spesies Langka">Spesies Langka Lainnya</option>
+                        <option value="ALL">Semua Wilayah / Genus</option>
+                        <option value="Sumatera">Sumatera</option>
+                        <option value="Kalimantan">Kalimantan</option>
+                        <option value="Jawa">Jawa & Bali</option>
+                        <option value="Maluku">Maluku & Nusa Tenggara</option>
+                        <option value="Papua">Papua</option>
                     </select>
                     <i class="fa-solid fa-chevron-down absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
                 </div>
@@ -157,7 +152,7 @@
         <!-- Results Counter -->
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 pb-4 border-b border-slate-200 dark:border-slate-800 gap-2">
             <p class="text-sm text-slate-500 dark:text-slate-400">
-                Menampilkan <span id="productCount" class="font-bold text-slate-800 dark:text-slate-200">0</span> varietas anggrek
+                Menampilkan <span id="productCount" class="font-bold text-slate-800 dark:text-slate-200">0</span> varietas anggrek Indonesia
             </p>
             <div id="activeFiltersBadge" class="flex flex-wrap gap-2 text-xs"></div>
         </div>
@@ -173,7 +168,7 @@
                 <i class="fa-solid fa-leaf"></i>
             </div>
             <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">Anggrek Tidak Ditemukan</h3>
-            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto mb-4">Coba ubah kata kunci pencarian atau ganti kategori filter yang Anda pilih.</p>
+            <p class="text-slate-500 dark:text-slate-400 text-sm max-w-md mx-auto mb-4">Coba ubah kata kunci pencarian atau ganti filter wilayah asal Anda.</p>
             <button onclick="resetFilters()" class="text-emerald-600 dark:text-emerald-400 text-sm font-semibold hover:underline">
                 Reset Filter Pencarian
             </button>
@@ -187,10 +182,10 @@
                 <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
                     <i class="fa-solid fa-spa"></i>
                 </div>
-                <span class="font-serif font-bold text-white text-lg">PreviewFlora Indonesia</span>
+                <span class="font-serif font-bold text-white text-lg">NusantaraOrchid Indonesia</span>
             </div>
             <p class="text-xs text-center md:text-right text-slate-500">
-                &copy; 2026 PreviewFlora Catalog System. Seluruh foto dan data produk terdaftar secara resmi.
+                &copy; 2026 NusantaraOrchid Catalog. Pelestarian dan Konservasi Anggrek Asli Indonesia.
             </p>
         </div>
     </footer>
@@ -251,28 +246,23 @@
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Kode Produk</label>
-                    <input type="text" id="formCode" required placeholder="PREV-051" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                    <input type="text" id="formCode" required placeholder="IDN-051" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Nama Anggrek</label>
-                    <input type="text" id="formName" required placeholder="Phalaenopsis Bellina" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
+                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Nama Anggrek Indonesia</label>
+                    <input type="text" id="formName" required placeholder="Phalaenopsis amabilis" class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Genus / Kategori</label>
+                        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Wilayah Asal</label>
                         <select id="formCategory" required class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100">
-                            <option value="Phalaenopsis">Phalaenopsis</option>
-                            <option value="Dendrobium">Dendrobium</option>
-                            <option value="Cattleya">Cattleya</option>
-                            <option value="Vanda">Vanda</option>
-                            <option value="Oncidium">Oncidium</option>
-                            <option value="Grammatophyllum">Grammatophyllum</option>
-                            <option value="Cymbidium">Cymbidium</option>
-                            <option value="Paphiopedilum">Paphiopedilum</option>
-                            <option value="Bulbophyllum">Bulbophyllum</option>
-                            <option value="Spesies Langka">Spesies Langka</option>
+                            <option value="Sumatera">Sumatera</option>
+                            <option value="Kalimantan">Kalimantan</option>
+                            <option value="Jawa">Jawa & Bali</option>
+                            <option value="Maluku">Maluku & Nusa Tenggara</option>
+                            <option value="Papua">Papua</option>
                         </select>
                     </div>
                     <div>
@@ -294,7 +284,7 @@
 
                 <div>
                     <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">Deskripsi Singkat</label>
-                    <textarea id="formDesc" rows="3" required placeholder="Penjelasan mengenai warna bunga, keharuman, dan perawatan..." class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100"></textarea>
+                    <textarea id="formDesc" rows="3" required placeholder="Penjelasan karakteristik bunga, habitat asli, dan perawatannya..." class="w-full px-3.5 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-sm focus:ring-2 focus:ring-emerald-500 outline-none text-slate-800 dark:text-slate-100"></textarea>
                 </div>
 
                 <div class="pt-3 flex gap-3">
@@ -307,66 +297,66 @@
 
     <!-- JAVASCRIPT APP LOGIC -->
     <script>
-        // DATA SET: 50 PRODUK ANGGREK DENGAN FOTO ASLI SPESIES TEPAT
-        const INITIAL_PREVIEWS = [
-            { id: 1, code: "PREV-001", name: "Phalaenopsis amabilis (Anggrek Bulan)", category: "Phalaenopsis", price: 125000, stock: 15, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Puspa Pesona Indonesia dengan kelopak putih bersih dan lidah kuning elegan. Bunga mekar bertahan hingga 2 bulan." },
-            { id: 2, code: "PREV-002", name: "Dendrobium Nobile Pink", category: "Dendrobium", price: 85000, stock: 24, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Spesies populer berbatang kokoh dengan bunga lebat berwarna gradasi ungu muda ke merah muda." },
-            { id: 3, code: "PREV-003", name: "Vanda coerulea (Anggrek Biru)", category: "Vanda", price: 275000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Varietas anggrek biru alami langka asal Himalaya. Memiliki corak jala biru keunguan yang memukau." },
-            { id: 4, code: "PREV-004", name: "Cattleya Trianae Hybrid", category: "Cattleya", price: 210000, stock: 8, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Ratu Para Anggrek dengan mahkota bunga besar beraroma wangi manis menyegarkan." },
-            { id: 5, code: "PREV-005", name: "Grammatophyllum scriptum (Anggrek Macan)", category: "Grammatophyllum", price: 185000, stock: 10, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Anggrek eksotis dengan motif tutul cokelat kehijauan menyerupai kulit macan tutul." },
-            { id: 6, code: "PREV-006", name: "Oncidium Golden Shower", category: "Oncidium", price: 95000, stock: 18, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Dikenal sebagai Anggrek Penari (Dancing Lady) karena susunan bunga kuning cerah berayun indah." },
-            { id: 7, code: "PREV-007", name: "Phalaenopsis bellina", category: "Phalaenopsis", price: 165000, stock: 4, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies asli Kalimantan beraroma harum sitrus yang kuat, bercorak hijau muda dan magenta." },
-            { id: 8, code: "PREV-008", name: "Paphiopedilum glaucophyllum (Anggrek Kasut)", category: "Paphiopedilum", price: 320000, stock: 3, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kantung Semar endemik Jawa Timur. Bentuk kantung unik dan berstatus perlindungan eksklusif." },
-            { id: 9, code: "PREV-009", name: "Grammatophyllum speciosum (Anggrek Tebu)", category: "Grammatophyllum", price: 650000, stock: 2, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Spesies anggrek terbesar di dunia dengan rumpun tinggi menjulang dan bunga tahan hingga 3 bulan." },
-            { id: 10, code: "PREV-010", name: "Cymbidium Golden Boy", category: "Cymbidium", price: 190000, stock: 12, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Bunga tebal lilin berwarna kuning keemasan, sangat sesuai untuk dekorasi interior iklim dingin." },
-            { id: 11, code: "PREV-011", name: "Bulbophyllum phalaenopsis", category: "Bulbophyllum", price: 450000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Spesies unik kolektor dengan daun raksasa menjuntai dan struktur bunga berambut eksotis." },
-            { id: 12, code: "PREV-012", name: "Dendrobium discolor (Anggrek Keriting)", category: "Dendrobium", price: 140000, stock: 20, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Memiliki kelopak terpilin spiral berwarna cokelat tembaga keemasan yang sangat anggun." },
-            { id: 13, code: "PREV-013", name: "Vanda tricolor var. suavis", category: "Vanda", price: 230000, stock: 7, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Vanda asli Indonesia berbintik ungu merah beraroma wangi manis vanila." },
-            { id: 14, code: "PREV-014", name: "Cattleya labiata Crimson", category: "Cattleya", price: 260000, stock: 5, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Bunga berwarna merah fuchsia pekat dengan bibir bertirus halus dan keharuman semerbak." },
-            { id: 15, code: "PREV-015", name: "Phalaenopsis Schilleriana", category: "Phalaenopsis", price: 175000, stock: 9, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Bunga merah muda pucat halus dengan daun bercorakan silver marmer yang indah." },
-            { id: 16, code: "PREV-016", name: "Coelogyne pandurata (Anggrek Hitam)", category: "Spesies Langka", price: 550000, stock: 3, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Maskot Kalimantan Timur dengan lidah berwarna hitam pekat misterius dan kelopak hijau neon." },
-            { id: 17, code: "PREV-017", name: "Rhynchostylis gigantea Red", category: "Spesies Langka", price: 290000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Rangkaian bunga rapat merapat beraroma sangat harum saat pagi hingga siang hari." },
-            { id: 18, code: "PREV-018", name: "Oncidium Sharry Baby 'Sweet Fragrance'", category: "Oncidium", price: 135000, stock: 14, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Terkenal karena aroma bunganya yang harum manis seperti cokelat dan vanila murni." },
-            { id: 19, code: "PREV-019", name: "Dendrobium Anosmum (Anggrek Sanggul)", category: "Dendrobium", price: 110000, stock: 11, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga ungu menjuntai lebat dengan wangi khas raspberry saat mekar sempurna." },
-            { id: 20, code: "PREV-020", name: "Cymbidium Enzan Shining", category: "Cymbidium", price: 205000, stock: 8, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Warna krem kemerahan elegan dengan daya tahan bunga mekar lebih dari 10 minggu." },
-            { id: 21, code: "PREV-021", name: "Paphiopedilum rothschildianum", category: "Paphiopedilum", price: 1200000, stock: 1, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Raja Anggrek Gunung Kinabalu. Spesies paling bergengsi dan dicari kolektor tingkat dunia." },
-            { id: 22, code: "PREV-022", name: "Phalaenopsis gigantea", category: "Phalaenopsis", price: 420000, stock: 3, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Phalaenopsis terbesar dengan daun mirip telinga gajah dan totol merah cokelat tebal." },
-            { id: 23, code: "PREV-023", name: "Vanda Sanderiana (Waling-Waling)", category: "Vanda", price: 310000, stock: 5, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Ratu Bunga Filipina dengan kelopak lebar bermotif jaring cokelat merah muda fantastis." },
-            { id: 24, code: "PREV-024", name: "Cattleya Bowringiana Magenta", category: "Cattleya", price: 195000, stock: 9, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Menghasilkan tandan berisi belasan bunga ungu tua bercahaya dalam sekali periode mekar." },
-            { id: 25, code: "PREV-025", name: "Dendrobium Striaenopsis (Anggrek Larat)", category: "Dendrobium", price: 90000, stock: 30, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Flora Identitas Maluku berwarna ungu terang, sangat adaptif dan rajin berbunga di dataran rendah." },
-            { id: 26, code: "PREV-026", name: "Bulbophyllum medusae", category: "Bulbophyllum", price: 210000, stock: 6, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Bunga unik menyerupai rambut Medusa putih krem yang terurai lembut menawan." },
-            { id: 27, code: "PREV-027", name: "Dendrobium spectabile", category: "Dendrobium", price: 250000, stock: 4, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga eksotis Papua dengan kelopak kriwil terpilin abstrak menyerupai monster alien indah." },
-            { id: 28, code: "PREV-028", name: "Phalaenopsis Violacea Sumatra", category: "Phalaenopsis", price: 180000, stock: 8, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies murni berpola fuchsia bercahaya kilap lilin beraroma wangi rempah manis." },
-            { id: 29, code: "PREV-029", name: "Cattleya Walkeriana Alba", category: "Cattleya", price: 380000, stock: 3, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Varietas miniatur putih bersih yang sangat jarang ditemui dengan wangi intensif." },
-            { id: 30, code: "PREV-030", name: "Oncidium Papilio (Psychopsis)", category: "Oncidium", price: 240000, stock: 7, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kupu-kupu dengan antena panjang dan kelopak jingga keemasan yang unik." },
-            { id: 31, code: "PREV-031", name: "Renanthera coccinea (Anggrek Api)", category: "Spesies Langka", price: 160000, stock: 12, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Warna merah menyala seperti kobaran api, cocok tumbuh memanjat di area outdoor." },
-            { id: 32, code: "PREV-032", name: "Cymbidium aloifolium", category: "Cymbidium", price: 105000, stock: 16, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tandan bunga menjuntai panjang berwarna kuning bergaris merah marun yang sangat tahan panas." },
-            { id: 33, code: "PREV-033", name: "Paphiopedilum victoria-mariae", category: "Paphiopedilum", price: 490000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kasut endemik Sumatra Barat yang dilindungi dengan perpaduan warna hijau kemerahan." },
-            { id: 34, code: "PREV-034", name: "Phalaenopsis equestris Pink", category: "Phalaenopsis", price: 115000, stock: 19, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Berbunga kecil mungil bercabang banyak, rajin menghasilkan anakan keiki." },
-            { id: 35, code: "PREV-035", name: "Vanda Mimi Palmer", category: "Vanda", price: 220000, stock: 8, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Hibrida wangi beraroma minyak wangi mewah dengan corak totol cokelat keunguan." },
-            { id: 36, code: "PREV-036", name: "Dendrobium Helix (Anggrek Keong)", category: "Dendrobium", price: 170000, stock: 13, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Kelopak melingkar kencang seperti tanduk domba atau cangkang keong berwarna cokelat emas." },
-            { id: 37, code: "PREV-037", name: "Brassavola nodosa (Lady of the Night)", category: "Spesies Langka", price: 130000, stock: 15, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Memancarkan keharuman jeruk sitrus yang memikat secara khusus pada malam hari." },
-            { id: 38, code: "PREV-038", name: "Grammatophyllum martae", category: "Grammatophyllum", price: 350000, stock: 3, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Spesies langka Filipina bermahkota cokelat pekat gelap berukuran jumbo." },
-            { id: 39, code: "PREV-039", name: "Bulbophyllum echinolabium", category: "Bulbophyllum", price: 280000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Memiliki ukuran bunga terbesar dalam genus Bulbophyllum dengan bibir berduri unik." },
-            { id: 40, code: "PREV-040", name: "Cattleya Mossiae Semi-Alba", category: "Cattleya", price: 295000, stock: 5, image: "https://images.unsplash.com/photo-1534067783941-51c9c23ecefd?auto=format&fit=crop&w=800&q=80", desc: "Bunga nasional Venezuela bermahkota putih kontras dengan lidah ungu keemasan." },
-            { id: 41, code: "PREV-041", name: "Phalaenopsis Cornu-Cervi", category: "Phalaenopsis", price: 120000, stock: 17, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Tangkai bunga pipih menyerupai tanduk rusa dengan bunga kuning totol merah." },
-            { id: 42, code: "PREV-042", name: "Dendrobium Kingianum", category: "Dendrobium", price: 95000, stock: 22, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Anggrek batu mungil asal Australia yang menghasilkan rumpun bunga merah muda wangi." },
-            { id: 43, code: "PREV-043", name: "Vanda Tessellata", category: "Vanda", price: 260000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Motif kelopak berkotak-kotak catur cokelat kehijauan dengan bibir violet cerah." },
-            { id: 44, code: "PREV-044", name: "Arundina graminifolia (Anggrek Bambu)", category: "Spesies Langka", price: 75000, stock: 25, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tumbuh di tanah dengan daun mirip tanaman bambu dan bunga serial mirip Phalaenopsis." },
-            { id: 45, code: "PREV-045", name: "Oncidium Twinkle 'Fragrant Fantasy'", category: "Oncidium", price: 110000, stock: 14, image: "https://images.unsplash.com/photo-1615213612124-424872223849?auto=format&fit=crop&w=800&q=80", desc: "Ratusan bunga mini putih krem mekar bersamaan memancarkan aroma kue manis." },
-            { id: 46, code: "PREV-046", name: "Paphiopedilum niveum", category: "Paphiopedilum", price: 340000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kasut salju putih bersih bermotif berbintik halus ungu pucat." },
-            { id: 47, code: "PREV-047", name: "Cymbidium devonianum", category: "Cymbidium", price: 230000, stock: 7, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tandan gantung lebat dengan kombinasi warna zaitun dan bibir ungu kehitaman." },
-            { id: 48, code: "PREV-048", name: "Dendrobium Unicum", category: "Dendrobium", price: 155000, stock: 9, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga jingga cerah unik dengan lidah bergaris yang mekar saat pohon menggugurkan daun." },
-            { id: 49, code: "PREV-049", name: "Phalaenopsis tetraspis 'C1'", category: "Phalaenopsis", price: 310000, stock: 5, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Variasi unik di mana kelopak bunga memiliki acakan warna merah dan putih bervariasi." },
-            { id: 50, code: "PREV-050", name: "Ludisia discolor (Anggrek Permata)", category: "Spesies Langka", price: 85000, stock: 20, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Dikenal indah karena daun beludru hitam bergaris merah tembaga mengkilap." }
+        // DATA SET: 50 PRODUK ANGGREK ASLI INDONESIA BERDASARKAN WILAYAH ENDEMIK
+        const INITIAL_ORCHIDS = [
+            { id: 1, code: "IDN-001", name: "Phalaenopsis amabilis (Anggrek Bulan)", category: "Jawa", price: 125000, stock: 15, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Puspa Pesona Indonesia dengan kelopak putih bersih dan lidah kuning elegan. Bunga mekar bertahan hingga 2 bulan." },
+            { id: 2, code: "IDN-002", name: "Coelogyne pandurata (Anggrek Hitam)", category: "Kalimantan", price: 550000, stock: 3, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Maskot flora Kalimantan Timur dengan lidah berwarna hitam pekat misterius dan kelopak hijau neon." },
+            { id: 3, code: "IDN-003", name: "Grammatophyllum speciosum (Anggrek Tebu)", category: "Sumatera", price: 650000, stock: 2, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Spesies anggrek terbesar di dunia asal hutan Sumatra dengan rumpun tinggi menjulang dan bunga tahan lama." },
+            { id: 4, code: "IDN-004", name: "Dendrobium phalaenopsis (Anggrek Larat)", category: "Maluku", price: 90000, stock: 30, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Flora identitas Maluku berwarna ungu terang, sangat adaptif dan rajin berbunga di dataran rendah." },
+            { id: 5, code: "IDN-005", name: "Paphiopedilum glaucophyllum (Anggrek Kasut)", category: "Jawa", price: 320000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek kantung semar endemik Jawa Timur dengan bentuk kantung unik dan dilindungi." },
+            { id: 6, code: "IDN-006", name: "Dendrobium discolor (Anggrek Keriting Papua)", category: "Papua", price: 140000, stock: 18, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Memiliki kelopak terpilin spiral berwarna cokelat tembaga keemasan khas hutan hujan Papua." },
+            { id: 7, code: "IDN-007", name: "Vanda tricolor var. suavis", category: "Jawa", price: 230000, stock: 7, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Vanda asli lereng Gunung Merapi/Merbabu berbintik ungu merah beraroma wangi manis vanila." },
+            { id: 8, code: "IDN-008", name: "Phalaenopsis bellina", category: "Kalimantan", price: 165000, stock: 6, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies endemik hutan dataran rendah Kalimantan beraroma harum sitrus yang kuat." },
+            { id: 9, code: "IDN-009", name: "Grammatophyllum scriptum (Anggrek Macan)", category: "Maluku", price: 185000, stock: 10, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Anggrek eksotis Maluku dengan motif tutul cokelat kehijauan menyerupai kulit macan tutul." },
+            { id: 10, code: "IDN-010", name: "Dendrobium anosmum (Anggrek Sanggul)", category: "Sumatera", price: 110000, stock: 12, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga ungu menjuntai lebat asal Sumatera dengan wangi khas raspberry saat mekar sempurna." },
+            { id: 11, code: "IDN-011", name: "Bulbophyllum phalaenopsis", category: "Papua", price: 450000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Spesies unik kolektor asal Papua dengan daun raksasa menjuntai dan struktur bunga berambut eksotis." },
+            { id: 12, code: "IDN-012", name: "Phalaenopsis gigantea", category: "Kalimantan", price: 420000, stock: 3, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Phalaenopsis terbesar asal Kalimantan dengan daun mirip telinga gajah dan totol merah cokelat tebal." },
+            { id: 13, code: "IDN-013", name: "Renanthera coccinea (Anggrek Api)", category: "Sumatera", price: 160000, stock: 14, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Warna merah menyala seperti kobaran api asal hutan Sumatra, cocok tumbuh merambat di area terbuka." },
+            { id: 14, code: "IDN-014", name: "Paphiopedilum rothschildianum", category: "Kalimantan", price: 1200000, stock: 1, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Raja Anggrek Gunung Kinabalu/Kalimantan Utara. Spesies paling bergengsi buruan kolektor dunia." },
+            { id: 15, code: "IDN-015", name: "Phalaenopsis schilleriana", category: "Jawa", price: 175000, stock: 8, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Bunga merah muda pucat halus dengan daun bercorakan silver marmer yang indah asal nusantara." },
+            { id: 16, code: "IDN-016", name: "Dendrobium spectabile", category: "Papua", price: 250000, stock: 5, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga eksotis Papua dengan kelopak kriwil terpilin abstrak menyerupai monster alien indah." },
+            { id: 17, code: "IDN-017", name: "Rhynchostylis gigantea", category: "Sumatera", price: 290000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Rangkaian bunga rapat merapat beraroma sangat harum saat pagi hari di hutan Sumatra." },
+            { id: 18, code: "IDN-018", name: "Ludisia discolor (Anggrek Permata)", category: "Sumatera", price: 85000, stock: 25, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Dikenal indah karena daun beludru hitam bergaris merah tembaga mengkilap di lantai hutan." },
+            { id: 19, code: "IDN-019", name: "Arundina graminifolia (Anggrek Bambu)", category: "Jawa", price: 75000, stock: 20, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Tumbuh di tanah dataran tinggi Jawa dengan daun mirip tanaman bambu dan bunga ungu lembut." },
+            { id: 20, code: "IDN-020", name: "Paphiopedilum victoria-mariae", category: "Sumatera", price: 490000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Kasut endemik pegunungan Sumatra Barat yang dilindungi dengan perpaduan warna hijau kemerahan." },
+            { id: 21, code: "IDN-021", name: "Dendrobium canaliculatum", category: "Nusa Tenggara", price: 130000, stock: 11, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Anggrek unik tahan kering asal kepulauan Nusa Tenggara dengan pseudobulb silindris pendek." },
+            { id: 22, code: "IDN-022", name: "Phalaenopsis cornu-cervi", category: "Sumatera", price: 120000, stock: 15, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Tangkai bunga pipih menyerupai tanduk rusa dengan bunga kuning totol merah asal Sumatra." },
+            { id: 23, code: "IDN-023", name: "Bulbophyllum medusae", category: "Kalimantan", price: 210000, stock: 7, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Bunga unik asal Kalimantan menyerupai rambut Medusa putih krem yang terurai lembut." },
+            { id: 24, code: "IDN-024", name: "Dendrobium secundum (Anggrek Sikat)", category: "Jawa", price: 95000, stock: 19, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga tersusun rapat dalam satu sisi tangkai menyerupai sikat berwarna pink cerah." },
+            { id: 25, code: "IDN-025", name: "Vanda limbata", category: "Jawa", price: 210000, stock: 9, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Anggrek Vanda cokelat kemerahan khas Pulau Jawa dengan corak jala keemasan menawan." },
+            { id: 26, code: "IDN-026", name: "Cymbidium finlaysonianum", category: "Sumatera", price: 190000, stock: 10, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Anggrek epifit berdaun tebal kaku dengan tandan bunga menjuntai berwarna cokelat zaitun." },
+            { id: 27, code: "IDN-027", name: "Dendrobium unicum", category: "Sumatera", price: 155000, stock: 8, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga jingga cerah unik dengan lidah bergaris yang mekar saat pohon menggugurkan daun di Sumatra." },
+            { id: 28, code: "IDN-028", name: "Phalaenopsis violacea", category: "Sumatera", price: 180000, stock: 7, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Spesies murni asal Sumatra berpola fuchsia bercahaya kilap lilin beraroma wangi rempah manis." },
+            { id: 29, code: "IDN-029", name: "Bulbophyllum echinolabium", category: "Sulawesi", price: 280000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Memiliki ukuran bunga terbesar dalam genus Bulbophyllum asal Sulawesi dengan bibir berduri." },
+            { id: 30, code: "IDN-030", name: "Dendrobium canaliculatum var. compactum", category: "Maluku", price: 145000, stock: 12, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Variasi mungil endemik kepulauan Maluku dengan tandan bunga mini yang sangat rajin berbunga." },
+            { id: 31, code: "IDN-031", name: "Spathoglottis plicata (Anggrek Tanah)", category: "Jawa", price: 65000, stock: 35, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Anggrek tanah ungu yang mudah tumbuh di pekarangan rumah seluruh wilayah nusantara." },
+            { id: 32, code: "IDN-032", name: "Phalaenopsis sumatrana", category: "Sumatera", price: 195000, stock: 5, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Bunga khas Sumatra dengan corak garis-garis cokelat kemerahan di atas dasar kuning krem." },
+            { id: 33, code: "IDN-033", name: "Dendrobium macrophyllum", category: "Papua", price: 170000, stock: 9, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Memiliki kelopak dan sepal berbulu hijau kekuningan unik khas hutan pegunungan Papua." },
+            { id: 34, code: "IDN-034", name: "Vanda hokulea", category: "Kalimantan", price: 240000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Hibrida silangan unggulan lokal dengan warna jingga terang bercorak bintik merah marun." },
+            { id: 35, code: "IDN-035", name: "Coelogyne speciosa", category: "Jawa", price: 135000, stock: 14, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Bunga besar berwarna hijau kecoklatan dengan bibir putih bercorak garis cokelat eksotis." },
+            { id: 36, code: "IDN-036", name: "Grammatophyllum stapeliaeflorum", category: "Sumatera", price: 310000, stock: 3, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Anggrek unik menempel di batang pohon besar berpola bunga mirip bunga bangkai mini." },
+            { id: 37, code: "IDN-037", name: "Dendrobium lasianthera (Anggrek Irian)", category: "Papua", price: 220000, stock: 8, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Anggrek keriting berukuran besar dengan kombinasi warna ungu tua dan kuning cerah." },
+            { id: 38, code: "IDN-038", name: "Phalaenopsis amboinensis", category: "Maluku", price: 175000, stock: 10, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Endemik Pulau Ambon dengan bentuk bunga bulat sempurna bermotif garis cokelat melintang." },
+            { id: 39, code: "IDN-039", name: "Paphiopedilum javanicum", category: "Jawa", price: 340000, stock: 4, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek kasut endemik pegunungan Pulau Jawa dengan warna hijau daun bermotif marmer." },
+            { id: 40, code: "IDN-040", name: "Dendrobium atroviolaceum", category: "Papua", price: 295000, stock: 5, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Bunga putih krem bertotol ungu gelap dengan tandan bunga yang sangat mencolok." },
+            { id: 41, code: "IDN-041", name: "Vanda celebica", category: "Sulawesi", price: 260000, stock: 6, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Spesies Vanda endemik Sulawesi dengan warna kecoklatan dan lidah ungu tajam." },
+            { id: 42, code: "IDN-042", name: "Bulbophyllum beccarii", category: "Kalimantan", price: 600000, stock: 2, image: "https://images.unsplash.com/photo-1599598425947-03064373454f?auto=format&fit=crop&w=800&q=80", desc: "Anggrek raksasa pemanjat pohon hutan Kalimantan dengan daun melingkar batang yang masif." },
+            { id: 43, code: "IDN-043", name: "Phalaenopsis corningiana", category: "Kalimantan", price: 380000, stock: 3, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Memiliki bunga berdaging tebal mengkilap dengan corak garis merah tua yang sangat padat." },
+            { id: 44, code: "IDN-044", name: "Dendrobium mutabile", category: "Jawa", price: 85000, stock: 22, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Anggrek lokal Jawa yang bunganya berubah warna dari putih bersih menjadi ungu saat menua." },
+            { id: 45, code: "IDN-045", name: "Cymbidium hartinahianum", category: "Sumatera", price: 270000, stock: 7, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Ditemukan di Danau Toba Sumatra Utara, tumbuh di tanah terbuka dengan bunga hijau kuning." },
+            { id: 46, code: "IDN-046", name: "Eria coronaria", category: "Sumatera", price: 145000, stock: 11, image: "https://images.unsplash.com/photo-1567608285969-42e9963695b0?auto=format&fit=crop&w=800&q=80", desc: "Bunga putih bersih bertekstur tebal dengan pusat berwarna kuning cerah khas pegunungan." },
+            { id: 47, code: "IDN-047", name: "Appendicula truncata", category: "Jawa", price: 70000, stock: 28, image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80", desc: "Anggrek epifit berbatang rapat bertingkat dengan bunga-bunga kecil putih bersih." },
+            { id: 48, code: "IDN-048", name: "Dendrobium canaliculatum var. pallidum", category: "Papua", price: 160000, stock: 9, image: "https://images.unsplash.com/photo-1566999573017-0e67e7813dfe?auto=format&fit=crop&w=800&q=80", desc: "Varietas warna pucat menawan dengan aroma lembut khas pesisir pantai Papua." },
+            { id: 49, code: "IDN-049", name: "Phalaenopsis maculata", category: "Sumatera", price: 150000, stock: 13, image: "https://images.unsplash.com/photo-1525310072745-f49212b5ac6d?auto=format&fit=crop&w=800&q=80", desc: "Bunga berukuran kecil dengan bintik-bintik merah terang melintang di atas dasar putih krem." },
+            { id: 50, code: "IDN-050", name: "Vanda lowii", category: "Kalimantan", price: 450000, stock: 4, image: "https://images.unsplash.com/photo-1509114397022-ed747cca3f65?auto=format&fit=crop&w=800&q=80", desc: "Keunikan luar biasa di mana satu tangkai menghasilkan dua jenis warna bunga berbeda (kuning dan cokelat tua)." }
         ];
 
         // LOCAL STORAGE INITIALIZATION
-        let previews = JSON.parse(localStorage.getItem('preview_catalog_data')) || INITIAL_PREVIEWS;
+        let orchids = JSON.parse(localStorage.getItem('indonesia_orchid_catalog')) || INITIAL_ORCHIDS;
 
         // STATE MANAGEMENT
         function saveToStorage() {
-            localStorage.setItem('preview_catalog_data', JSON.stringify(previews));
+            localStorage.setItem('indonesia_orchid_catalog', JSON.stringify(orchids));
         }
 
         // FORMAT CURRENCY (IDR)
@@ -402,7 +392,7 @@
             const emptyState = document.getElementById('emptyState');
 
             // Filter Process
-            let filtered = previews.filter(item => {
+            let filtered = orchids.filter(item => {
                 const matchesSearch = item.name.toLowerCase().includes(searchVal) || item.code.toLowerCase().includes(searchVal);
                 const matchesCategory = categoryVal === 'ALL' || item.category === categoryVal;
                 return matchesSearch && matchesCategory;
@@ -463,7 +453,7 @@
                     <!-- Card Content -->
                     <div class="p-5 flex-grow flex flex-col justify-between">
                         <div>
-                            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">${item.category}</span>
+                            <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider"><i class="fa-solid fa-location-dot"></i> Asal: ${item.category}</span>
                             <h3 class="font-serif font-bold text-slate-900 dark:text-white text-base mt-1 line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors" title="${item.name}">
                                 ${item.name}
                             </h3>
@@ -507,19 +497,19 @@
 
         // DETAIL MODAL FUNCTIONS
         function openDetailModal(id) {
-            const item = previews.find(p => p.id === id);
+            const item = orchids.find(p => p.id === id);
             if (!item) return;
 
             document.getElementById('detailImage').src = item.image;
             document.getElementById('detailCode').textContent = item.code;
-            document.getElementById('detailCategory').textContent = item.category;
+            document.getElementById('detailCategory').textContent = `Wilayah Asal: ${item.category}`;
             document.getElementById('detailName').textContent = item.name;
             document.getElementById('detailPrice').textContent = formatRupiah(item.price);
             document.getElementById('detailDesc').textContent = item.desc;
             document.getElementById('detailStock').textContent = `${item.stock} Unit`;
 
             // WhatsApp link auto generator
-            const waText = encodeURIComponent(`Halo Admin PreviewFlora, saya berminat memesan produk anggrek berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
+            const waText = encodeURIComponent(`Halo Admin NusantaraOrchid, saya berminat memesan anggrek asli Indonesia berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Asal*: ${item.category}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
             document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${waText}`;
 
             document.getElementById('detailModal').classList.remove('hidden');
@@ -536,14 +526,14 @@
             document.getElementById('productForm').reset();
             
             // Generate auto code
-            const nextNum = previews.length + 1;
-            document.getElementById('formCode').value = `PREV-${String(nextNum).padStart(3, '0')}`;
+            const nextNum = orchids.length + 1;
+            document.getElementById('formCode').value = `IDN-${String(nextNum).padStart(3, '0')}`;
             
             document.getElementById('formModal').classList.remove('hidden');
         }
 
         function openEditModal(id) {
-            const item = previews.find(p => p.id === id);
+            const item = orchids.find(p => p.id === id);
             if (!item) return;
 
             document.getElementById('formModalTitle').textContent = "Edit Data Anggrek";
@@ -580,11 +570,11 @@
 
             if (editId) {
                 // Edit
-                const index = previews.findIndex(p => p.id === parseInt(editId));
-                if (index !== -1) previews[index] = newItem;
+                const index = orchids.findIndex(p => p.id === parseInt(editId));
+                if (index !== -1) orchids[index] = newItem;
             } else {
                 // Add New
-                previews.unshift(newItem);
+                orchids.unshift(newItem);
             }
 
             saveToStorage();
@@ -594,11 +584,11 @@
 
         // DELETE PRODUCT
         function deleteProduct(id) {
-            const item = previews.find(p => p.id === id);
+            const item = orchids.find(p => p.id === id);
             if (!item) return;
 
             if (confirm(`Apakah Anda yakin ingin menghapus "${item.name}" dari katalog?`)) {
-                previews = previews.filter(p => p.id !== id);
+                orchids = orchids.filter(p => p.id !== id);
                 saveToStorage();
                 renderCatalog();
             }
@@ -606,8 +596,8 @@
 
         // RESET ALL DATA TO DEFAULT
         function confirmResetData() {
-            if (confirm("Reset akan mengembalikan katalog ke 50 data anggrek asli default. Perubahan Anda akan ditimpa. Lanjutkan?")) {
-                previews = [...INITIAL_PREVIEWS];
+            if (confirm("Reset akan mengembalikan katalog ke 50 data asli anggrek Indonesia. Perubahan Anda akan ditimpa. Lanjutkan?")) {
+                orchids = [...INITIAL_ORCHIDS];
                 saveToStorage();
                 renderCatalog();
             }
