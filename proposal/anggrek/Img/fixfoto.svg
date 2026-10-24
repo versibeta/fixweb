@@ -1,44 +1,128 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
   <defs>
-    <!-- Gradasi Latar Belakang -->
-    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#022117"/>
-      <stop offset="100%" stop-color="#053e2b"/>
-    </linearGradient>
-    
-    <!-- Gradasi Anggrek/Daun -->
-    <linearGradient id="orchidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#34d399"/>
-      <stop offset="100%" stop-color="#10b981"/>
+    <!-- Gradasi Latar Belakang Hutan Mewah -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#021f15"/>
+      <stop offset="50%" stop-color="#053e2b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
     </linearGradient>
 
-    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f59e0b"/>
-      <stop offset="100%" stop-color="#d97706"/>
+    <!-- Gradasi Emas untuk Bingkai & Aksen -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
     </linearGradient>
+
+    <!-- Gradasi Kelopak Anggrek Langka (Ungu Magenta Eksotis) -->
+    <linearGradient id="petalGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e0e7ff"/>
+      <stop offset="40%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7e22ce"/>
+    </linearGradient>
+
+    <!-- Gradasi Kantung Anggrek Kasut (Slipper Orchid) -->
+    <linearGradient id="pouchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e"/>
+      <stop offset="70%" stop-color="#be123c"/>
+      <stop offset="100%" stop-color="#4c0519"/>
+    </linearGradient>
+
+    <!-- Gradasi Daun Kelopak Atas -->
+    <linearGradient id="sepalGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#15803d"/>
+    </linearGradient>
+
+    <!-- Efek Glow Cahaya -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
   </defs>
 
-  <!-- Latar Belakang Kotak dengan Sudut Melengkung Elegan -->
-  <rect width="500" height="500" rx="100" fill="url(#bgGrad)" />
+  <!-- Latar Belakang Utama -->
+  <rect width="600" height="400" fill="url(#bgGradient)"/>
 
-  <!-- Lingkaran Dekoratif Transparan -->
-  <circle cx="250" cy="220" r="140" fill="none" stroke="rgba(52, 211, 153, 0.15)" stroke-width="4" stroke-dasharray="8 8" />
+  <!-- Ornamen Bingkai Tipis Mewah -->
+  <rect x="20" y="20" width="560" height="360" rx="16" fill="none" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.4"/>
+  <rect x="28" y="28" width="544" height="344" rx="12" fill="none" stroke="url(#goldGrad)" stroke-width="0.5" opacity="0.2"/>
 
-  <!-- Ikon Kelopak Bunga Anggrek & Kamera (FixFoto) -->
-  <g transform="translate(250, 205)">
-    <!-- Kelopak Bunga Anggrek Estetik -->
-    <path d="M 0,-90 C 35,-60 60,-20 50,20 C 40,60 10,80 0,95 C -10,80 -40,60 -50,20 C -60,-20 -35,-60 0,-90 Z" fill="url(#orchidGrad)" opacity="0.9"/>
-    <path d="M -90,0 C -60,35 -20,60 20,50 C 60,40 80,10 95,0 C 80,-10 60,-40 20,-50 C -20,-60 -60,-35 -90,0 Z" fill="url(#orchidGrad)" opacity="0.8"/>
+  <!-- Lingkaran Cahaya Latar Belakang Bunga -->
+  <circle cx="300" cy="180" r="110" fill="#10b981" opacity="0.08" filter="url(#glow)"/>
+
+  <!-- ================= LUKISAN ANGGREK LANGKA (Paphiopedilum) ================= -->
+  <g id="rareOrchid" transform="translate(300, 185)">
+    <!-- Daun Kelopak Atas (Dorsal Sepal) -->
+    <path d="M 0,-105 C 45,-100 65,-40 0,-15 C -65,-40 -45,-100 0,-105 Z" fill="url(#sepalGrad)" opacity="0.9" stroke="url(#goldGrad)" stroke-width="1"/>
+    <!-- Corak Garis Endemik pada Sepal -->
+    <path d="M 0,-95 Q 10,-55 0,-20 M -20,-85 Q -10,-50 -10,-25 M 20,-85 Q 10,-50 10,-25" fill="none" stroke="#78350f" stroke-width="1.5" opacity="0.6"/>
+
+    <!-- Kelopak Samping Kiri (Twisted Petal Keriting) -->
+    <path d="M -20,-25 C -70,-35 -110,-10 -130,20 C -110,15 -70,-10 -20,-15 Z" fill="url(#petalGrad1)"/>
+    <!-- Bintik-bintik Totol Eksotis Kiri -->
+    <circle cx="-50" cy="-18" r="2" fill="#4c0519"/>
+    <circle cx="-75" cy="-7" r="2" fill="#4c0519"/>
+    <circle cx="-100" cy="6" r="2" fill="#4c0519"/>
+
+    <!-- Kelopak Samping Kanan (Twisted Petal Keriting) -->
+    <path d="M 20,-25 C 70,-35 110,-10 130,20 C 110,15 70,-10 20,-15 Z" fill="url(#petalGrad1)"/>
+    <!-- Bintik-bintik Totol Eksotis Kanan -->
+    <circle cx="50" cy="-18" r="2" fill="#4c0519"/>
+    <circle cx="75" cy="-7" r="2" fill="#4c0519"/>
+    <circle cx="100" cy="6" r="2" fill="#4c0519"/>
+
+    <!-- Kantung Semar/Kasut Anggrek (Pouch/Labellum) -->
+    <path d="M -30,-5 C -35,35 -20,65 0,65 C 20,65 35,35 30,-5 C 15,5 -15,5 -30,-5 Z" fill="url(#pouchGrad)" stroke="url(#goldGrad)" stroke-width="0.8"/>
     
-    <!-- Badan Lensa Kamera di Tengah Bunga -->
-    <circle cx="0" cy="0" r="45" fill="#022117" stroke="url(#accentGrad)" stroke-width="6" />
-    <circle cx="0" cy="0" r="28" fill="none" stroke="#34d399" stroke-width="3" stroke-dasharray="4 4" />
-    <circle cx="-10" cy="-10" r="8" fill="#ffffff" opacity="0.4" />
+    <!-- Kilauan Cahaya pada Kantung Bunga -->
+    <path d="M -15,15 C -20,35 -10,50 0,52 C -8,48 -12,32 -8,18 Z" fill="#ffffff" opacity="0.25"/>
+
+    <!-- Pusat Bunga (Staminode Emas) -->
+    <circle cx="0" cy="-12" r="10" fill="url(#goldGrad)"/>
+    <circle cx="0" cy="-12" r="4" fill="#78350f"/>
   </g>
 
-  <!-- Teks Brand: FIXFOTO -->
-  <text x="250" y="385" font-family="'Playfair Display', serif" font-size="42" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="4">fixfoto</text>
-  
-  <!-- Sub-teks -->
-  <text x="250" y="415" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="500" fill="#34d399" text-anchor="middle" letter-spacing="3">OFFICIAL ASSET</text>
+  <!-- ================= WATERMARK TEXT TRANSPARAN ================= -->
+  <!-- Teks "fixfoto" Transparan Besar di Tengah -->
+  <text x="300" y="200" 
+        font-family="'Playfair Display', Georgia, serif" 
+        font-size="68" 
+        font-weight="bold" 
+        font-style="italic"
+        fill="#ffffff" 
+        opacity="0.28" 
+        text-anchor="middle" 
+        dominant-baseline="middle"
+        letter-spacing="6">
+    fixfoto
+  </text>
+
+  <!-- Catatan Teks Kecil "Contoh Foto" / "Sample Image" di Atas & Bawah -->
+  <g opacity="0.75">
+    <!-- Badge Atas -->
+    <rect x="235" y="42" width="130" height="22" rx="11" fill="rgba(2, 33, 23, 0.7)" stroke="url(#goldGrad)" stroke-width="0.8"/>
+    <text x="300" y="56" 
+          font-family="'Plus Jakarta Sans', sans-serif" 
+          font-size="10" 
+          font-weight="600" 
+          fill="#fef08a" 
+          text-anchor="middle" 
+          letter-spacing="1.5">
+      SPESIMEN LANGKA
+    </text>
+
+    <!-- Catatan Foto Cadangan Bawah -->
+    <text x="300" y="340" 
+          font-family="'Plus Jakarta Sans', sans-serif" 
+          font-size="12" 
+          font-weight="500" 
+          fill="#cbd5e1" 
+          text-anchor="middle" 
+          letter-spacing="2"
+          opacity="0.8">
+      [ CATATAN: CONTOH FOTO ANGGREK ]
+    </text>
+  </g>
 </svg>
