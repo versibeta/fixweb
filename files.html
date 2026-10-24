@@ -15,6 +15,104 @@ a{color:#1769aa;text-decoration:none}
 a:hover{text-decoration:underline}
 small{color:#667085}
 </style>
+
+
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #0b1120;
+  --panel: #111b2e;
+  --line: #26354d;
+  --text: #e5edf8;
+  --muted: #94a3b8;
+  --blue: #60a5fa;
+  --hover: #1b2b43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+h1 {
+  color: var(--blue);
+  font-size: 26px;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 16px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--blue);
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--panel);
+}
+
+li {
+  padding: 13px 14px;
+  border-bottom: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+
+li:last-child {
+  border-bottom: none;
+}
+
+li:hover {
+  background: var(--hover);
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+small,
+#status {
+  color: var(--muted);
+}
+
+#status {
+  font-size: 14px;
+  margin-top: 16px;
+}
+</style>
+
+  
 </head>
 <body>
 <h1>FixWeb.ID / File Index</h1>
