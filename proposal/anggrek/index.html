@@ -78,7 +78,7 @@
                     <i class="fa-solid fa-spa text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-emerald-900 dark:text-emerald-400 tracking-tight leading-none">NusantaraOrchid</h1>
+                    <h1 class="font-serif font-bold text-xl sm:text-2xl text-emerald-900 dark:text-emerald-400 tracking-tight leading-none">NusantaraAnggrek</h1>
                     <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 font-medium">Katalog Spesies Endemik Indonesia</p>
                 </div>
             </div>
@@ -182,10 +182,10 @@
                 <div class="w-8 h-8 rounded-xl bg-emerald-600 flex items-center justify-center text-white">
                     <i class="fa-solid fa-spa"></i>
                 </div>
-                <span class="font-serif font-bold text-white text-lg">NusantaraOrchid Indonesia</span>
+                <span class="font-serif font-bold text-white text-lg">NusantaraAnggrek Indonesia</span>
             </div>
             <p class="text-xs text-center md:text-right text-slate-500">
-                &copy; 2026 NusantaraOrchid Catalog. Pelestarian dan Konservasi Anggrek Asli Indonesia.
+                &copy; 2026 NusantaraAnggrek Catalog. Pelestarian dan Konservasi Anggrek Asli Indonesia.
             </p>
         </div>
     </footer>
@@ -352,11 +352,11 @@
         ];
 
         // LOCAL STORAGE INITIALIZATION
-        let orchids = JSON.parse(localStorage.getItem('indonesia_orchid_catalog')) || INITIAL_ORCHIDS;
+        let orchids = JSON.parse(localStorage.getItem('indonesia_anggrek_catalog')) || INITIAL_ORCHIDS;
 
         // STATE MANAGEMENT
         function saveToStorage() {
-            localStorage.setItem('indonesia_orchid_catalog', JSON.stringify(orchids));
+            localStorage.setItem('indonesia_anggrek_catalog', JSON.stringify(orchids));
         }
 
         // FORMAT CURRENCY (IDR)
@@ -509,7 +509,7 @@
             document.getElementById('detailStock').textContent = `${item.stock} Unit`;
 
             // WhatsApp link auto generator
-            const waText = encodeURIComponent(`Halo Admin NusantaraOrchid, saya berminat memesan anggrek asli Indonesia berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Asal*: ${item.category}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
+            const waText = encodeURIComponent(`Halo Admin NusantaraAnggrek, saya berminat memesan anggrek asli Indonesia berikut:\n\n*Kode*: ${item.code}\n*Nama*: ${item.name}\n*Asal*: ${item.category}\n*Harga*: ${formatRupiah(item.price)}\n\nApakah stok masih tersedia?`);
             document.getElementById('detailWaBtn').href = `https://wa.me/6281234567890?text=${waText}`;
 
             document.getElementById('detailModal').classList.remove('hidden');
