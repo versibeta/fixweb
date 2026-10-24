@@ -1,34 +1,27 @@
 <svg width="1440" height="960" viewBox="0 0 1440 960" xmlns="http://www.w3.org/2000/svg">
-  <!-- Latar belakang biru tua -->
-  <rect width="1440" height="960" fill="#0A1E40"/>
-  
-  <!-- Definisi gradasi warna -->
+  <rect width="1440" height="960" fill="#0A1A38"/>
   <defs>
     <linearGradient id="gradF" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#1A40F0"/>
-      <stop offset="100%" stop-color="#28E0FF"/>
+      <stop offset="0%" stop-color="#1548F5"/>
+      <stop offset="100%" stop-color="#29E2FF"/>
     </linearGradient>
     <linearGradient id="gradCode" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#2090FF"/>
-      <stop offset="100%" stop-color="#28E0FF"/>
+      <stop offset="0%" stop-color="#1FA0FF"/>
+      <stop offset="100%" stop-color="#29E2FF"/>
     </linearGradient>
     <linearGradient id="gradId" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#10A0FF"/>
-      <stop offset="100%" stop-color="#28E0FF"/>
+      <stop offset="0%" stop-color="#1095FF"/>
+      <stop offset="100%" stop-color="#29E2FF"/>
     </linearGradient>
   </defs>
-
-  <!-- Bentuk utama huruf F modern -->
-  <path d="M150 610 L190 370 Q210 340 260 340 L370 340 Q390 340 385 365 Q375 390 345 400 L230 400 L215 460 Q235 450 295 445 Q320 445 325 470 Q325 495 295 505 L180 540 Z" fill="url(#gradF)"/>
-  
+  <!-- Bentuk huruf F -->
+  <path d="M142 614 L184 376 C202 344 234 336 274 336 L374 336 C392 336 390 362 378 386 C366 400 334 404 226 404 L218 456 C238 448 294 444 320 448 C332 454 330 486 306 502 L174 542 Z" fill="url(#gradF)"/>
   <!-- Simbol kode < /> -->
-  <path d="M205 525 L245 565 L205 605 M270 515 L290 615 M325 525 L285 565 L325 605" stroke="url(#gradCode)" stroke-width="24" stroke‑linecap="round" stroke‑linejoin="round" fill="none"/>
-  
+  <path d="M204 524 L246 564 L204 604 M272 514 L290 614 M326 524 L284 564 L326 604" stroke="url(#gradCode)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
   <!-- Teks fixweb -->
-  <text x="420" y="545" font‑family="Arial, sans‑serif" font‑size="190" font‑weight="bold" fill="#FFFFFF">fixweb</text>
-  <!-- Teks .id berwarna biru -->
-  <text x="795" y="545" font‑family="Arial, sans‑serif" font‑size="190" font‑weight="bold" fill="url(#gradId)">.id</text>
-  
+  <text x="420" y="545" font-family="Arial, sans-serif" font-size="190" font-weight="bold" fill="#FFFFFF">fixweb</text>
+  <!-- Teks .id biru -->
+  <text x="795" y="545" font-family="Arial, sans-serif" font-size="190" font-weight="bold" fill="url(#gradId)">.id</text>
   <!-- Tagline -->
-  <text x="420" y="625" font‑family="Arial, sans‑serif" font‑size="62" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
+  <text x="420" y="625" font-family="Arial, sans-serif" font-size="62" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
 </svg>
