@@ -1,28 +1,34 @@
 <svg width="1440" height="960" viewBox="0 0 1440 960" xmlns="http://www.w3.org/2000/svg">
-  <!-- Latar belakang -->
-  <rect width="1440" height="960" fill="#0F2040"/>
+  <!-- Latar belakang biru tua -->
+  <rect width="1440" height="960" fill="#0A1E40"/>
   
-  <!-- Bentuk huruf F gradasi -->
+  <!-- Definisi gradasi warna -->
   <defs>
-    <linearGradient id="gradF" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2060FF"/>
-      <stop offset="100%" stop-color="#30D0FF"/>
+    <linearGradient id="gradF" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1A40F0"/>
+      <stop offset="100%" stop-color="#28E0FF"/>
     </linearGradient>
-    <linearGradient id="gradCode" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#20A0FF"/>
-      <stop offset="100%" stop-color="#30D0FF"/>
+    <linearGradient id="gradCode" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2090FF"/>
+      <stop offset="100%" stop-color="#28E0FF"/>
+    </linearGradient>
+    <linearGradient id="gradId" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10A0FF"/>
+      <stop offset="100%" stop-color="#28E0FF"/>
     </linearGradient>
   </defs>
-  
-  <!-- Ikon F -->
-  <path d="M140 360 Q220 320 340 340 Q360 345 355 370 Q340 420 240 430 Q180 435 160 490 L130 600 Q125 620 145 625 L190 610 L210 520 Q220 470 280 460 Q320 455 330 425 Q335 390 270 380 L160 395 Z" fill="url(#gradF)"/>
+
+  <!-- Bentuk utama huruf F modern -->
+  <path d="M150 610 L190 370 Q210 340 260 340 L370 340 Q390 340 385 365 Q375 390 345 400 L230 400 L215 460 Q235 450 295 445 Q320 445 325 470 Q325 495 295 505 L180 540 Z" fill="url(#gradF)"/>
   
   <!-- Simbol kode < /> -->
-  <path d="M200 500 L240 540 L200 580 M270 490 L290 590 M310 500 L270 540 L310 580" stroke="url(#gradCode)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M205 525 L245 565 L205 605 M270 515 L290 615 M325 525 L285 565 L325 605" stroke="url(#gradCode)" stroke-width="24" stroke‑linecap="round" stroke‑linejoin="round" fill="none"/>
   
-  <!-- Teks fixweb.id -->
-  <text x="360" y="540" font-family="Arial, sans‑serif" font-size="180" font-weight="bold" fill="#FFFFFF">fixweb<span fill="#30D0FF">.id</span></text>
+  <!-- Teks fixweb -->
+  <text x="420" y="545" font‑family="Arial, sans‑serif" font‑size="190" font‑weight="bold" fill="#FFFFFF">fixweb</text>
+  <!-- Teks .id berwarna biru -->
+  <text x="795" y="545" font‑family="Arial, sans‑serif" font‑size="190" font‑weight="bold" fill="url(#gradId)">.id</text>
   
   <!-- Tagline -->
-  <text x="360" y="620" font-family="Arial, sans‑serif" font-size="60" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
+  <text x="420" y="625" font‑family="Arial, sans‑serif" font‑size="62" fill="#FFFFFF">Solusi Website & Aplikasi Anda</text>
 </svg>
