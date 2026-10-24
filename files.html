@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>File Index | FixWeb.ID</title>
+<style>
+body{font:16px Arial,sans-serif;max-width:850px;margin:30px auto;padding:16px;background:#f4f7fb;color:#182235}
+h1{color:#1672c4}
+input{box-sizing:border-box;width:100%;padding:12px;border:1px solid #ccd5e0;border-radius:8px}
+ul{list-style:none;padding:0}
+li{padding:12px;border-bottom:1px solid #e1e7ef}
+a{color:#1769aa;text-decoration:none}
+a:hover{text-decoration:underline}
+small{color:#667085}
+</style>
+</head>
+<body>
+<h1>FixWeb.ID / File Index</h1>
+<p><small>Daftar file dan folder website</small></p>
+<input id="search" placeholder="Cari file atau folder...">
+<p id="status">Memuat repository...</p>
+<ul id="list"></ul>
+
+<script>
+const OWNER = "USERNAME_GITHUB";
+const REPO = "NAMA_REPOSITORY";
+const BRANCH = "main";
+
+const list = document.getElementById("list");
+const status = document.getElementById("status");
+const search = document.getElementById("search");
+let files = [];
+
+async function load(path = "") {
+  status.textContent = "Memuat...";
+  try {
+    const url = `https://api.github.com/repos/${OWNER}/${REPO}/git/trees/${BRANCH}?recursive=1`;
+    const res = await fetch(url);
+    if (!res.ok) throw Error("GitHub API tidak dapat diakses");
+    const data = await res.json();
+    if (data.truncated) throw Error("Repository terlalu besar untuk satu daftar");
+    files = data.tree.filter(x =>
+      x.type === "blob" || x.type === "tree"
+    );
+    render();
+  } catch (e) {
+    status.textContent = e.message + ". Periksa konfigurasi repository.";
+  }
+}
+
+function render() {
+  const q = search.value.toLowerCase();
+  list.innerHTML = "";
+  const filtered = files.filter(f => f.path.toLowerCase().includes(q));
+  status.textContent = `${filtered.length} item ditemukan`;
+  filtered.forEach(f => {
+    const li = document.createElement("li");
+    const a = document.createElement("a");
+    const isFolder = f.type === "tree";
+    a.textContent = (isFolder ? "📁 " : "📄 ") + f.path;
+    a.href = isFolder
+      ? "/" + f.path.replace(/\/$/, "") + "/"
+      : "/" + f.path;
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
+search.addEventListener("input", render);
+load();
+</script>
+</body>
+</html>
