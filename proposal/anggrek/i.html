@@ -108,7 +108,7 @@
                 Keanekaragaman Anggrek Asli Indonesia
             </h2>
             <p class="text-slate-600 dark:text-slate-400 text-sm sm:text-base max-w-2xl mx-auto mb-8">
-                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem pengelolaan folder lokal dan panduan SVG dinamis.
+                Koleksi eksklusif 50 varietas anggrek endemik Indonesia dengan sistem folder lokal dan caption nama file siap salin.
             </p>
 
             <!-- Search Bar & Filters -->
@@ -197,19 +197,18 @@
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
             <div class="grid grid-cols-1 md:grid-cols-2">
-                <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
-                    <img id="detailImage" src="" alt="" class="w-full h-full object-cover" 
-                         onerror="
-                            let filename = this.getAttribute('data-filename') || 'foto.jpg';
-                            this.onerror=null; 
-                            fetch('img/fixfoto.svg')
-                                .then(res => res.text())
-                                .then(svg => {
-                                    let customSvg = svg.replace('memuat...', filename);
-                                    this.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(customSvg)));
-                                });
-                         ">
-                    <span id="detailBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow"></span>
+                <div>
+                    <!-- Caption Label Nama File di atas Modal Detail -->
+                    <div id="detailCaptionBox" class="hidden bg-emerald-950 text-emerald-300 text-xs px-3 py-1.5 font-mono border-b border-emerald-800/60 flex justify-between items-center">
+                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1.5"></i> <strong id="detailFilenameText" class="select-all cursor-pointer" title="Blok atau salin nama file ini"></strong></span>
+                    </div>
+                    <div class="relative h-64 md:h-full bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                        <img id="detailImage" src="" alt="" class="w-full h-full object-cover cursor-pointer" 
+                             onclick="openZoom(this.src)"
+                             title="Klik untuk memperbesar foto"
+                             onerror="this.onerror=null; this.src='img/fixfoto.svg';">
+                        <span id="detailBadge" class="absolute top-4 left-4 px-3 py-1 rounded-full text-xs font-bold text-white shadow pointer-events-none"></span>
+                    </div>
                 </div>
                 <div class="p-6 md:p-8 flex flex-col justify-between">
                     <div>
@@ -238,6 +237,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- IMAGE ZOOM MODAL (UNTUK MEMPERBESAR FOTO) -->
+    <div id="zoomModal" class="fixed inset-0 z-50 hidden bg-slate-950/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closeZoom()">
+        <div class="relative max-w-4xl max-h-screen p-2">
+            <button class="absolute -top-10 right-0 text-white text-2xl hover:text-amber-400 transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="zoomImg" src="" alt="Zoom Foto" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-slate-700">
         </div>
     </div>
 
@@ -374,6 +383,16 @@
             return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(number);
         }
 
+        // ZOOM IMAGE MODAL FUNCTIONS
+        function openZoom(imgSrc) {
+            document.getElementById('zoomImg').src = imgSrc;
+            document.getElementById('zoomModal').classList.remove('hidden');
+        }
+
+        function closeZoom() {
+            document.getElementById('zoomModal').classList.add('hidden');
+        }
+
         // DARK MODE TOGGLE
         function initTheme() {
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -432,7 +451,7 @@
 
             emptyState.classList.add('hidden');
 
-            // Render HTML Cards dengan Fallback Dinamis ke fixfoto.svg menyertakan nama file
+            // Render HTML Cards dengan Caption Nama File di atas Foto (Bisa di-highlight & copy manual)
             grid.innerHTML = filtered.map(item => {
                 let filename = item.image.split('/').pop();
                 let stockBadgeClass = "bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300";
@@ -447,24 +466,23 @@
 
                 return `
                 <div class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200/80 dark:border-slate-700/80 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group">
-                    <!-- Card Header Image -->
-                    <div class="relative h-52 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
-                        <img src="${item.image}" alt="${item.name}" loading="lazy" data-filename="${filename}"
-                             onerror="
-                                let fname = this.getAttribute('data-filename');
-                                this.onerror=null; 
-                                fetch('img/fixfoto.svg')
-                                    .then(res => res.text())
-                                    .then(svg => {
-                                        let customSvg = svg.replace('memuat...', fname);
-                                        this.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(customSvg)));
-                                    });
-                             "
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-md text-white text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg">
+                    <!-- Caption Label Nama File di atas Foto -->
+                    <div class="bg-emerald-900 text-emerald-100 text-[11px] px-3 py-1 font-mono border-b border-emerald-800 flex items-center justify-between">
+                        <span class="truncate"><i class="fa-solid fa-file-image text-amber-400 mr-1"></i> <strong class="select-all cursor-text" title="Blok dan salin nama file ini">${filename}</strong></span>
+                        <span class="text-[9px] uppercase tracking-wider text-emerald-300 bg-emerald-950 px-1.5 py-0.5 rounded">img/</span>
+                    </div>
+
+                    <!-- Card Header Image (Bisa diklik untuk zoom/memperbesar foto) -->
+                    <div class="relative h-48 overflow-hidden bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                        <img src="${item.image}" alt="${item.name}" loading="lazy" 
+                             onerror="this.onerror=null; this.src='img/fixfoto.svg';"
+                             onclick="openZoom(this.src)"
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 cursor-zoom-in"
+                             title="Klik untuk memperbesar foto">
+                        <span class="absolute top-3 left-3 bg-slate-900/70 backdrop-blur-md text-white text-[11px] font-mono font-bold px-2.5 py-1 rounded-lg pointer-events-none">
                             ${item.code}
                         </span>
-                        <span class="absolute top-3 right-3 text-[11px] font-bold px-2.5 py-1 rounded-lg ${stockBadgeClass}">
+                        <span class="absolute top-3 right-3 text-[11px] font-bold px-2.5 py-1 rounded-lg ${stockBadgeClass} pointer-events-none">
                             ${stockText}
                         </span>
                     </div>
@@ -520,8 +538,12 @@
             if (!item) return;
 
             let filename = item.image.split('/').pop();
+            
+            // Set Caption Nama File di Modal Detail
+            document.getElementById('detailCaptionBox').classList.remove('hidden');
+            document.getElementById('detailFilenameText').textContent = filename;
+
             const detailImg = document.getElementById('detailImage');
-            detailImg.setAttribute('data-filename', filename);
             detailImg.src = item.image;
 
             document.getElementById('detailCode').textContent = item.code;
